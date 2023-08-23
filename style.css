@@ -7,8 +7,7 @@
 
 body {
   /* width: 100vw; */
-   
-  background: #c0b9b9;
+  /* background: #c0b9b9; */
   background-position: center;
   background-size: cover;
   font-family: "Fira Sans", sans-serif;
@@ -17,25 +16,25 @@ body {
 .advertise {
   top: 100px;
   margin-left: 5%;
-  color: white;
+  /* color: white; */
   font-family: "Righteous", cursive;
   font-size: 30px;
 }
 .logo {
   font-size: 1.5rem;
   text-decoration: none;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   font-weight: 700;
 }
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 10%;
+  padding: 1.5rem 10%;
   display: flex;
-  /* background-color:  transparent; */
+  background-color:  #ffff;
   justify-content: space-between;
   align-items: center;
   z-index: 5;
@@ -48,7 +47,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(80px);
   z-index: -1;
 }
 .header::after {
@@ -61,7 +60,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.4),
+    rgba(0, 0, 0, 0.4),
     transparent
   );
 
@@ -72,7 +71,7 @@ body {
 }
 .nav-item {
   position: relative;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 1rem;
   font-weight: 500;
   line-height: 25px;
@@ -89,21 +88,22 @@ body {
   position: absolute;
   right: 5%;
   font-size: 2.3rem;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   cursor: pointer;
   display: none;
-  transition:.3s ease-in-out; 
+  transition: 0.3s ease-in-out;
 }
 #check {
   display: none;
 }
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .header {
     padding: 1.3rem 5%;
   }
-}
- 
+} */
+
 @media (max-width: 768px) {
+
   .icons {
     display: inline-flex;
   }
@@ -111,7 +111,7 @@ body {
   #check:checked ~ .icons #menu-icon {
     display: none;
   }
-    
+
   .icons #close-icon {
     display: none;
   }
@@ -126,7 +126,7 @@ body {
     left: 0;
     width: 100%;
     height: 0;
-    background: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(50px);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -152,6 +152,121 @@ body {
     opacity: 1;
     transition-delay: calc(0.15s * var(--i));
   }
+  .container1{
+    display: grid;
+    padding: 5px;
+  }
 }
  
+ 
+#myVideo{
+  top:0;
+  position: static;
+  width:100%;
+  height: auto;
+}
+
+#changingImage{
+  /* position: relative; */
+  width:100%;
+  height: auto;
+}
+/* -----------Footer------------- */
+.container1
+{
+  position: relative;
+  background-color: rgb(17, 16, 16);
+  height:  auto;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px  ;
+  display: flex;
+  justify-content: space-around;
+ /* top: 0; */
   
+
+}
+.footer{
+  background-color:  rgb(17, 16, 16);
+}
+.li,.support,.about,.quick{
+  font-size: small;
+  color: rgb(162, 159, 159);
+  text-decoration: none;
+transition: all 0.35 ease;
+   
+  
+   
+}
+.li,.support,.about,.quick:hower{
+  transform: translateX(-8px);
+  color: var(--bg-color);
+
+   
+  
+   
+}
+
+.li,.about_u,.quick,.support_li{
+  color: white;
+  padding-left: 8px;
+}
+.about_u,.quick,.support_li{
+  padding-top: 0 ;
+  padding-bottom: 10px;
+}
+ 
+.big_links{
+  display: grid;
+  flex-wrap: wrap;
+}
+.quick_li{
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+ 
+}  
+#ibtn  {
+  color: rgb(255, 255, 255);
+}
+
+.quick{
+  display: flex;
+  justify-content:  flex-start;
+  right: 0;padding-left: 8px;
+  
+}
+ul {
+  list-style: none;
+}
+ .last_txt{
+  display: flex;
+  justify-content: center;
+   
+ }
+ .demo{
+  color: rgb(173, 173, 173);
+  padding-bottom: 20px;
+  font-size: small;
+ }
+ li{
+  padding: 8px;
+ }
+ @media (max-width: 768px){
+  .container1{
+    display: grid;
+    /* padding: 20px; */
+  }
+  .about_u,.quick,.support_li,.li{
+    padding-top: 20px ;
+    /* padding-bottom: 10px; */
+    
+  }
+  .last_txt{
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+   
+ }
