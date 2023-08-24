@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="landingPage.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="logo">UpStyle</a>
+
+      <input type="checkbox" id="check" />
+      <label for="check" class="icons">
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <i class="bx bx-x" id="close-icon"></i>
+      </label>
+
+      <nav class="navbar">
+        <a href="/" class="nav-item" style="--i: 0">Home</a>
+        <a href="/about" class="nav-item" style="--i: 1">About</a>
+        <a href="/working-on-it" class="nav-item" style="--i: 2">Services</a>
+        <a href="/working-on-it" class="nav-item" style="--i: 3">Contact</a>
+        <a href="/user-login" class="nav-item" style="--i: 4">Login</a>
+        <!-- <a href="#" class="nav-item" style="--i: 5">Login</a> -->
+      </nav>
+    </header>
+    <section class="home" id="home"></section>
+    <section>
+      <div>
+        <video autoplay muted loop id="myVideo">
+          <source src="Images/videobg.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+    <section>
+      <div class="changing_image">
+        <img
+          id="changingImage"
+          src="Images/models/model1 (1).webp"
+          alt="Changing Image"
+        />
+      </div>
+    </section>
+    <footer class="footer" id="footer">
+      <div class="container1">
+        <div class="big_links">
+          <a class="li" href="/working-on-it">Find a Store</a>
+          <a class="li" href="/working-on-it">Become a Member</a>
+          <a class="li" href="/working-on-it">Send us Feedback</a>
+          <a class="li" href="/working-on-it">Student Offer</a>
+        </div>
+        <div class="support_links">
+          <h4 class="support_li">Support</h4>
+          <ul>
+            <li><a class="support" href="/working-on-it">Contact us</a></li>
+            <li><a class="support" href="/working-on-it">Promotion and Sale</a></li>
+            <li><a class="support" href="/working-on-it">Track Order</a></li>
+            <li><a class="support" href="/working-on-it">Privacy Policy</a></li>
+            <li><a class="support" href="/working-on-it">Terms and Condition</a></li>
+          </ul>
+        </div>
+        <div class="about_us">
+          <h4 class="about_u">About</h4>
+          <ul>
+            <li><a class="about" href="/working-on-it">Website </a></li>
+            <li><a class="about" href="/working-on-it">Read-me </a></li>
+            <li><a class="about" href="/working-on-it">Git-hub Repo</a></li>
+            <li><a class="about" href="/working-on-it">Creators </a></li>
+          </ul>
+        </div>
+        <div class="quick_links">
+          <h4 class="quick">Quick Links</h4>
+
+          <ul class="quick">
+            <li>
+              <a class="quick_li" href="/working-on-it"
+                ><i id="ibtn" class="bx bxl-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="quick_li" href="/working-on-it"
+                ><i id="ibtn" class="bx bxl-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a class="quick_li" href="/working-on-it">
+                <i id="ibtn" class="bx bxl-facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a class="quick_li" href="/working-on-it"
+                ><i id="ibtn" class="bx bxl-codepen"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="last_txt">
+        <p class="demo">
+          © UpStyle India Ltd, 2023. All Rights Reserved. Imprint and Legal Data
+        </p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
