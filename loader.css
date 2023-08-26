@@ -1,0 +1,91 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: "Fira Sans", sans-serif;;
+}
+
+.loader {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+}
+
+  .shoe2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  animation: rotateAnimation1 1s linear infinite;
+  animation-delay: .5s;
+}
+  .shoe1 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  animation: rotateAnimation2 1s linear infinite;
+  animation-delay: 1s;
+}
+.shoe-wrapper img {
+  transform: rotate(24deg);
+  transform-origin:left ;
+}
+
+.shoe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+  
+  @keyframes rotateAnimation1 {
+    
+      50% {
+        transform: rotateZ(-5deg);
+      }
+  }
+  
+  @keyframes rotateAnimation2 {
+    
+      50% {
+        transform: rotateZ(-5deg);
+      }
+  }
+.shoe1{
+    position: absolute;
+    
+}
+.shoe2{
+    position: absolute;
+    
+}
+.load{
+    font-size: 1.2rem;
+    color: rgb(70, 70, 70);
+}
+.dot{
+    animation: blink 1.5s infinite;
+    animation-delay: 0s ,0.5s, 1s; 
+}
+.dot1{
+    animation-delay: 0s;
+}
+.dot1{
+    animation-delay: 0.5s;
+}
+.dot1{
+    animation-delay: 1s;
+}
+@keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
