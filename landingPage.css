@@ -166,7 +166,7 @@ body {
   position: static;
   width: 100%;
   height: auto;
-  padding: 0 50px;
+  padding: 0 32px;
   /* margin-top: 3px; */
 }
 
@@ -283,7 +283,7 @@ li {
   justify-content: space-around;
   flex-wrap: wrap;
   /* padding-top: 20px; */
-  padding: 40px 50px;
+  padding: 40px 32px;
 }
 #featureSection .productContainer .product {
   margin-left: auto;
