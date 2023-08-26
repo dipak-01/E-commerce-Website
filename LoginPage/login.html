@@ -38,31 +38,15 @@
       <!-- <a href="#" class="nav-item" style="--i: 5">Login</a> -->
     </nav>
   </header>
-  <section class="home" id="home"></section>
-
-
-
-  <!-- <header class="header">
-    <nav class="nav">
-      <a href="#" class="nav_logo">Logo</a>
-
-      <ul class="nav_items">
-        <li class="nav_item">
-          <a href="#" class="nav_link">Home</a>
-          <a href="#" class="nav_link">MEN</a>
-          <a href="#" class="nav_link">WOMEN</a>
-          <a href="#" class="nav_link">KIDS</a>
-        </li>
-      </ul>
-      <button class="button" id="form-open">Login</button>
-    </nav>
-  </header> -->
 
   <div class="split-screen">
     <div class="left">
       <section class="copy">
-        <h1>Explore Our Products</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia, corporis at doloribus voluptate repellendus doloremque magnam maxime eaque.</p>
+        <h1>Step Into Style</h1>
+        <p>"Welcome to Sneaker Heaven!
+          Where Every Step Tells a Story.
+          Explore the Latest Trends, Hottest Kicks, and Unleash Your Sole's Passion.
+          Get Ready to Walk the Talk with the Perfect Pair!</p>
       </section>
 
     </div >
@@ -71,12 +55,13 @@
     
 
       <div class="form_container">
+        
         <i class="uil uil-times form_close"></i>
         <!-- Login From -->
         <div class="form login_form">
           <form action="#">
             <h2>Login</h2>
-
+            
             <div class="input_box">
               <input type="email" placeholder="Enter your email" required />
               <i class="uil uil-envelope-alt email"></i>
@@ -94,9 +79,7 @@
               </span>
               <a href="#" class="forgot_pw">Forgot password?</a>
             </div>
-
-            <button class="button">Login Now</button>
-
+            <button class="button login-button">Login Now</button>
             <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
           </form>
         </div>
@@ -107,30 +90,46 @@
             <h2>Signup</h2>
 
             <div class="input_box">
-              <input type="email" placeholder="Enter your email" required />
+              <input type="name" placeholder="Enter First Name" required />
+              <i class="uil uil-letter-english-a email"></i>
+            </div>
+            <div class="input_box">
+              <input type="name" placeholder="Enter Last Name" required />
+              <i class="uil uil-letter-english-a email"></i>
+            </div>
+            <div class="input_box">
+              <input type="email"  placeholder="Enter your email" required />
               <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="tel" placeholder="Enter Phone Number" maxlength="10" required />
+              <i class="uil uil-phone email"></i>
             </div>
             <div class="input_box">
               <input type="password" placeholder="Create password" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
-            <div class="input_box">
+            <!-- <div class="input_box">
               <input type="password" placeholder="Confirm password" required />
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
-            </div>
+            </div> -->
 
-            <button class="button">Signup Now</button>
+            <button class="button signup-button">Signup Now</button>
 
-            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+            <div class="login_signup signup-login">Already have an account? <a href="#" id="login">Login</a></div>
           </form>
         </div>
       </div>
 
     </div>
-  </div>
+    </div>
+    
+  
 </section>
+
+
 <script src="script.js"></script>
 </body>
 </html>
