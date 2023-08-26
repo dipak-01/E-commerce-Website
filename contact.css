@@ -252,152 +252,91 @@ li {
 }
 
 .contact_f {
-  position: relative;
   text-align: center;
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px 20px;
 }
-/* General styles */
+.card {
+  display: block;
+  width: auto;
+  height: auto;
+  border: 3px solid black;
+  border-radius: 6px;
+  padding: 50px;
+  margin: 7% 20%;
+  overflow: hidden;
+}
 
-/* Form styles */
 .form__group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 40%;
+  display: block;
+  border-color: none;
+  padding: 15px;
 }
-.field2{
-  width: 90%;
-  padding-bottom: 50px;
+input {
+  display: block;
+  border: none;
+}
+textarea {
+  display: block;
+  border: none;
+}
+:placeholder-shown {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 18px;
+}
+.contact_us {
+  display: flex;
+  justify-content: space-between;
 }
 
-.form__field {
-  /* font-family: inherit; */
+.send_btn button {
+  background-color: rgb(33, 33, 33);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.send_btn {
+  padding: 16px;
+}
+.textarea {
   width: 100%;
-  border: 0;
-  border-bottom: 2px solid #706f6f;
-  outline: 0;
-  font-size: 1.3rem;
-  color: #fff;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-.form__field{
-  padding-right: 5px;
-  margin-right: 9000px;
-}
-.form__field::placeholder {
-  color: transparent;
+  height: 150px;
 }
 
-.form__field:placeholder-shown ~ .form__label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
+@media (max-width: 786px) {
+  .card {
+    padding: 20px;
+    left: 50%;
+    margin: 3.5% 10%;
+  }
+  .contact_us {
+    display: grid;
+  }
 }
 
+input:focus,
+textarea:focus {
+  outline: none;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+@media (max-width: 917px) {
+  input {
+    width: scale();
+  }
+}
 .form__label {
   position: absolute;
   top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #9b9b9b;
+  left: 0;
+  pointer-events: none;
+  padding: 15px;
+  transition: 0.2s ease all;
+  opacity: 0.5;
 }
-
-.form__field:focus ~ .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #070707;
-  font-weight: 700;
-}
-
-.form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #000000, #c8c7c7);
-  border-image-slice: 1;
-}
-
-.form__field:required,
-.form__field:invalid {
-  box-shadow: none;
-}
-.contact_us{
-  display: flex;
-  justify-content: space-around;
-  padding:  0   8%;
-  padding-top: 4%;
-  
-}
-.msg {
-  display: flex;
-  justify-content: space-around;
-  padding: 8% 8%;
-}
-.msg{
-  padding-bottom: 60px;
-}
-@media (max-width:600px ) {
-  .contact_us{
-        flex-direction: column;
-    width: 200%;
-  }.msg {
-    flex-direction: column;
-    width: 115%;
-  }
-}
-.send{
-  background-color: #000000;
-  font-size:  1.0rem;
-  padding: 10px 20px; 
-  color: #fff;
-   top: 1110;
-
-/* }
-.send_btn {
-  position: relative;  
-  width: 100%;  
-  text-align: center;        
-  margin-top: 20px;                  
-  border: none;  
-}
-  */
-  .send_btn {
-    position: relative; /* Make the container positioned */
-    width: 100%; /* Set container width */
-    text-align: center; /* Center the button horizontally */
-    margin-top: 20px; /* Add some margin to separate from the content above */
-  }
-  
-  .send {
-    background-color: #000000;
-    font-size: 1.0rem;
-    padding: 10px 20px; /* Adjust padding for a better button size */
-    color: #fff;
-    border: none; /* Remove border for cleaner look */
-    cursor: pointer; 
-  }
-  .send_btn {
-    display: flex;
-    justify-content: center; /* Horizontally center the button */
-    align-items: center; /* Vertically center the button */
-    height: 100vh; /* Adjust the height of the container */
-  }
-  
-  .send {
-    background-color: #000000;
-    font-size: 1.0rem;
-    padding: 10px 20px; /* Adjust padding for a better button size */
-    color: #fff;
-    border: none; /* Remove border for cleaner look */
-    cursor: pointer;
-    /* Add more styling as needed */
-  }
+.form__field {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 3px solid rgb(79, 77, 77);
 }
