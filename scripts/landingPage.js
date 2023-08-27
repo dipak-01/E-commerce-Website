@@ -28,7 +28,7 @@ leftButtons.forEach((button) => {
       console.log("Left Button is clicked!");
       isTransitioning = true;
       currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-      udateSlider();
+      updateSlider();
       setTimeout(() => {
         isTransitioning = false;
       }, 500); // Set a delay in milliseconds
