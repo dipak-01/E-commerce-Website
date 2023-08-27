@@ -14,50 +14,52 @@ function changeImage() {
 }
 
 setInterval(changeImage, 5000);
+
 const images = document.querySelectorAll(".image");
-const leftButtons = document.querySelectorAll(".left-button");
-const rightButtons = document.querySelectorAll(".right-button");
-const totalImages = images.length;
+const leftButton = document.querySelector(".left-button ");
+const rightButton = document.querySelector(".right-button ");
 
 let currentIndex = 0;
-let isTransitioning = false; // Flag to prevent rapid clicking
 
-leftButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!isTransitioning) {
-      console.log("Left Button is clicked!");
-      isTransitioning = true;
-      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-      updateSlider();
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 500); // Set a delay in milliseconds
-    }
-  });
-});
-
-rightButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!isTransitioning) {
-      console.log("Right Button is clicked!");
-      isTransitioning = true;
-      currentIndex = (currentIndex + 1) % totalImages;
-      updateSlider();
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 500); // Set a delay in milliseconds
-    }
-  });
-});
-
-function updateSlider() {
-  console.log("Update slider is working!");
-  const imageWidth = images[0].offsetWidth;
-  const translateValue = -currentIndex * imageWidth;
-
+function hideAllImages() {
   images.forEach((image) => {
-    image.style.transform = `translateX(${translateValue}px)`;
+    image.style.display = "none";
   });
 }
 
-updateSlider();
+function showCurrentImage() {
+  hideAllImages();
+  images[currentIndex].style.display = "block";
+}
+
+function transition(direction) {
+  if (direction === "left") {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+  } else if (direction === "right") {
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  showCurrentImage();
+}
+
+leftButton.addEventListener("click", () => {
+  transition("left");
+});
+
+rightButton.addEventListener("click", () => {
+  transition("right");
+});
+
+// Initial setup
+hideAllImages();
+showCurrentImage();
+var docWidth = document.documentElement.offsetWidth;
+
+[].forEach.call(
+  document.querySelectorAll('*'),
+  function(el) {
+    if (el.offsetWidth > docWidth) {
+      console.log(el);
+    }
+  }
+);
