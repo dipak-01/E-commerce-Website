@@ -33,12 +33,12 @@ const productSchema = new mongoose.Schema(
     },
     imageUrl1: {
       type: String,
-      // unique: true,
+      unique: true,
       required: true,
     },
     imageUrl2: {
       type: String,
-      // unique: true,
+      unique: true,
       required: true,
     },
     price: { 
