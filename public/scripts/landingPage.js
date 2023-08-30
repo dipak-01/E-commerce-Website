@@ -124,10 +124,13 @@ const productCardGenerator1=(x)=>{
   function createProductCard(product) {
     return `
       <div class="product">
+<<<<<<< HEAD
       
       <a class="object-id" >${product._id} </a>
       <a href="/product/${product._id}">
       <a href="/product-details?id=${product._id}">
+=======
+>>>>>>> b24cd8302c8af9c884d75ed125483eead0e1319e
         <img src="${product.imageUrl1}" alt=" product img" />
         <img id="change" src="${product.imageUrl2}" alt=" product img" />
         <div class="descr">
