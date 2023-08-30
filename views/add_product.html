@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Product</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .pro-uploader {
+      background-color: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .pro-uploader form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .pro-uploader input,
+    .pro-uploader button {
+      padding: 15px;
+      font-size: 18px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nameInput = document.querySelector('input[name="title"]');
+      const imageInput = document.querySelector('input[name="imgName"]');
+
+      imageInput.addEventListener("change", () => {
+        if (imageInput.files.length > 0) {
+          const imageName = imageInput.files[0].name;
+          const formattedName = formatName(imageName);
+          nameInput.value = formattedName;
+        }
+      });
+
+      function formatName(name) {
+        return name
+          .replace(/\.[^.]+$/, "") // Remove file extension
+          .replace(/[-_]/g, " ")
+          .replace(/\b\w+/g, (word) => word.charAt(0).toUpperCase() + word.slice(1));
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="pro-uploader">
+    <form action="/add-product" method="post">
+      <input type="text" name="title" placeholder="name" />
+      <input type="file" name="imgName" accept="image/*" />
+      <input type="text" placeholder="description" name="description" />
+      <input type="text" placeholder="color" name="colour" />
+      <input type="url" placeholder="image1" name="imageUrl1" />
+      <input type="url" placeholder="image2" name="imageUrl2" />
+      <input type="number" placeholder="price" name="price" />
+      <button>send</button>
+    </form>
+  </div>
+</body>
+</html>
