@@ -1,34 +1,51 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const productSchema = new mongoose.Schema(
   {
-    productName: {
+    title: {
       type: String,
+      unique: true,
       required: true,
+    },
+    imgName:{
+      type: String,
       unique: true,
     },
-    productDiscription: {
+    description: {
       type: String,
+      unique: true,
+      required: true,      
     },
-    productSize: {
+    size: {
       type: String,
-      required: true,
+      default: "6, 7, 8, 9, 10, 11, 12",
+      // required: true,
     },
-    productColour: {
+    colour: {
       type: String,
+      required:true,
     },
-    productInStock: {
+    inStock: {
       type: Boolean,
-      required: true,
+      default : true
+      // required: true,
     },
-    imageUrl: {
+    imageUrl1: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
-      timestamp: true,
-  }
-)
-
+    imageUrl2: {
+      type: String,
+      // unique: true,
+      required: true,
+    },
+    price: { 
+      type: Number,
+      required: true,
+    },
+  }, {timestamp: true});
 const Product = mongoose.model('Product',productSchema)
-export default Product
+module.exports = Product;
+
