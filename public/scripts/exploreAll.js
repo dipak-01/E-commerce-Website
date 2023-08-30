@@ -34,7 +34,7 @@
     })
     .catch((err) => {
       console.log(err);
-    });
+    });
   }
   
   // Get the container element
