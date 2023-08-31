@@ -5,7 +5,7 @@ const productCardGenerator = (x) => {
         <div class="product">
         <a class="object-id" >${product._id} </a>
         
-        <a href="#" onclick="event.preventDefault(); setTimeout(function(){ window.location.href = '/product-details?id=${product._id}'; }, 0)"> 
+        <a href="#" onclick="event.preventDefault(); setTimeout(function(){ window.location.href = '/frontend/html/product.html?id=${product._id}'; }, 0)"> 
  
           <img src="${product.imageUrl1}" alt=" product img" />
           <img id="change" src="${product.imageUrl2}" alt=" product img" />

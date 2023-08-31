@@ -305,7 +305,7 @@ li {
   transform: translate(-50%, -50%);
   width: 75%;
   height: 550px;
-  background-color: url("img/sneaker.png") no-repeat;
+  background-color: url("../Images/sneaker.png") no-repeat;
   background-size: cover;
   background-position: center;
   position: fixed;
@@ -329,7 +329,7 @@ li {
 }
 .left {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-    url("../img/peakpx\ \(4\).jpg");
+    url("../Images/peakpx\ \(4\).jpg");
   background-size: cover;
 }
 .left .copy {

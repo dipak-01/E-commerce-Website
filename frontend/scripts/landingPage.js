@@ -127,7 +127,7 @@ const productCardGenerator1=(x)=>{
       
       <a class="object-id" >${product._id} </a>
       <a href="/product/${product._id}">
-      <a href="/product-details?id=${product._id}">
+      <a href="/frontend/html/product.html?id=${product._id}">
         <img src="${product.imageUrl1}" alt=" product img" />
         <img id="change" src="${product.imageUrl2}" alt=" product img" />
         <div class="descr">
@@ -161,7 +161,7 @@ const productCardGenerator2=(y)=>{
       <div class="product">
       <a class="object-id" >${product._id} </a>
       <a href="/product/${product._id}">
-      <a href="/product-details?id=${product._id}">
+      <a href="/frontend/html/product.html?id=${product._id}">
         <img src="${product.imageUrl1}" alt=" product img" />
         <img id="change" src="${product.imageUrl2}" alt=" product img" />
         <div class="descr">
