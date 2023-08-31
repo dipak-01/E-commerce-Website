@@ -94,8 +94,6 @@ scrollToTopBtn.addEventListener("click", function () {
 //     e.preventDefault();
 //   }
 // });
- 
-
 
 // creating cards
 // <!-- Your HTML container where you want to display the product cards -->
@@ -118,16 +116,16 @@ scrollToTopBtn.addEventListener("click", function () {
 //       </div>
 //     </div>`;
 // }
-
+//  <a class="object-id" >${product._id} </a>
 // Get the container element
-const productCardGenerator1=(x)=>{
+const productCardGenerator1 = (x) => {
   function createProductCard(product) {
     return `
       <div class="product">
       
-      <a class="object-id" >${product._id} </a>
-      <a href="/product/${product._id}">
-      <a href="/frontend/html/product.html?id=${product._id}">
+     
+     
+      <a href="product.html?id=${product._id}">
         <img src="${product.imageUrl1}" alt=" product img" />
         <img id="change" src="${product.imageUrl2}" alt=" product img" />
         <div class="descr">
@@ -143,25 +141,23 @@ const productCardGenerator1=(x)=>{
       </div>`;
   }
   fetch("http://localhost:3000/explore-all")
-  .then((res) => res.json())
-  .then((data) => {
-    // Generate product cards and append them to the container
-    for (let i = 1; i < 6; i++) {
-      let productCard = createProductCard(data[i]);
-      x.insertAdjacentHTML("beforeend", productCard);
-    };
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-}
-const productCardGenerator2=(y)=>{
+    .then((res) => res.json())
+    .then((data) => {
+      // Generate product cards and append them to the container
+      for (let i = 1; i < 6; i++) {
+        let productCard = createProductCard(data[i]);
+        x.insertAdjacentHTML("beforeend", productCard);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+const productCardGenerator2 = (y) => {
   function createProductCard(product) {
     return `
       <div class="product">
-      <a class="object-id" >${product._id} </a>
-      <a href="/product/${product._id}">
-      <a href="/frontend/html/product.html?id=${product._id}">
+      <a href="product.html?id=${product._id}">
         <img src="${product.imageUrl1}" alt=" product img" />
         <img id="change" src="${product.imageUrl2}" alt=" product img" />
         <div class="descr">
@@ -173,29 +169,30 @@ const productCardGenerator2=(y)=>{
           <a id="colorLink" href="" title="Add to Wishlist"><i class="bx bx-heart wishlist "></i></a>
           <a href="#" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
         </div>
+        </a>
       </div>`;
   }
   console.log("outside2");
   fetch("http://localhost:3000/explore-all")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log("inside2");
-    // Generate product cards and append them to the container
-    for (let i = 6; i < 11; i++) {
-      console.log("inside for2");
-      let productCard = createProductCard(data[i]);
-      y.insertAdjacentHTML("beforeend", productCard);
-    };
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-}
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("inside2");
+      // Generate product cards and append them to the container
+      for (let i = 6; i < 11; i++) {
+        console.log("inside for2");
+        let productCard = createProductCard(data[i]);
+        y.insertAdjacentHTML("beforeend", productCard);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // Get the container element
 let x = document.getElementById("productContainer1");
 productCardGenerator1(x);
- let y = document.getElementById("productContainer2");
+let y = document.getElementById("productContainer2");
 productCardGenerator2(y);
 
 document.addEventListener("DOMContentLoaded", function () {
