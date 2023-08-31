@@ -12,7 +12,7 @@ body {
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 .scrollable {
   overflow: scroll;

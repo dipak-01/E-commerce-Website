@@ -13,7 +13,7 @@ const productCardGenerator = (x) => {
           </div>
           <div class="cart">
             <a href="#" title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
-            <a href="#" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+            <a href="http://localhost:3000/user-signin" method="GET" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
           </div>
           </a>
         </div>`;
@@ -21,7 +21,6 @@ const productCardGenerator = (x) => {
   fetch("http://localhost:3000/explore-all")
     .then((res) => res.json())
     .then((data) => {
-      // Generate product cards and append them to the container
       for (let i = 0; i < 35; i++) {
         const productCard = createProductCard(data[i]);
         x.insertAdjacentHTML("beforeend", productCard);
