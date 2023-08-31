@@ -5,27 +5,23 @@ console.log("prductId");
 console.log("Product ID:", productId);
 let x = document.getElementById("prodetails");
 
-const loader = document.querySelector(".loader");
+// const loader = document.querySelector(".loader");
 
-function showLoader() {
-  loader.style.display = "block";
-  // baby.style.display= 'block'
-  // document.body.style.display = 'none';
-}
+// function showLoader() {
+//   loader.style.display = "block";
 
-function hideLoader() {
-  loader.style.display = "none";
-  // document.body.style.display = 'none';
-  // baby.style.display= 'none'
-}
+// }
+
+// function hideLoader() {
+//   loader.style.display = "none";
+
+// }
 
 console.log("1");
 const productCardGenerator = (x) => {
-  showLoader();
   fetch(`http://localhost:3000/product/${productId}`)
     .then((res) => res.json())
     .then((data) => {
-      hideLoader();
       const productCard = createProductCard(data);
       x.insertAdjacentHTML("beforeend", productCard);
 
@@ -33,7 +29,6 @@ const productCardGenerator = (x) => {
     })
     .catch((err) => {
       console.log(err);
-      hideLoader();
     });
 
   function createProductCard(product) {

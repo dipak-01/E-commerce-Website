@@ -199,9 +199,9 @@ body  {
 
 /* -----------Footer------------- */
 .container1 {
-  position: relative;
+  position:  relative;
   background-color: rgb(17, 16, 16);
-  height: auto;
+  /* height: 300px; */
   width: 100%;
   left: 0;
   right: 0;
