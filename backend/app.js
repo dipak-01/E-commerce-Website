@@ -30,11 +30,9 @@ connectDb()
 
 
 app.use(cors());
-app.use(
-  express.urlencoded({ extended: true }),
-  express.json(),
-  express.static("public")
-);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()),
+// app.use(express.static("public"));
 
 app.use((req, res, next) => {
   console.log("\nNew Request Made :");
@@ -44,63 +42,60 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/user-signup", (req, res) => {
-  console.log(req.body);
-  const user = new User(req.body);
-  user
-    .save()
-    .then((result) => {
-      res.redirect("landingPage.html");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+app.post("/add-product", async(req, res) => {
+  try{
+    console.log(req.body);
+    const product = new Product(req.body);
+    const result = await product.save()
+    res.send("Product Added Successfully");
+  }catch(err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  };
 });
 
-app.post("/add-product", (req, res) => {
-  console.log(req.body);
-  const product = new Product(req.body);
-  product
-    .save()
-    .then((result) => {
-      res.redirect("/add-product");
-    })
-    .catch((err) => {
+app.get("/product/:id", async(req, res) => {
+  try{
+    const id = req.params.id;
+    const result = await Product.findById(id)
+    res.send(result);
+    }catch(err) {
       console.log(err);
-    });
+    };
 });
 
-app.get("/product/:id", (req, res) => {
-  const id = req.params.id;
-  Product.findById(id)
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+app.get("/explore-all", async(req, res) => {
+  try{
+    const result = await Product.find();
+    res.send(result);
+  }catch(err) {
+    console.log(err);
+  };
 });
 
-app.get("/explore-all", (req, res) => {
-  Product.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+app.post("/user-signup", async(req, res) => {
+  try{
+    console.log(req.body);
+    const user = new User(req.body);
+    const result = await user.save()
+    res.send("Successfully Signed Up");
+  }catch(err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  };
 });
 
-// app.get("/user-signin", (req, res) => {
-//   User.findOne({ phone: "7741952745" })
-//     .then((result) => {
-//       console.log(result);
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
+app.get("/cart", async(req, res) => {
+  try{
+    const result = await User.findById('64f1e1f9fa77cabb55138ad3')
+    console.log(result);
+    const data = result.cart;
+    res.send(data);
+    }catch(err){
+      console.log(err);
+    };
+});
+
 
 
 
@@ -115,9 +110,9 @@ app.get("/explore-all", (req, res) => {
 // app.post('/user-login', (req, res) => {
 //   // Validate user credentials
 //   if (validCredentials) {
-//     // Set session data
-//     req.session.user = { username: req.body.username };
-//     res.send('Logged in successfully');
+  //     // Set session data
+  //     req.session.user = { username: req.body.username };
+  //     res.send('Logged in successfully');
 //   } else {
 //     res.status(401).send('Authentication failed');
 //   }
