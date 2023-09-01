@@ -50,7 +50,7 @@ app.post("/user-signup", (req, res) => {
   user
     .save()
     .then((result) => {
-      res.redirect("/home");
+      res.redirect("landingPage.html");
     })
     .catch((err) => {
       console.log(err);

@@ -24,16 +24,39 @@ const userSchema = new Schema({
       type: String,
       required: true,
     },
-    cart: {
-      type: [String],
-      required: true
+    cart: [
+      {
+        itemId: {
+          type: mongoose.Schema.Types.ObjectId,
+        },
+        quantity: {
+          type: Number,
+        },
+        size: {
+          type: Number,
+        }
+      }
+    ],
+    wishList: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+      }
+    ],
+    addrs1: {
+      type:String,
     },
-    wishList: {
-      type: [String],
-      required: true
+    addrs2: {
+      type: String
     },
-
-  }, {timestamps: true });
+    isAdmin: {
+      type: Boolean,
+      default: false
+    }
+  }, 
+  {
+    timestamps: true 
+  }
+  );
 
 const User = mongoose.model('User',userSchema)
 module.exports = User;
