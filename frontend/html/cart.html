@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CART</title>
+    <!-- <link rel="stylesheet" href="login.css
+  "> -->
+    <link rel="stylesheet" href="../styles/cart.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+    </style>
+  </head>
+  <body class="scrollable">
+    <section>
+      <header class="header">
+        <header class="header">
+          <a href="landingPage.html" class="logo">UpStyle</a>
+
+          <input type="checkbox" id="check" />
+          <label for="check" class="icons">
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <i class="bx bx-x" id="close-icon"></i>
+          </label>
+
+          <nav class="navbar">
+            <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
+            <a href="error404.html" class="nav-item" style="--i: 1">About</a>
+            <a href="comingSoon.html\" class="nav-item" style="--i: 2"
+              >Gallery</a
+            >
+            <a href="exploreAll.html" class="nav-item" style="--i: 3"
+              >Explore all</a
+            >
+            <a href="contactUs.html" class="nav-item" style="--i: 4"
+              >Contact us</a
+            >
+            <a href="login.html" class="nav-item" style="--i: 5"
+              ><i class="bx bxs-user navbar-icon"> </i
+            ></a>
+            <a href="error404.html" class="nav-item" style="--i: 6"
+              ><i class="bx bx-shopping-bag navbar-icon"></i
+            ></a>
+          </nav>
+        </header>
+      </header>
+    </section>
+    <!-- CART -->
+
+    <div class="cart">
+      <div class="left">
+        <div class="my-cart"><strong> My Cart</strong></div>
+        <div class="offers">
+          <div class="avail-offer">
+            <div class="offer-icon">
+              <i class="bx bxs-offer"></i>
+            </div>
+            <div class="offertag">Available Offers</div>
+          </div>
+          <div class="instant-discount">
+            <p>Get Flat ₹2000 off on your first order. TCA</p>
+            <p>
+              12.5% Instant Discount on every spends with UpStyle Kotak Credit
+              Card. TCA
+            </p>
+          </div>
+          <div class="showMore">
+            <aside>
+              <details>
+                <summary>Show More</summary>
+                Get a fantastic 12.5% instant discount when you make any
+                purchase with your Up Style Kotak Credit Card. This exclusive
+                offer is subject to terms and conditions.
+              </details>
+            </aside>
+          </div>
+        </div>
+        <!-- <div class="login-directs">
+            <div class="delivery-icon">
+              <i class="uil uil-truck"></i>
+            </div>
+            <div class="login-directs-info">
+              <div class="login-offer">
+                Login to <strong>avoid conveince fee</strong> on your first order.
+              </div>
+              <div class="login-button">
+                <button class="login-directs-link">Login</button>
+              </div>
+            </div>
+          </div> -->
+        <div class="items">
+          <div class="items-count">
+            <strong> ITEM(S) IN YOUR CART (2) </strong>
+          </div>
+          <div class="add-items">
+            <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
+          </div>
+        </div>
+
+        <!-- PRODUCTS -->
+
+        <section id="products-dummy">
+          <div class="products skeleton">
+            <div class="product-img">
+              <img class="pro-image" src=" " alt="" />
+            </div>
+            <div class="product-details">
+              <div class="pdt-details-top"><p></p></div>
+              <div class="pdt-details-top"><p></p></div>
+            </div>
+          </div>
+        </section>
+        <section id="products-dummy1">
+          <div class="products skeleton">
+            <div class="product-img">
+              <img class="pro-image" src=" " alt="" />
+            </div>
+            <div class="product-details">
+              <div class="pdt-details-top"><p></p></div>
+              <div class="pdt-details-top"><p></p></div>
+            </div>
+          </div>
+        </section>
+         
+        <section id="products"></section>
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="right">
+        <div class="coupon-container">
+          <div class="coupon-head"><strong> COUPONS </strong></div>
+          <div class="coupons">
+            <!-- <div class="coupon-tag"></div> -->
+            <div class="coupon-icon"><i class="uil uil-tag-alt"></i></div>
+            <div class="apply-container">
+              <div class="coupon-tag">Apply Coupons</div>
+              <div class="apply"><button>Apply</button></div>
+            </div>
+          </div>
+          <div class="coupon-offer">
+            <p><strong>Place your order</strong> to get upto ₹ 2000 OFF</p>
+          </div>
+        </div>
+
+        <div class="breakdown">
+          <div class="breakdown-tag"><strong> CART BREAKDOWN</strong></div>
+          <div class="mrp price-details">
+            <div>Total MRP</div>
+            <div>₹2000</div>
+          </div>
+          <div class="discount price-details">
+            <div>Discount on MRP</div>
+            <div>-₹200</div>
+          </div>
+          <div class="delivery-charges price-details">
+            <div>Convenience Fee</div>
+            <div>₹99</div>
+          </div>
+        </div>
+        <div class="amount">
+          <div>Total Amount</div>
+          <div>₹2000</div>
+        </div>
+        <div class="pay">
+          <button>PAY NOW</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <section>
+      <footer class="footer" id="footer">
+        <div class="container1">
+          <div class="big_links">
+            <a class="li" href="comingSoon.html">Find a Store</a>
+            <a class="li" href="comingSoon.html">Become a Member</a>
+            <a class="li" href="comingSoon.html">Send us Feedback</a>
+            <a class="li" href="comingSoon.html">Student Offer</a>
+          </div>
+          <div class="support_links">
+            <h4 class="support_li">Support</h4>
+            <ul>
+              <li><a class="support" href="contactUs.html">Contact us</a></li>
+              <li>
+                <a class="support" href="comingSoon.html">Promotion and Sale</a>
+              </li>
+              <li><a class="support" href="comingSoon.html">Track Order</a></li>
+              <li>
+                <a class="support" href="privacyPolicy.html">Privacy Policy</a>
+              </li>
+              <li>
+                <a class="support" href="terms.html">Terms and Condition</a>
+              </li>
+            </ul>
+          </div>
+          <div class="about_us">
+            <h4 class="about_u">About</h4>
+            <ul>
+              <li><a class="about" href="landingPage.html">Website </a></li>
+              <li><a class="about" href="comingSoon.html">Read-me </a></li>
+              <li>
+                <a
+                  class="about"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  >Git-hub Repo</a
+                >
+              </li>
+              <li><a class="about" href="#">Creators </a></li>
+            </ul>
+          </div>
+          <div class="quick_links">
+            <h4 class="quick">Quick Links</h4>
+
+            <ul class="quick">
+              <li>
+                <a
+                  class="quick_li"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  ><i class="bx bxl-github ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-instagram ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#">
+                  <i class="bx bxl-facebook ibtn"></i
+                ></a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-codepen ibtn"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="last_txt">
+          <p class="demo">
+            © UpStyle India Ltd, 2023. All Rights Reserved. Imprint and Legal
+            Data
+          </p>
+        </div>
+      </footer>
+    </section>
+    <script
+      src="https://kit.fontawesome.com/d538e6589c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../scripts/cart.js"></script>
+  </body>
+</html>
