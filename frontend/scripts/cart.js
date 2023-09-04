@@ -6,7 +6,7 @@ const productCardGenerator = (x) => {
   fetch(`http://localhost:3000/cart`, { method:'get' , credentials: 'include' })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      console.log(data.userID);
       for (let i = 0; i < data.length; i++) {
         let objId = data[i].itemId;
         console.log(objId);
