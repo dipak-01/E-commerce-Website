@@ -40,7 +40,7 @@
         <a href="login.html" id="form-open" class="nav-item"style="--i: 5"
         ><i class="bx bxs-user navbar-icon"> </i
       ></a>
-      <a href="error404.html" class="nav-item"style="--i: 6"
+      <a href="cart.html" class="nav-item"style="--i: 6"
         ><i class="bx bx-shopping-bag navbar-icon"></i
       ></a>
       </nav>
@@ -63,11 +63,11 @@
             <i class="uil uil-times form_close"></i>
             <!-- Login From -->
             <div class="form login_form">
-              <form action="#">
+              <form action="http://localhost:3000/user-login" method="post" credentials="include">
                 <h2>Login</h2>
 
                 <div class="input_box">
-                  <input type="email" placeholder="Enter your email" required />
+                  <input type="email" placeholder="Enter your email" required name="usremail"/>
                   <i class="uil uil-envelope-alt email"></i>
                 </div>
                 <div class="input_box">
@@ -75,6 +75,7 @@
                     type="password"
                     placeholder="Enter your password"
                     required
+                    name="usrpassword"
                   />
                   <i class="uil uil-lock password"></i>
                   <i class="uil uil-eye-slash pw_hide"></i>

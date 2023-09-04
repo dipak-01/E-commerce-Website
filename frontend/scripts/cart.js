@@ -3,7 +3,7 @@ const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
 
-  fetch(`http://localhost:3000/cart`)
+  fetch(`http://localhost:3000/cart`, { method:'get' , credentials: 'include' })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -68,7 +68,7 @@ function createProductCard(data2, data, objId) {
     </div>
   </div>`;
 }
- 
+
 let x = document.getElementById("products");
 productCardGenerator(x);
 x.addEventListener("click", function (event) {
@@ -81,4 +81,3 @@ x.addEventListener("click", function (event) {
     }
   }
 });
-
