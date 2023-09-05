@@ -2,26 +2,28 @@ const User = require("./models/userModel");
 const Product = require("./models/productModel");
 const connectDb = require("./config/dbconnect");
 const express = require("express");
-const session = require("express-session");
 const cors = require("cors");
 const crypto = require("crypto");
 const app = express();
+
 const cookieParser = require("cookie-parser");
-app.use(cookieParser());
+const session = require("express-session");
 
 const port = process.env.PORT || 3000;
 
-connectDb()
-  .then(() => {
+if (connectDb()) {
+  try {
     app.listen(port, () => {
       console.log(
         `\nServer Started...\nSuccessfully Connected to Database...\nListening to Requests at Port: ${port}`
       );
     });
-  })
-  .catch((err) => {
-    console.console(err);
-  });
+  } catch (err) {
+    console.log(err);
+  }
+} else {
+  console.log("Server Error");
+}
 
 // app.use((req, res, next) => {
 //   console.log('Session:', req.session);
@@ -29,37 +31,42 @@ connectDb()
 // });
 
 const secretKey = crypto.randomBytes(64).toString("hex");
-app.use(
-  session({
-    secret: secretKey,
-    resave: false,
-    saveUninitialized: true,
-   cookie: {
-      sameSite : false ,
-   },
-  })
-);
+
+app.use(cookieParser());
+
 app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 
-
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json()),
-  // app.use(express.static("public"));
+  app.use(
+    session({
+      secret: secretKey,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        secure:true,
+        sameSite : 'none' ,
+     },
+    })
+  );
 
-  // app.use((req,res,next)=>{
-  //   if(req.session.user){next()}
-  //   else{
-  //     res.status(401).send("Please Login!!!")
-  //   }
-  // })
+// app.use(express.static("public"));
 
-  app.use((req, res, next) => {
-    console.log("\nNew Request Made :");
-    console.log("Host : ", req.hostname);
-    console.log("Path : ", req.path);
-    console.log("Method : ", req.method);
-    next();
-  });
+// app.use((req,res,next)=>{
+//   if(req.session.user){next()}
+//   else{
+//     res.status(401).send("Please Login!!!")
+//   }
+// })
+
+app.use((req, res, next) => {
+  console.log("\nNew Request Made :");
+  console.log("Host : ", req.hostname);
+  console.log("Path : ", req.path);
+  console.log("Method : ", req.method);
+  next();
+});
 
 app.post("/add-product", async (req, res) => {
   try {
@@ -106,6 +113,8 @@ app.post("/user-signup", async (req, res) => {
 
 app.post("/user-login", async (req, res) => {
   try {
+    console.log(req.session);
+    console.log(req.body);
     const { usremail, usrpassword } = req.body;
     const user = await User.findOne({ email: usremail });
     const passwordmatch = user.password == usrpassword;
@@ -115,11 +124,12 @@ app.post("/user-login", async (req, res) => {
         console.log("User is Already logged In...");
         res.send(req.session.userId);
       } else {
-        req.session.userId = user._id;
-        console.log("Cookie Stored : " + req.session.userId);
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+        req.session.i = user._id;
+        console.log("Cookie Stored : " + req.session.i);
         console.log("User Successfully Logged In...");
-        console.log(req.session.userId);
-        res.send(req.session.userId);
+        console.log(req.session);
+        res.send(req.session);
       }
     } else {
       res.status(401).send("Invalid Username or Password!!!");
@@ -128,6 +138,37 @@ app.post("/user-login", async (req, res) => {
     console.log(err);
   }
 });
+
+// app.post("/user-login", async (req, res) => {
+//   const { useremail, usrpassword } = req.body;
+//   const user = await User.findOne({ email: useremail });
+
+//   if (!user) {
+//     return res.status(401).send("User not found");
+//   }
+
+//   // Check if the password matches using a secure method (e.g., bcrypt)
+//   const isPasswordValid = await user.comparePassword(usrpassword);
+
+//   if (!isPasswordValid) {
+//     return res.status(401).send("Invalid password");
+//   }
+
+//   const id = user._id;
+
+//   // Set the user ID in a cookie
+//   res.cookie("userId", id, {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "none",
+//   });
+
+//   console.log("Cookie Stored: " + req.cookies.userId);
+//   console.log("User Successfully Logged In...");
+//   console.log(req.cookies);
+
+//   res.send("Logged in successfully!");
+// });
 
 app.post("/user-logout", async (req, res) => {
   try {

@@ -22,30 +22,34 @@
   </head>
   <body>
     <section>
-    <header class="header">
-      <a href="landingPage.html" class="logo">UpStyle</a>
+      <header class="header">
+        <a href="landingPage.html" class="logo">UpStyle</a>
 
-      <input type="checkbox" id="check" />
-      <label for="check" class="icons">
-        <i class="bx bx-menu" id="menu-icon"></i>
-        <i class="bx bx-x" id="close-icon"></i>
-      </label>
+        <input type="checkbox" id="check" />
+        <label for="check" class="icons">
+          <i class="bx bx-menu" id="menu-icon"></i>
+          <i class="bx bx-x" id="close-icon"></i>
+        </label>
 
-      <nav class="navbar">
-        <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-        <a href="error404.html" class="nav-item" style="--i: 1">About</a>
-        <a href="comingSoon.html" class="nav-item" style="--i: 2">Gallery</a>
-        <a href="exploreAll.html" class="nav-item" style="--i: 3">Explore all</a>
-        <a href="contactUs.html" class="nav-item" style="--i: 4">Contact us</a>
-        <a href="login.html" id="form-open" class="nav-item"style="--i: 5"
-        ><i class="bx bxs-user navbar-icon"> </i
-      ></a>
-      <a href="cart.html" class="nav-item"style="--i: 6"
-        ><i class="bx bx-shopping-bag navbar-icon"></i
-      ></a>
-      </nav>
-    </header>
-</section>
+        <nav class="navbar">
+          <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
+          <a href="error404.html" class="nav-item" style="--i: 1">About</a>
+          <a href="comingSoon.html" class="nav-item" style="--i: 2">Gallery</a>
+          <a href="exploreAll.html" class="nav-item" style="--i: 3"
+            >Explore all</a
+          >
+          <a href="contactUs.html" class="nav-item" style="--i: 4"
+            >Contact us</a
+          >
+          <a href="login.html" id="form-open" class="nav-item" style="--i: 5"
+            ><i class="bx bxs-user navbar-icon"> </i
+          ></a>
+          <a href="cart.html" class="nav-item" style="--i: 6"
+            ><i class="bx bx-shopping-bag navbar-icon"></i
+          ></a>
+        </nav>
+      </header>
+    </section>
     <div class="split-screen">
       <div class="left">
         <section class="copy">
@@ -63,11 +67,17 @@
             <i class="uil uil-times form_close"></i>
             <!-- Login From -->
             <div class="form login_form">
-              <form action="http://localhost:3000/user-login" method="post" credentials="include">
+              <form href="#" id="myForm">
                 <h2>Login</h2>
 
                 <div class="input_box">
-                  <input type="email" placeholder="Enter your email" required name="usremail"/>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    name="usremail"
+                    id="inputusremail"
+                  />
                   <i class="uil uil-envelope-alt email"></i>
                 </div>
                 <div class="input_box">
@@ -76,6 +86,7 @@
                     placeholder="Enter your password"
                     required
                     name="usrpassword"
+                    id="inputusrpassword"
                   />
                   <i class="uil uil-lock password"></i>
                   <i class="uil uil-eye-slash pw_hide"></i>
@@ -88,7 +99,7 @@
                   </span>
                   <a href="#" class="forgot_pw">Forgot password?</a>
                 </div>
-                <button class="button login-button">Login Now</button>
+                <button href="landingPage.html" type="submit" class="button login-button">Login Now</button>
                 <div class="login_signup">
                   Don't have an account? <a href="#" id="signup">Signup</a>
                 </div>
