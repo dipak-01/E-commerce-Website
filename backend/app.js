@@ -3,11 +3,8 @@ const Product = require("./models/productModel");
 const connectDb = require("./config/dbconnect");
 const express = require("express");
 const cors = require("cors");
-const crypto = require("crypto");
-const app = express();
-
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
+const app = express();
 
 const port = process.env.PORT || 3000;
 
@@ -30,43 +27,28 @@ if (connectDb()) {
 //   next();
 // });
 
-const secretKey = crypto.randomBytes(64).toString("hex");
-
-app.use(cookieParser());
-
 app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cookieParser());
 app.use(express.json()),
-  app.use(
-    session({
-      secret: secretKey,
-      resave: false,
-      saveUninitialized: true,
-      cookie: {
-        secure:true,
-        sameSite : 'none' ,
-     },
-    })
-  );
+  // app.use(express.static("public"));
 
-// app.use(express.static("public"));
+  // app.use((req,res,next)=>{
+  //   if(req.session.user){next()}
+  //   else{
+  //     res.status(401).send("Please Login!!!")
+  //   }
+  // })
 
-// app.use((req,res,next)=>{
-//   if(req.session.user){next()}
-//   else{
-//     res.status(401).send("Please Login!!!")
-//   }
-// })
-
-app.use((req, res, next) => {
-  console.log("\nNew Request Made :");
-  console.log("Host : ", req.hostname);
-  console.log("Path : ", req.path);
-  console.log("Method : ", req.method);
-  next();
-});
+  app.use((req, res, next) => {
+    console.log("\nNew Request Made :");
+    console.log("Host : ", req.hostname);
+    console.log("Path : ", req.path);
+    console.log("Method : ", req.method);
+    next();
+  });
 
 app.post("/add-product", async (req, res) => {
   try {
@@ -113,27 +95,23 @@ app.post("/user-signup", async (req, res) => {
 
 app.post("/user-login", async (req, res) => {
   try {
-    console.log(req.session);
-    console.log(req.body);
+    console.log(res.cookie);
     const { usremail, usrpassword } = req.body;
     const user = await User.findOne({ email: usremail });
     const passwordmatch = user.password == usrpassword;
     if (passwordmatch) {
-      console.log(req.session.userId);
-      if (req.session.userId) {
-        console.log("User is Already logged In...");
-        res.send(req.session.userId);
-      } else {
-        res.setHeader("Access-Control-Allow-Credentials", "true");
-        req.session.i = user._id;
-        console.log("Cookie Stored : " + req.session.i);
-        console.log("User Successfully Logged In...");
-        console.log(req.session);
-        res.send(req.session);
-      }
-    } else {
-      res.status(401).send("Invalid Username or Password!!!");
+      // if (res.cookie('user')) {
+      //   console.log("User is Already logged In...");
+      //   res.send();
+      // } else {
+      res.cookie('userId', user._id, { sameSite: "none",secure: true });
+      console.log("User Successfully Logged In...");
+      // console.log(res.cookie);
+      res.send();
     }
+    // } else {
+    //   res.status(401).send("Invalid Username or Password!!!");
+    // }
   } catch (err) {
     console.log(err);
   }

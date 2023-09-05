@@ -59,7 +59,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json(); // Parse the response JSON if needed
+      return; // Parse the response JSON if needed
     })
     .then((data) => {
       // Handle the response from the backend (if any)
