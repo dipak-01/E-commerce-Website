@@ -54,7 +54,7 @@ function createProductCard(data2, data, objId) {
        <div class="pdt-title" "> ${data2.title} size:${data.size} <p> Color: ${data2.colour}</p> 
          </div>
         <div class="close">
-          <button  onclick='deleteProduct("${objId}")' class="close-button">
+          <button  onclick='add("${objId}")' class="close-button">
             <i class="uil uil-times"></i>
           </button>
         </div>
@@ -116,3 +116,4 @@ function deleteProduct(objId) {
       console.error("Error:", error);
     });
 }
+

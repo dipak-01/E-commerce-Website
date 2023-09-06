@@ -87,7 +87,10 @@ const productCardGenerator = (x) => {
                 
               </div>
               <div class="wishlist">
-                <button><i class="uil uil-heart-alt"> </i></button>
+              
+                <button onclick='addToWishList("${
+                  product._id
+                }")'><i class="uil uil-heart-alt"> </i></button>
               </div>
             </div>
             <div class="delivery">
@@ -153,8 +156,8 @@ function addToCart() {
     quantity: quantity,
   };
 
-  // Send the data to the backend using a POST 
-   fetch(`http://localhost:3000/add-to-cart/${productId}`, {
+  // Send the data to the backend using a POST
+  fetch(`http://localhost:3000/add-to-cart/${productId}`, {
     method: "PUT",
     credentials: "include",
     headers: {
@@ -174,3 +177,32 @@ function addToCart() {
       console.error("Error:", error);
     });
 }
+addToWishList = (productId) => {
+  console.log("in func");
+  const myElement = document.querySelector(".uil-heart-alt");
+
+  myElement.addEventListener("click", function () {
+    myElement.style.color = "red";
+  });
+  fetch(
+    `http://localhost:3000/add-to-wishlist/${productId}`,
+
+    {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to wish successfully.");
+      } else {
+        console.error("Failed to add product to wish.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
