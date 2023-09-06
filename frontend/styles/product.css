@@ -950,11 +950,11 @@ body {
     letter-spacing: 3px;
     background: linear-gradient(
       90deg,
-      gold var(--percent),
+      rgb(255, 217, 4) var(--percent),
       rgb(244, 244, 244) var(--percent)
     );
 
-    /* -webkit-background-clip: text; */
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }

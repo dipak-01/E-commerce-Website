@@ -264,16 +264,17 @@ app.put("/add-to-wishlist/:productId", async (req, res) => {
     if (itemExistIndex !== -1) {
       // If the product is already in the wishlist, remove it
       user.wishList.splice(itemExistIndex, 1);
-      res.status(200).send("Product removed from wishlist successfully");
+      operationMessage = "Product removed from wishlist successfully";
     } else {
       // If the product is not in the wishlist, add it
       user.wishList.push({ itemId: productId, quantity: 1, size: 8 });
-      res.status(200).send("Product added to wishlist successfully");
+      operationMessage = "Product added to wishlist successfully";
     }
-
+    
     // Save the user's updated wishlist
     await user.save();
-    res.status(200).send("Product added to wishlist successfully");
+    res.status(200).send(operationMessage);
+    
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
