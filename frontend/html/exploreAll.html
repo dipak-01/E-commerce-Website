@@ -32,10 +32,16 @@
           <nav class="navbar">
             <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
             <a href="error404.html" class="nav-item" style="--i: 1">About</a>
-            <a href="comingSoon.html" class="nav-item" style="--i: 2">Gallery</a>
-            <a href="exploreAll.html" class="nav-item" style="--i: 3">Explore all</a>
-            <a href="contactUs.html" class="nav-item" style="--i: 4">Contact us</a>
-            <a href="login.html" class="nav-item"style="--i: 5"
+            <a href="gallery.html" class="nav-item" style="--i: 2"
+              >Gallery</a
+            >
+            <a href="exploreAll.html" class="nav-item" style="--i: 3"
+              >Explore all</a
+            >
+            <a href="contactUs.html" class="nav-item" style="--i: 4"
+              >Contact us</a
+            >
+            <a href="login.html" class="nav-item" style="--i: 5"
               ><i class="bx bxs-user navbar-icon"> </i
             ></a>
             <a href="cart.html" class="nav-item"style="--i: 6"
@@ -48,15 +54,85 @@
     <button id="scrollToTopBtn" title="Go to top">
       <i class="bx bx-up-arrow"></i>
     </button>
-
-    <section class="productsFeature" id="featureSection">
-      <div id="pro-contain">
-        <br /><br /><br /><br />
-        <h1>OUR COLLECTION</h1>
-        <p>Explore from our best</p>
-        <div class="productContainer" id="productContainer"></div>
+    <div id="pro-contain">
+      <h1>OUR COLLECTION</h1>
+      <br>
+      <p>Explore from our best</p>
+    </div>
+    <section class="dummySection">
+      <div id="dummyContain">
+        <section>
+          <div class="productContainer" id="dummyProductContainer">
+            <div class="product skeleton">
+              <a href=" ">
+                <img  
+                  src="../Images/alternate bg.jpg"
+                  alt="Example Product Image"
+                />
+                <img
+                  id="dummyChange"
+                  src="../Images/alternate bg.jpg"
+                  alt="Example Product Image"
+                />
+                <div class="descr">
+                  <p> </p>
+                  <h4> </h4>
+                  <h4 class="H4" > </h4>
+                  <h5> </h5>
+                </div>
+                <div class="cart">
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="bx bx-heart wishlist"></i
+                  ></a>
+                  <a
+                    href="http://localhost:3000/user-signin"
+                    method="GET"
+                    title="Add to cart"
+                    ><i class="bx bxs-cart-add cart1"></i
+                  ></a>
+                </div>
+              </a>
+            </div>
+            <!-- Add more product cards here if needed -->
+          </div>
+        </section>
       </div>
     </section>
+    <section class="productsFeature" id="featureSection">
+      <section>
+        <div class="productContainer" id="productContainer"></div>
+      </section>
+    </section>
+    <!-- <template id="cardTemplate">
+      <div class="productContainer skeleton">
+        <div class="product">
+          <a href="product.html?id=${product._id}">
+            <img src="../Images/alternate bg.jpg" alt=" product img" />
+            <img
+              id="change"
+              src="../Images/alternate bg.jpg"
+              alt=" product img"
+            />
+            <div class="descr">
+              <span> NIKE</span>
+              <h4>${product.title}</h4>
+              <h5>₹ ${product.price}</h5>
+            </div>
+            <div class="cart">
+              <a href="#" title="Add to Wishlist"
+                ><i class="bx bx-heart wishlist"></i
+              ></a>
+              <a
+                href="http://localhost:3000/user-signin"
+                method="GET"
+                title="Add to cart"
+                ><i class="bx bxs-cart-add cart1"></i
+              ></a>
+            </div>
+          </a>
+        </div>
+      </div>
+    </template> -->
 
     <section>
       <footer class="footer" id="footer">
@@ -78,7 +154,9 @@
               <li>
                 <a class="support" href="privacyPolicy.html">Privacy Policy</a>
               </li>
-              <li><a class="support" href="terms.html">Terms and Condition</a></li>
+              <li>
+                <a class="support" href="terms.html">Terms and Condition</a>
+              </li>
             </ul>
           </div>
           <div class="about_us">

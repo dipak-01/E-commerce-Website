@@ -8,7 +8,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-   
+
   font-family: "Fira Sans", sans-serif;
   box-sizing: border-box;
   background-size: cover;
@@ -170,31 +170,6 @@ body {
     transition-delay: calc(0.15s * var(--i));
   }
 }
-  #scrollToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-    font-size: larger;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border: none;
-    cursor: pointer;
-    padding: 12px 12px;
-    border-radius: 25px;
-    border: 2px solid rgb(0, 0, 0);
-    box-shadow: 2px 1px 0 0 rgb(45, 44, 44);
-  }
-  
-  #scrollToTopBtn:hover {
-    background-color: rgb(238, 238, 238);
-    transform: translate(1px, 1px);
-  }
-  #scrollToTopBtn:active {
-    box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
-    padding: 13px 13px;
-  }
 #scrollToTopBtn {
   display: none;
   position: fixed;
@@ -220,9 +195,31 @@ body {
   box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
   padding: 13px 13px;
 }
- 
- 
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-size: larger;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  padding: 12px 12px;
+  border-radius: 25px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 2px 1px 0 0 rgb(45, 44, 44);
+}
 
+#scrollToTopBtn:hover {
+  background-color: rgb(238, 238, 238);
+  transform: translate(1px, 1px);
+}
+#scrollToTopBtn:active {
+  box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
+  padding: 13px 13px;
+}
 
 /* -----------Footer------------- */
 .container1 {
@@ -409,3 +406,4 @@ textarea:focus {
   border: none;
   border-bottom: 3px solid rgb(79, 77, 77);
 }
+ 
