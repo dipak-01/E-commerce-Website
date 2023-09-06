@@ -15,7 +15,7 @@ const connectDb = async () => {
 
   } catch (err) {
     console.log(err)
-    return
+    return false;
   }
 }
 

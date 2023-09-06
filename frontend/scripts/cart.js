@@ -3,10 +3,10 @@ const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
 
-  fetch(`http://localhost:3000/cart`, { method:'get' , credentials: 'include' })
+  fetch(`http://localhost:3000/cart`, { method:'get' , credentials: "include"})
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.userID);
+      console.log(data);
       for (let i = 0; i < data.length; i++) {
         let objId = data[i].itemId;
         console.log(objId);
