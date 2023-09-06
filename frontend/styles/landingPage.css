@@ -230,8 +230,8 @@ body {
 
   .search-bar input {
     width: 100%;
-     /* max-width: 300px; */
-      /* Set the maximum width for the search input */
+    /* max-width: 300px; */
+    /* Set the maximum width for the search input */
   }
   .search-bar i {
     margin-left: 0; /* Remove left margin for the search icon */
@@ -268,7 +268,21 @@ body {
   cursor: pointer;
 }
 
- 
+/* .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+#CartCount {
+  font-size: 12px;
+  background: transparent;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+} */
 #scrollToTopBtn {
   display: none;
   position: fixed;

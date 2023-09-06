@@ -225,7 +225,8 @@ app.get("/cart", async (req, res) => {
 app.put("/add-to-cart/:productId", async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
-
+  console.log(productId);
+  console.log(userId);
   const { quantity, size } = req.body;
 
   try {
@@ -238,7 +239,9 @@ app.put("/add-to-cart/:productId", async (req, res) => {
     }
 
     // Check if the product is already in the user's cart
-    const existCartItem = user.cart.find(item => item.itemId  productId);
+    const existCartItem = user.cart.find((item) =>
+      item.itemId.equals(productId)
+    );
 
     if (existCartItem) {
       // Increment the quantity if the product is already in the cart
