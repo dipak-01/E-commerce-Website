@@ -2,11 +2,18 @@ console.log("wor");
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
+  const element2 = document.getElementById("products-dum");
+   
 
-  fetch(`http://localhost:3000/cart`, { method:'get' , credentials: "include"})
+  fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      if (data.length==0) {
+        element.style.display = "none";
+        element1.style.display = "none";
+        element2.style.display = "block";
+      }
       for (let i = 0; i < data.length; i++) {
         let objId = data[i].itemId;
         console.log(objId);
@@ -47,7 +54,7 @@ function createProductCard(data2, data, objId) {
        <div class="pdt-title" "> ${data2.title} size:${data.size} <p> Color: ${data2.colour}</p> 
          </div>
         <div class="close">
-          <button class="close-button">
+          <button  onclick='deleteProduct("${objId}")' class="close-button">
             <i class="uil uil-times"></i>
           </button>
         </div>
@@ -55,7 +62,7 @@ function createProductCard(data2, data, objId) {
       <div class="pdt-details-bottom">
         <div class="inputs">
           <div class="inputs-button">
-            <button class="minus"><i class="uil uil-minus"></i></button>
+            <button  class="minus"><i class="uil uil-minus"></i></button>
             <span class="Qty">${data.quantity} </span>
             <button class="add">
               <i class="uil uil-plus"></i>
@@ -72,12 +79,40 @@ function createProductCard(data2, data, objId) {
 let x = document.getElementById("products");
 productCardGenerator(x);
 x.addEventListener("click", function (event) {
-  let target = event.target.closest(".products");
-  if (target) {
-    let objId = target.getAttribute("data-objid");
-    console.log("Clicked on product card with objId:", objId);
-    if (objId) {
-      window.location.href = `product.html?id=${objId}`;
+  if (
+    !event.target.closest(".inputs-button") &&
+    !event.target.closest(".close-button")
+  ) {
+    let target = event.target.closest(".products");
+    if (target) {
+      let objId = target.getAttribute("data-objid");
+      console.log("Clicked on product card with objId:", objId);
+      if (objId) {
+        window.location.href = `product.html?id=${objId}`;
+      }
     }
   }
 });
+
+function deleteProduct(objId) {
+  console.log("inside func");
+  console.log(`http://localhost:3000/remove/${objId}`);
+  fetch(`http://localhost:3000/remove/${objId}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product removed successfully.");
+        location.reload();
+      } else {
+        console.error("Failed to remove product to cart.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}

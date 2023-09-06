@@ -714,13 +714,14 @@ form {
   width: 10px; /* Adjust the width of the space before the dot */
   margin-left: -20px; /* Counteract the padding on the ul */
 }
-#size { font-size: large;
+#size {
+  font-size: large;
   border-radius: 4px;
 }
-#quantity { font-size: large;
+#quantity {
+  font-size: large;
   border-radius: 4px;
   width: 30px;
- 
 }
 /* @media (max-width: 964px) {
   #prodetails {
@@ -934,4 +935,72 @@ body {
   100% {
     background-color: hsl(0, 0%, 100%);
   }
+}
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: 20px;
+  font-family: Times;
+  line-height: 1;
+  
+
+  &::before {
+    content: "★★★★★";
+    letter-spacing: 3px;
+    background: linear-gradient(
+      90deg,
+      gold var(--percent),
+      rgb(244, 244, 244) var(--percent)
+       
+    );
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+#review-section{
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.reviewContainer{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d7d5d5;
+  padding: 10px;
+  border-radius: 5px;
+}
+.top{
+  display: flex;
+  padding: 5px;
+  padding-bottom: 10px;
+}
+.top .avatar{
+   width: 60px;
+   height: 60px;
+   border-radius: 30px;
+   border: 1px solid #ff385a;
+   z-index: 4;
+    overflow: hidden;
+}
+.top .avatar img{
+   width: 100%;
+   /* height: 100%; */
+   object-fit: cover;
+   border-radius: 30px;
+   z-index: -7;
+   overflow: hidden;
+   /* position: relative; */
+}
+#rate{
+  padding-left: 20px;
+}
+ 
+.top{
+  display: flex;
+}
+.nameStars{
+  padding-left: 10px;
 }

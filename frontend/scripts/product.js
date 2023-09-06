@@ -139,100 +139,6 @@ const productCardGenerator = (x) => {
 };
 productCardGenerator(x);
 
-// document.addEventListener("DOMContentLoaded", function (e) {
-//   event.preventDefault();
-//   const addToCartForm = document.getElementById("addToCartForm");
-//   console.log("inside add to cart");
-//   addToCartForm.addEventListener("submit", function (e) {
-//     e.preventDefault();
-//     console.log("inside add to cart 2");
-//     // Get the values from the form
-//     const productId = addToCartForm.querySelector(
-//       'input[name="productId"]'
-//     ).value;
-//     const quantity = addToCartForm.querySelector(
-//       'input[name="quantity"]'
-//     ).value;
-//     const size = addToCartForm.querySelector('select[name="size"]').value;
-//   console.log("Product ID:", productID);
-//   console.log("Size:", size);
-//   console.log("Quantity:", quantity);
-//     const data = {
-//       quantity: quantity,
-//       size: size,
-//     };
-//     // Send the data to the backend using AJAX (you can use fetch or another AJAX library)
-//     fetch(`/add-to-cart/${productId}`, {
-//       method: "PUT",
-//       credentials: "include",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(data),
-//     })
-//       .then((response) => {
-//         if (response.ok) {
-//           console.log(data);
-//           console.log("Product added to cart successfully.");
-//         } else {
-//           // Handle errors (e.g., display an error message)
-//           console.error("Failed to add product to cart.");
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Error:", error);
-//       });
-//   });
-// });
-// console.log("working");
-
-// function addToCart(productID, size, quantity) {
-//   // Create an object to hold the data
-//   const data = {
-//     productId: productID,
-//     size: size,
-//     quantity: quantity,
-//   };
-//   console.log("making obj");
-//   console.log(data);
-//   // Send the data to the backend using a POST request
-//   fetch(`/add-to-cart/${productId}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         console.log("Product added to cart successfully.");
-//         console.log(data);
-//       } else {
-//         console.error("Failed to add product to cart.");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
-
-// // Add an event listener to the "Add to Cart" button
-// const addToCartButton = document.querySelector(".add-to-cart");
-
-// addToCartButton.addEventListener("click", function (e) {
-//   e.preventDefault();
-
-//   // Get the product ID, size, and quantity from the form
-//   const productID = document.querySelector('input[name="productId"]').value;
-//   const size = document.querySelector('select[name="size"]').value;
-//   const quantity = document.querySelector('input[name="quantity"]').value;
-//   console.log("Product ID:", productID);
-//   console.log("Size:", size);
-//   console.log("Quantity:", quantity);
-//   // Call the addToCart function to send the data to the backend
-//   addToCart(productID, size, quantity);
-// });
-// Define the addToCart function
 function addToCart() {
   // Get the product ID, size, and quantity here
   const productID = document.querySelector('input[name="productId"]').value;
@@ -243,15 +149,14 @@ function addToCart() {
   console.log("Quantity:", quantity);
   // Create an object to hold the data
   const data = {
-    productId: productID,
     size: size,
     quantity: quantity,
   };
 
-  // Send the data to the backend using a POST request
-  fetch(`http://localhost:3000/add-to-cart/${productId}`, {
+  // Send the data to the backend using a POST 
+   fetch(`http://localhost:3000/add-to-cart/${productId}`, {
     method: "PUT",
-    credentials: "include", 
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
