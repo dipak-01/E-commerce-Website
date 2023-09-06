@@ -45,6 +45,19 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    review:[
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+        },
+        rating: {
+          type: Number,
+        },
+        reviewmsg: {
+          type: String,
+        }
+      }
+    ]
   }, 
   {
     timestamps: true
