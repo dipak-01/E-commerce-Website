@@ -222,6 +222,62 @@ app.get("/cart", async (req, res) => {
   }
 });
 
+app.get("/wishlist", async (req, res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const id = req.cookies.userId;
+      console.log("working");
+      const user = await User.findById(id);
+      console.log(user);
+      const data = user.wishList;
+      res.send(data);
+    } else {
+      console.log("cookie not found");
+      res.send(req.cookies);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.put("/add-to-wishlist/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
+  console.log(productId);
+  console.log(userId);
+
+  try {
+    // Check if the user with the given ID exists
+    const user = await User.findById(userId);
+
+    // Find the user by their ID and update their cart
+    if (!user) {
+      return res.status(404).send("User not found. Please Login");
+    }
+
+    // Check if the product is already in the user's cart
+    const itemExist = user.wishList.find((item) =>
+      item.itemId.equals(productId)
+    );
+
+    if (itemExist) {
+      // Increment the quantity if the product is already in the cart
+      itemExist.quantity += 1;
+    } else {
+      // Add the product to the user's cart if it's not there
+      user.wishList.push({ itemId: productId, quantity: 1, size: 8 });
+    }
+
+    // Save the user's updated cart
+    await user.save();
+    res.status(200).send("Product added to wishlist successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.put("/add-to-cart/:productId", async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
@@ -235,7 +291,7 @@ app.put("/add-to-cart/:productId", async (req, res) => {
 
     // Find the user by their ID and update their cart
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("User not found. Please Login");
     }
 
     // Check if the product is already in the user's cart
@@ -261,9 +317,87 @@ app.put("/add-to-cart/:productId", async (req, res) => {
   }
 });
 
+app.put("/add-to-cart-only/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
+  console.log(productId);
+  console.log(userId);
 
+  try {
+    // Check if the user with the given ID exists
+    const user = await User.findById(userId);
 
+    // Find the user by their ID and update their cart
+    if (!user) {
+      return res.status(404).send("User not found. Please Login");
+    }
 
+    // Check if the product is already in the user's cart
+    const existCartItem = user.cart.find((item) =>
+      item.itemId.equals(productId)
+    );
+
+    if (existCartItem) {
+      // Increment the quantity if the product is already in the cart
+      existCartItem.quantity += 1;
+    } else {
+      // Add the product to the user's cart if it's not there
+      user.cart.push({ itemId: productId, quantity: 1, size: 8 });
+    }
+
+    // Save the user's updated cart
+    await user.save();
+    res.status(200).send("Product added to cart successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.put("/product-review/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId;
+  const { rating, reviewmsg } = req.body;
+
+  console.log(productId);
+  console.log(userId);
+  console.log({ rating, reviewmsg });
+
+  try {
+    // Check if the product with the given ID exists
+    const product = await Product.findById(productId);
+
+    // Find the product by ID and update their cart
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    // Check if the product is already in the user's cart
+    const reviewexist = product.review.find((item) =>
+      item.userId.equals(userId)
+    );
+
+    if (reviewexist) {
+      // Increment the quantity if the product is already in the cart
+      reviewexist.rating = rating;
+      reviewexist.reviewmsg = reviewmsg;
+    } else {
+      // Add the product to the user's cart if it's not there
+      product.review.push({
+        userId: userId,
+        rating: rating,
+        reviewmsg: reviewmsg,
+      });
+    }
+
+    // Save the user's updated cart
+    await product.save();
+    res.status(200).send("Review added to Product successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 // app.put("/add-to-cart/:id", async (req, res) => {
 //   try {
@@ -308,9 +442,6 @@ app.put("/add-to-cart/:productId", async (req, res) => {
 //   });
 // });
 
-
-
-
 app.delete("/remove/:productId", async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
@@ -344,7 +475,3 @@ app.delete("/remove/:productId", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-
-
-

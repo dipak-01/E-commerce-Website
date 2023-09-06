@@ -55,8 +55,12 @@ const productSchema = new mongoose.Schema(
         },
         reviewmsg: {
           type: String,
-        }
-      }
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
     ]
   }, 
   {
