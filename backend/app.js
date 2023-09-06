@@ -261,6 +261,10 @@ app.put("/add-to-cart/:productId", async (req, res) => {
   }
 });
 
+
+
+
+
 // app.put("/add-to-cart/:id", async (req, res) => {
 //   try {
 //     const { user, usrpassword } = req.body;
@@ -303,3 +307,44 @@ app.put("/add-to-cart/:productId", async (req, res) => {
 //     res.redirect('/');
 //   });
 // });
+
+
+
+
+app.delete("/remove/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
+
+  try {
+    // Check if the user with the given ID exists
+    const user = await User.findById(userId);
+
+    // Find the user by their ID and update their cart
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Check if the product is already in the user's cart
+    const existCartItemIndex = user.cart.findIndex((item) =>
+      item.itemId.equals(productId)
+    );
+
+    if (existCartItemIndex !== -1) {
+      // Remove the product from the cart if it exists
+      user.cart.splice(existCartItemIndex, 1);
+    } else {
+      return res.status(404).send("Product not found in the cart");
+    }
+
+    // Save the user's updated cart
+    await user.save();
+    res.status(200).send("Product removed from cart successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
+
