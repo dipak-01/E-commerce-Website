@@ -97,18 +97,17 @@ app.post("/user-logout", async (req, res) => {
   try {
     if (req.cookies.userId) {
       // User is logged in, so we can proceed with logging them out
-    
-          res.clearCookie("userId");
-          console.log("Cookie Cleared");
-          res.send("Successfully Logged Out");
-    
+
+      res.clearCookie("userId");
+      console.log("Cookie Cleared");
+      res.send("Successfully Logged Out");
     } else {
       // User is not logged in
-      res.status(401).json({message:"User Not logged In"});
+      res.status(401).json({ message: "User Not logged In" });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({message:"Internal Server Error"});
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

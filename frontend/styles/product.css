@@ -230,8 +230,8 @@ body {
 
   .search-bar input {
     width: 100%;
-     /* max-width: 300px; */
-      /* Set the maximum width for the search input */
+    /* max-width: 300px; */
+    /* Set the maximum width for the search input */
   }
   .search-bar i {
     margin-left: 0; /* Remove left margin for the search icon */
@@ -268,7 +268,6 @@ body {
   cursor: pointer;
 }
 
- 
 #scrollToTopBtn {
   display: none;
   position: fixed;
@@ -449,7 +448,6 @@ li {
 }
 #prodetails .single-pro-image,
 #prodetail .single-pro-image {
-  width: 200%;
   margin-right: 40px;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -716,7 +714,14 @@ form {
   width: 10px; /* Adjust the width of the space before the dot */
   margin-left: -20px; /* Counteract the padding on the ul */
 }
-
+#size { font-size: large;
+  border-radius: 4px;
+}
+#quantity { font-size: large;
+  border-radius: 4px;
+  width: 30px;
+ 
+}
 /* @media (max-width: 964px) {
   #prodetails {
     display: grid;
@@ -762,7 +767,6 @@ form {
   }
   #prodetails .single-pro-details,
   #prodetail .single-pro-details {
-    width: 80%;
     object-fit: cover;
     flex-wrap: wrap;
   }
@@ -776,7 +780,6 @@ form {
   }
   #prodetails .single-pro-details,
   #prodetail .single-pro-details {
-    /* width: 50%; */
     object-fit: cover;
     flex-wrap: wrap;
   }
@@ -785,53 +788,50 @@ form {
   #prodetails .single-pro-details,
   #prodetail .single-pro-details {
     padding-left: 20px;
-    width: 60%;
+
     object-fit: cover;
     flex-wrap: wrap;
   }
   #prodetails .single-pro-image,
-#prodetail .single-pro-image {
-  width: 60% ;
-  margin-right: 40px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-#prodetails, #prodetail {
-  display: grid;
-  place-items: start;
-  width: 100%;
-  /* padding: 0 20px; */
-  grid-template-columns: 1fr;
-}
-.cart-button button {
-  width: 100%;
-  height: 40px;
-  border-radius: 15px;
-  background-color: #ff385a;
-  color: white;
-  font-size: 13px;
-  font-weight: lighter;
-  cursor: pointer;
-  
-  margin: 4px;
-}
+  #prodetail .single-pro-image {
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  #prodetails,
+  #prodetail {
+    display: grid;
+    place-items: start;
+    width: 100%;
+    /* padding: 0 20px; */
+    grid-template-columns: 1fr;
+  }
+  .cart-button button {
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #ff385a;
+    color: white;
+    font-size: 13px;
+    font-weight: lighter;
+    cursor: pointer;
+
+    margin: 4px;
+  }
 }
 @media (max-width: 435px) {
   #prodetails .single-pro-image,
   #prodetail .single-pro-image {
-    width: 50% ;
     margin-right: 10px;
     margin-left: 5px;
     margin-bottom: 20px;
   }
   #prodetails .single-pro-image,
   #prodetail .single-pro-image {
-    width: 50% ;
     margin-right: 40px;
     margin-left: 20px;
     margin-bottom: 20px;
   }
-
 }
 body {
   display: flex;

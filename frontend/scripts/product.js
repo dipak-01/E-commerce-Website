@@ -17,7 +17,6 @@ const productCardGenerator = (x) => {
       x.insertAdjacentHTML("beforeend", productCard);
 
       skeletonSection.style.display = "none";
-       
 
       console.log("2");
     })
@@ -58,7 +57,9 @@ const productCardGenerator = (x) => {
               <span>Sale</span>
             </div>
           </div>
-          <input type="number" value="1" />
+          <form id="addToCartForm">
+          <div> Quantity <br></div>
+          <input type="number" id="quantity" name="quantity" value="1" min="1" max="5">
           <div class="details">
           <p>${product.description}</p>
           </div>
@@ -67,17 +68,22 @@ const productCardGenerator = (x) => {
             <div><a href="https://www.nike.com/in/a/how-to-measure-foot-size"> (Size Guide)</a></div>
           </div>
           <div class="size-container">
-            <div> 6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div class="selected">11</div>
+          <input type="hidden" name="productId" value="${product._id}">
+           
+          <select id="size" name="size">
+            <option value="6"> 6</option>
+            <option value="7"> 7</option>
+            <option value="8"> 8</option>
+            <option value="9"> 9</option>
+            <option value="10"> 10</option>
+            <option value="11"> 11</option>
+            </select>
           </div>
+          </form>
           <div class="order">
             <div class="cart-button">
               <button > Buy Now </button>
-              <button class="add-to-cart">Add To Cart</button>
+              <button type="submit" class="add-to-cart">Add To Cart</button>
               
             </div>
             <div class="wishlist">
@@ -132,3 +138,43 @@ const productCardGenerator = (x) => {
   }
 };
 productCardGenerator(x);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartForm = document.getElementById("addToCartForm");
+
+  addToCartForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Get the values from the form
+    // const productId = addToCartForm.querySelector('input[name="productId"]').value;
+    const quantity = addToCartForm.querySelector(
+      'input[name="quantity"]'
+    ).value;
+    const size = addToCartForm.querySelector('select[name="size"]').value;
+
+    const data = {
+      quantity: quantity,
+      size: size,
+    };
+    // Send the data to the backend using AJAX (you can use fetch or another AJAX library)
+    fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(data);
+          console.log("Product added to cart successfully.");
+        } else {
+          // Handle errors (e.g., display an error message)
+          console.error("Failed to add product to cart.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
+});
