@@ -32,3 +32,43 @@ loginBtn.addEventListener("click", (e) => {
   formContainer.classList.remove("active");
 });
 console.log("work");
+
+document.getElementById("myForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the form from submitting via browser default behavior
+
+  // Get the input field values
+  const inputField1Value = document.getElementById("inputusremail").value;
+  const inputField2Value = document.getElementById("inputusrpassword").value;
+
+  // Create a data object to send to the backend
+  const data = {
+    usremail: inputField1Value,
+    usrpassword: inputField2Value,
+  };
+
+  // Send the data to the backend using the fetch API
+  fetch("http://localhost:3000/user-login", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json", // Set the content type to JSON
+    },
+    body: JSON.stringify(data), // Convert the data object to JSON
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json(); // Parse the response JSON if needed
+    })
+    .then((data) => {
+      // Handle the response from the backend (if any)
+      console.log("Received data");
+      console.log(data);
+      //sessionStorage.setItem("userId", data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("There was a problem with the fetch operation:", error);
+    });
+});
