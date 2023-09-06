@@ -176,7 +176,7 @@ const productCardGenerator2 = (y) => {
         </div>
         <div class="cart">
           <a id="colorLink" href="" title="Add to Wishlist"><i class="bx bx-heart wishlist "></i></a>
-          <a href="#" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+          <a href="#" name="" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
         </div>
         </a>
       </div>`;
@@ -296,3 +296,16 @@ searchIcon.addEventListener("click", () => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+
+// document.getElementById("").addEventListener("submit", function (event) {
+//   event.preventDefault(); // Prevent the form from submitting via browser default behavior
+
+//   // Get the input field values
+//   const inputField1Value = document.getElementById("inputusremail").value;
+//   const inputField2Value = document.getElementById("inputusrpassword").value;
+
+//   // Create a data object to send to the backend
+//   const data = {
+//     usremail: inputField1Value,
+//     usrpassword: inputField2Value,
+//   };
