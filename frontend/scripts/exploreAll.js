@@ -1,10 +1,11 @@
 // Get the container element
+
 const productCardGenerator = (x) => {
   function createProductCard(product) {
     return `
         <div class="product">
         <a href="product.html?id=${product._id}">
-          <img src="${product.imageUrl1}" alt=" product img" />
+          <img src="${product.imageUrl1}" alt=" product img" /> 
           <img id="change" src="${product.imageUrl2}" alt=" product img" />
           <div class="descr">
             <span> NIKE</span>
@@ -24,6 +25,7 @@ const productCardGenerator = (x) => {
       for (let i = 0; i < 35; i++) {
         const productCard = createProductCard(data[i]);
         x.insertAdjacentHTML("beforeend", productCard);
+        element.style.display = "none";
       }
     })
     .catch((err) => {
@@ -34,3 +36,44 @@ const productCardGenerator = (x) => {
 // Get the container element
 let x = document.getElementById("productContainer");
 productCardGenerator(x);
+
+// let y = document.getElementById("dummyProductContainer");
+// const cardTemplate = document.getElementById("dummySection");
+
+// const numberOfCards = 10;
+
+// for (let i = 0; i < numberOfCards; i++) {
+//   const cardClone = cardTemplate.content.cloneNode(true);
+//   y.appendChild(cardClone);
+// }
+const element=document.querySelector(".dummySection")
+const dummyProductContainer = document.getElementById("dummyProductContainer");
+const productTemplate = document.querySelector(".product");
+
+const numberOfCards = 9;
+
+for (let i = 0; i < numberOfCards; i++) {
+  const productClone = productTemplate.cloneNode(true);
+  dummyProductContainer.appendChild(productClone);
+}
+
+
+// Function to create an empty product card HTML element
+// function createEmptyProductCard() {
+//   const productCard = document.createElement('div');
+//   productCard.classList.add('product');
+//   return productCard;
+// }
+
+// // Function to append empty product cards to the dummySection
+// function appendEmptyProductCards() {
+//   const dummyProductContainer = document.querySelector('#dummyProductContainer');
+
+//   for (let i = 0; i < 10; i++) {
+//     const productCard = createEmptyProductCard();
+//     dummyProductContainer.appendChild(productCard);
+//   }
+// }
+
+// // Call the function to append empty product cards when the page loads
+// window.addEventListener('load', appendEmptyProductCards);

@@ -1,21 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
+const skeletonSection = document.querySelector("#dummy");
+// const dataSection = document.querySelector("#prodetails");
 console.log("prductId");
 
 console.log("Product ID:", productId);
 let x = document.getElementById("prodetails");
-
-// const loader = document.querySelector(".loader");
-
-// function showLoader() {
-//   loader.style.display = "block";
-
-// }
-
-// function hideLoader() {
-//   loader.style.display = "none";
-
-// }
 
 console.log("1");
 const productCardGenerator = (x) => {
@@ -23,7 +13,11 @@ const productCardGenerator = (x) => {
     .then((res) => res.json())
     .then((data) => {
       const productCard = createProductCard(data);
+      console.log(productCard);
       x.insertAdjacentHTML("beforeend", productCard);
+
+      skeletonSection.style.display = "none";
+       
 
       console.log("2");
     })
@@ -66,7 +60,7 @@ const productCardGenerator = (x) => {
           </div>
           <input type="number" value="1" />
           <div class="details">
-          ${product.description}
+          <p>${product.description}</p>
           </div>
           <div class="size">
             <div>Choose Your Size IND/UK</div>
