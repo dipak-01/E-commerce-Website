@@ -256,20 +256,22 @@ app.put("/add-to-wishlist/:productId", async (req, res) => {
       return res.status(404).send("User not found. Please Login");
     }
 
-    // Check if the product is already in the user's cart
-    const itemExist = user.wishList.find((item) =>
+    // Check if the product is already in the user's wishlist
+    const itemExistIndex = user.wishList.findIndex((item) =>
       item.itemId.equals(productId)
     );
 
-    if (itemExist) {
-      // Increment the quantity if the product is already in the cart
-      itemExist.quantity += 1;
+    if (itemExistIndex !== -1) {
+      // If the product is already in the wishlist, remove it
+      user.wishList.splice(itemExistIndex, 1);
+      res.status(200).send("Product removed from wishlist successfully");
     } else {
-      // Add the product to the user's cart if it's not there
+      // If the product is not in the wishlist, add it
       user.wishList.push({ itemId: productId, quantity: 1, size: 8 });
+      res.status(200).send("Product added to wishlist successfully");
     }
 
-    // Save the user's updated cart
+    // Save the user's updated wishlist
     await user.save();
     res.status(200).send("Product added to wishlist successfully");
   } catch (err) {
