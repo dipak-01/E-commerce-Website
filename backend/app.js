@@ -222,6 +222,44 @@ app.get("/cart", async (req, res) => {
   }
 });
 
+app.put("/add-to-cart/:productId", async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
+
+  const { quantity, size } = req.body;
+
+  try {
+    // Check if the user with the given ID exists
+    const user = await User.findById(userId);
+
+    // Find the user by their ID and update their cart
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Check if the product is already in the user's cart
+    const existCartItem = user.cart.find(
+      (item) => item.productId === productId
+    );
+
+    if (existCartItem) {
+      // Increment the quantity if the product is already in the cart
+      existCartItem.quantity = quantity;
+      existCartItem.size = size;
+    } else {
+      // Add the product to the user's cart if it's not there
+      user.cart.push({ productId, quantity: quantity, size: size });
+    }
+
+    // Save the user's updated cart
+    await user.save();
+    res.status(200).send("Product added to cart successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // app.put("/add-to-cart/:id", async (req, res) => {
 //   try {
 //     const { user, usrpassword } = req.body;
