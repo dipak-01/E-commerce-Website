@@ -1,141 +1,159 @@
-const User = require("./models/userModel");
-const Product = require("./models/productModel");
-const connectDb = require("./config/dbconnect");
 const express = require("express");
+const app = express();
+const userRoutes = require("../backend/routes/userRoutes");
+const productRoutes = require("../backend/routes/productRoutes");
+const connectDb = require("./config/dbconnect");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const app = express();
 
 const port = process.env.PORT || 3000;
 
-if (connectDb()) {
-  try {
-    app.listen(port, () => {
-      console.log(
-        `\nServer Started...\nSuccessfully Connected to Database...\nListening to Requests at Port: ${port}`
-      );
-    });
-  } catch (err) {
-    console.log(err);
+const startServer = async () => {
+  if (await connectDb()) {
+    try {
+      app.listen(port, () => {
+        console.log(
+          `\nSuccessfully Connected to Database...\nListening to Requests at Port: ${port}\nServer Started...`
+        );
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    console.log("Server Error");
   }
-} else {
-  console.log("Server Error");
-}
+};
 
-// app.use((req, res, next) => {
-//   console.log('Session:', req.session);
-//   next();
-// });
-
+startServer();
 app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 
-app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-app.use(express.json()),
-  // app.use(express.static("public"));
+app.use(express.json()), app.use(express.urlencoded({ extended: true }));
 
-  // app.use((req,res,next)=>{
-  //   if(req.session.user){next()}
-  //   else{
-  //     res.status(401).send("Please Login!!!")
-  //   }
-  // })
-
-  app.use((req, res, next) => {
-    console.log("\nNew Request Made :");
-    console.log("Host : ", req.hostname);
-    console.log("Path : ", req.path);
-    console.log("Method : ", req.method);
-    next();
-  });
-
-app.post("/add-product", async (req, res) => {
-  try {
-    console.log(req.body);
-    const product = new Product(req.body);
-    const result = await product.save();
-    res.send("Product Added Successfully");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
+app.use((req, res, next) => {
+  console.log("\nNew Request Made :");
+  console.log("Host : ", req.hostname);
+  console.log("Path : ", req.path);
+  console.log("Method : ", req.method);
+  next();
 });
 
-app.get("/product/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const result = await Product.findById(id);
-    res.send(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
+app.use(userRoutes);
+app.use(productRoutes);
 
-app.get("/explore-all", async (req, res) => {
-  try {
-    const result = await Product.find();
-    res.send(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
 
-app.post("/user-signup", async (req, res) => {
-  try {
-    console.log(req.body);
-    const user = new User(req.body);
-    const result = await user.save();
-    res.send("Successfully Signed Up");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
 
-app.post("/user-logout", async (req, res) => {
-  try {
-    if (req.cookies.userId) {
-      // User is logged in, so we can proceed with logging them out
 
-      res.clearCookie("userId");
-      console.log("Cookie Cleared");
-      res.send("Successfully Logged Out");
-    } else {
-      // User is not logged in
-      res.status(401).json({ message: "User Not logged In" });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
 
-app.post("/user-login", async (req, res) => {
-  try {
-    const { usremail, usrpassword } = req.body;
-    const user = await User.findOne({ email: usremail });
-    const passwordmatch = user.password == usrpassword;
-    if (passwordmatch) {
-      if (req.cookies.userId) {
-        console.log("User is Already logged In...");
-        res.status(200).json({ message: "Already Logged In" });
-      } else {
-        res.cookie("userId", user._id, {
-          httpOnly: false,
-          sameSite: "none",
-          secure: true,
-        });
-        console.log("User Successfully Logged In...");
-        res.status(200).json({ message: "Successfully Logged In" });
-      }
-    } else {
-      res.status(401).json({ message: "Invalid Username or Password!!!" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use(express.static("public"));
+
+// app.use((req,res,next)=>{
+//   if(req.session.user){next()}
+//   else{
+//     res.status(401).send("Please Login!!!")
+//   }
+// })
 
 // app.post("/user-login", async (req, res) => {
 //   const { useremail, usrpassword } = req.body;
@@ -203,205 +221,6 @@ app.post("/user-login", async (req, res) => {
 //   }
 // });
 
-app.get("/cart", async (req, res) => {
-  try {
-    if (req.cookies.userId) {
-      console.log(req.cookies.userId);
-      const id = req.cookies.userId;
-      console.log("working");
-      const result = await User.findById(id);
-      console.log(result);
-      const data = result.cart;
-      res.send(data);
-    } else {
-      console.log("cookie not found");
-      res.send(req.cookies);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-app.get("/wishlist", async (req, res) => {
-  try {
-    if (req.cookies.userId) {
-      console.log(req.cookies.userId);
-      const id = req.cookies.userId;
-      console.log("working");
-      const user = await User.findById(id);
-      console.log(user);
-      const data = user.wishList;
-      res.send(data);
-    } else {
-      console.log("cookie not found");
-      res.send(req.cookies);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-app.put("/add-to-wishlist/:productId", async (req, res) => {
-  const productId = req.params.productId;
-  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
-  console.log(productId);
-  console.log(userId);
-
-  try {
-    // Check if the user with the given ID exists
-    const user = await User.findById(userId);
-
-    // Find the user by their ID and update their cart
-    if (!user) {
-      return res.status(404).send("User not found. Please Login");
-    }
-
-    // Check if the product is already in the user's wishlist
-    const itemExistIndex = user.wishList.findIndex((item) =>
-      item.itemId.equals(productId)
-    );
-
-    if (itemExistIndex !== -1) {
-      // If the product is already in the wishlist, remove it
-      user.wishList.splice(itemExistIndex, 1);
-      operationMessage = "Product removed from wishlist successfully";
-    } else {
-      // If the product is not in the wishlist, add it
-      user.wishList.push({ itemId: productId, quantity: 1, size: 8 });
-      operationMessage = "Product added to wishlist successfully";
-    }
-    
-    // Save the user's updated wishlist
-    await user.save();
-    res.status(200).send(operationMessage);
-    
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.put("/add-to-cart/:productId", async (req, res) => {
-  const productId = req.params.productId;
-  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
-  console.log(productId);
-  console.log(userId);
-  const { quantity, size } = req.body;
-
-  try {
-    // Check if the user with the given ID exists
-    const user = await User.findById(userId);
-
-    // Find the user by their ID and update their cart
-    if (!user) {
-      return res.status(404).send("User not found. Please Login");
-    }
-
-    // Check if the product is already in the user's cart
-    const existCartItem = user.cart.find((item) =>
-      item.itemId.equals(productId)
-    );
-
-    if (existCartItem) {
-      // Increment the quantity if the product is already in the cart
-      existCartItem.quantity = quantity;
-      existCartItem.size = size;
-    } else {
-      // Add the product to the user's cart if it's not there
-      user.cart.push({ itemId: productId, quantity: quantity, size: size });
-    }
-
-    // Save the user's updated cart
-    await user.save();
-    res.status(200).send("Product added to cart successfully");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.put("/add-to-cart-only/:productId", async (req, res) => {
-  const productId = req.params.productId;
-  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
-  console.log(productId);
-  console.log(userId);
-
-  try {
-    // Check if the user with the given ID exists
-    const user = await User.findById(userId);
-
-    // Find the user by their ID and update their cart
-    if (!user) {
-      return res.status(404).send("User not found. Please Login");
-    }
-
-    // Check if the product is already in the user's cart
-    const existCartItem = user.cart.find((item) =>
-      item.itemId.equals(productId)
-    );
-
-    if (existCartItem) {
-      // Increment the quantity if the product is already in the cart
-      existCartItem.quantity += 1;
-    } else {
-      // Add the product to the user's cart if it's not there
-      user.cart.push({ itemId: productId, quantity: 1, size: 8 });
-    }
-
-    // Save the user's updated cart
-    await user.save();
-    res.status(200).send("Product added to cart successfully");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.put("/product-review/:productId", async (req, res) => {
-  const productId = req.params.productId;
-  const userId = req.cookies.userId;
-  const { rating, reviewmsg } = req.body;
-
-  console.log(productId);
-  console.log(userId);
-  console.log({ rating, reviewmsg });
-
-  try {
-    // Check if the product with the given ID exists
-    const product = await Product.findById(productId);
-
-    // Find the product by ID and update their cart
-    if (!product) {
-      return res.status(404).send("Product not found");
-    }
-
-    // Check if the product is already in the user's cart
-    const reviewexist = product.review.find((item) =>
-      item.userId.equals(userId)
-    );
-
-    if (reviewexist) {
-      // Increment the quantity if the product is already in the cart
-      reviewexist.rating = rating;
-      reviewexist.reviewmsg = reviewmsg;
-    } else {
-      // Add the product to the user's cart if it's not there
-      product.review.push({
-        userId: userId,
-        rating: rating,
-        reviewmsg: reviewmsg,
-      });
-    }
-
-    // Save the user's updated cart
-    await product.save();
-    res.status(200).send("Review added to Product successfully");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
 // app.put("/add-to-cart/:id", async (req, res) => {
 //   try {
 //     const { user, usrpassword } = req.body;
@@ -444,37 +263,3 @@ app.put("/product-review/:productId", async (req, res) => {
 //     res.redirect('/');
 //   });
 // });
-
-app.delete("/remove/:productId", async (req, res) => {
-  const productId = req.params.productId;
-  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
-
-  try {
-    // Check if the user with the given ID exists
-    const user = await User.findById(userId);
-
-    // Find the user by their ID and update their cart
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-
-    // Check if the product is already in the user's cart
-    const existCartItemIndex = user.cart.findIndex((item) =>
-      item.itemId.equals(productId)
-    );
-
-    if (existCartItemIndex !== -1) {
-      // Remove the product from the cart if it exists
-      user.cart.splice(existCartItemIndex, 1);
-    } else {
-      return res.status(404).send("Product not found in the cart");
-    }
-
-    // Save the user's updated cart
-    await user.save();
-    res.status(200).send("Product removed from cart successfully");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
