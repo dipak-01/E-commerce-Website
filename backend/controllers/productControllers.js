@@ -76,9 +76,33 @@ const addReview = async (req, res) => {
   }
 };
 
+const search =  async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    // Use a regular expression to perform a case-insensitive search
+    const products = await Product.find({
+      $or: [
+        { title: { $regex: new RegExp(query, "i") } },
+        { description: { $regex: new RegExp(query, "i") } },
+      ],
+    });
+
+    if (products.length === 0) {
+      res.status(404).send("No matching products found.");
+    } else {
+      res.status(200).json(products);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
 module.exports = {
   addProduct,
   getProduct,
   getAllproduct,
   addReview,
+  search,
 };

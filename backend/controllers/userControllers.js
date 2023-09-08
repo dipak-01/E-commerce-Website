@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Product = require("../models/productModel");
 
 const signup = async (req, res) => {
   try {
@@ -185,6 +186,33 @@ const removeFromCart = async (req, res) => {
   }
 };
 
+const totalamount = async (req, res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const id = req.cookies.userId;
+      const user = await User.findById(id);
+      console.log(user);
+      const cart = user.cart;
+      let currentid;
+      let currentamount;
+      let tamount = 0;
+      for (let i = 0; i < cart.length; i++) {
+        currentid = cart[i].itemId;
+        const currentproduct = await Product.findById(currentid);
+        currentamount = currentproduct.price;
+        tamount = tamount + cart[i].quantity * currentamount;
+      }
+      res.status(200).send(`${tamount}`);
+    } else {
+      console.log("cookie not found");
+      res.status(400).send(tamount);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const addToWishList = async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
@@ -243,6 +271,40 @@ const getWishList = async (req, res) => {
   }
 };
 
+const removeFromWishList = async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.cookies.userId; // Assuming you have a user ID stored in the cookies
+
+  try {
+    // Check if the user with the given ID exists
+    const user = await User.findById(userId);
+
+    // Find the user by their ID and update their cart
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Check if the product is already in the user's cart
+    const existItemIndex = user.wishList.findIndex((item) =>
+      item.itemId.equals(productId)
+    );
+
+    if (existItemIndex !== -1) {
+      // Remove the product from the cart if it exists
+      user.wishList.splice(existItemIndex, 1);
+    } else {
+      return res.status(404).send("Product not found in the Wishlist");
+    }
+
+    // Save the user's updated cart
+    await user.save();
+    res.status(200).send("Product removed from Wishlist successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -251,6 +313,8 @@ module.exports = {
   addToCart,
   getCart,
   removeFromCart,
+  totalamount,
   addToWishList,
   getWishList,
+  removeFromWishList,
 };
