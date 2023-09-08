@@ -305,6 +305,21 @@ const removeFromWishList = async (req, res) => {
   }
 };
 
+const viewprofile = async (req, res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log("User is Present...");
+      const user = await User.findById(req.cookies.userId);
+      res.send(user);
+    } else {
+      console.log("Please Login...");
+      res.status(404).json({ message: "Please Login..." });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -317,4 +332,5 @@ module.exports = {
   addToWishList,
   getWishList,
   removeFromWishList,
+  viewprofile,
 };

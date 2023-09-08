@@ -76,9 +76,13 @@ const addReview = async (req, res) => {
   }
 };
 
-const search =  async (req, res) => {
+const search = async (req, res) => {
   try {
-    const { query } = req.query;
+    const query = req.query.query;
+
+    if (!query) {
+      return res.status(400).send("Bad Request: Query parameter is missing.");
+    }
 
     // Use a regular expression to perform a case-insensitive search
     const products = await Product.find({
@@ -97,7 +101,7 @@ const search =  async (req, res) => {
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
-}
+};
 
 module.exports = {
   addProduct,
