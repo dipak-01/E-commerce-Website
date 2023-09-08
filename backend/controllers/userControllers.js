@@ -4,8 +4,24 @@ const Product = require("../models/productModel");
 const signup = async (req, res) => {
   try {
     console.log(req.body);
+    let avatarUrl = [
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743195275355/photo_1_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743417569470/photo_2_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744419999784/photo_3_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744789110834/photo_4_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745116258404/photo_5_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745548275792/photo_6_2023-09-09_02-38-45.jpg",
+    ] ;
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const randomIndex = getRandomInt(0, avatarUrl.length - 1);
+    const randomLink = avatarUrl[randomIndex];
     const user = new User(req.body);
-    const result = await user.save();
+    user.avatarUrl = randomLink;
+    await user.save();
     res.send("Successfully Signed Up");
   } catch (err) {
     console.log(err);
