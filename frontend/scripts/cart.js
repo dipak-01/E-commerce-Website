@@ -1,15 +1,15 @@
 console.log("wor");
+let totalMrp = 0;
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
   const element2 = document.getElementById("products-dum");
-   
 
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      if (data.length==0) {
+      if (data.length == 0) {
         element.style.display = "none";
         element1.style.display = "none";
         element2.style.display = "block";
@@ -25,6 +25,7 @@ const productCardGenerator = (x) => {
             x.insertAdjacentHTML("beforeend", productCard);
             element.style.display = "none";
             element1.style.display = "none";
+            logTotal();
           });
       }
     });
@@ -43,6 +44,7 @@ console.log("2");
 
 function createProductCard(data2, data, objId) {
   console.log("3");
+  totalMrp = totalMrp + data2.price;
 
   return `
   <div class="products"  data-objid="${objId}">
@@ -74,6 +76,7 @@ function createProductCard(data2, data, objId) {
     </div> 
     </div>
   </div>`;
+  logTotal();
 }
 
 let x = document.getElementById("products");
@@ -116,4 +119,3 @@ function deleteProduct(objId) {
       console.error("Error:", error);
     });
 }
-

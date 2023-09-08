@@ -4,6 +4,7 @@ const imageUrls = [
   "../Images/models/model1 (3).webp",
   "../Images/models/model1 (4).webp",
 ];
+ 
 
 const imageElement = document.getElementById("changingImage");
 let currentIndex1 = 0;
@@ -361,3 +362,6 @@ addToCart = (productId) => {
       console.error("Error:", error);
     });
 };
+
+
+ 
