@@ -1,15 +1,15 @@
 console.log("wor");
+let totalMrp = 0;
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
   const element2 = document.getElementById("products-dum");
-   
 
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      if (data.length==0) {
+      if (data.length == 0) {
         element.style.display = "none";
         element1.style.display = "none";
         element2.style.display = "block";
@@ -25,6 +25,7 @@ const productCardGenerator = (x) => {
             x.insertAdjacentHTML("beforeend", productCard);
             element.style.display = "none";
             element1.style.display = "none";
+            logTotal();
           });
       }
     });
@@ -43,6 +44,7 @@ console.log("2");
 
 function createProductCard(data2, data, objId) {
   console.log("3");
+  totalMrp = totalMrp + data2.price;
 
   return `
   <div class="products"  data-objid="${objId}">
@@ -55,17 +57,17 @@ function createProductCard(data2, data, objId) {
          </div>
         <div class="close">
           <button  onclick='deleteProduct("${objId}")' class="close-button">
-            <i class="uil uil-times"></i>
+            <i class="uil uil-times point"></i>
           </button>
         </div>
       </div>
       <div class="pdt-details-bottom">
         <div class="inputs">
           <div class="inputs-button">
-            <button  class="minus"><i class="uil uil-minus"></i></button>
+            <button  class="point"><i class="uil uil-minus"></i></button>
             <span class="Qty">${data.quantity} </span>
             <button class="add">
-              <i class="uil uil-plus"></i>
+              <i class="uil uil-plus point"></i>
             </button>
           </div>
         </div>
@@ -74,6 +76,7 @@ function createProductCard(data2, data, objId) {
     </div> 
     </div>
   </div>`;
+  logTotal();
 }
 
 let x = document.getElementById("products");
@@ -116,4 +119,3 @@ function deleteProduct(objId) {
       console.error("Error:", error);
     });
 }
-

@@ -787,3 +787,12 @@ a{
 #products-dum{
   display: none;
 }
+.point{
+  cursor: pointer;
+}
+.clickable:hover{
+  opacity: .9;
+}
+.clickable:active{
+ scale: 1.02;
+}

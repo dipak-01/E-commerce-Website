@@ -4,6 +4,7 @@ const imageUrls = [
   "../Images/models/model1 (3).webp",
   "../Images/models/model1 (4).webp",
 ];
+ 
 
 const imageElement = document.getElementById("changingImage");
 let currentIndex1 = 0;
@@ -233,15 +234,78 @@ for (let i = 0; i < numberOfCards; i++) {
 }
 
 // search bar
+// const searchInput = document.getElementById("search-input");
+// const searchIcon = document.getElementById("search-icon");
+// const searchResults = document.querySelector(".search-results");
+
+// // Function to fetch search results
+// async function fetchSearchResults(query) {
+//   try {
+//     // Replace with your API endpoint for fetching search results
+//     const response = await fetch(`http://localhost:3000/search?q=${query}`);
+//     const data = await response.json();
+
+//     // Display search results
+//     displaySearchResults(data);
+//   } catch (error) {
+//     console.error("Error fetching search results:", error);
+//   }
+// }
+
+// // Function to display search results
+// function displaySearchResults(results) {
+//   // Clear previous search results
+//   searchResults.innerHTML = "";
+
+//   // Iterate through the results and create HTML elements to display them
+//   results.forEach((result) => {
+//     const resultItem = document.createElement("div");
+//     resultItem.classList.add("result-item");
+//     resultItem.textContent = result.title; // Replace with the appropriate property from your API response
+//     searchResults.appendChild(resultItem);
+//   });
+
+//   // Show the search results container
+//   searchResults.style.display = "block";
+// }
+
+// // Event listener for input changes
+// searchInput.addEventListener("input", () => {
+//   const query = searchInput.value.trim();
+
+//   // Hide the search results if the query is empty
+//   if (query === "") {
+//     searchResults.style.display = "none";
+//     return;
+//   }
+
+//   // Fetch search results when the user types
+//   fetchSearchResults(query);
+// });
+
+// // Event listener to close the search results when clicking outside
+// document.addEventListener("click", (event) => {
+//   if (!searchResults.contains(event.target) && event.target !== searchInput) {
+//     searchResults.style.display = "none";
+//   }
+// });
+
+// // Event listener to handle search when clicking the search icon
+// searchIcon.addEventListener("click", () => {
+//   const query = searchInput.value.trim();
+//   event.preventDefault(); 
+//   // Fetch search results when the search icon is clicked
+//   fetchSearchResults(query);
+// });
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
-const searchResults = document.querySelector(".search-results");
+const searchResultsPopup = document.getElementById("search-results-popup");
 
 // Function to fetch search results
 async function fetchSearchResults(query) {
   try {
     // Replace with your API endpoint for fetching search results
-    const response = await fetch(`YOUR_API_ENDPOINT?q=${query}`);
+    const response = await fetch(`http://localhost:3000/search?query=${query}`);
     const data = await response.json();
 
     // Display search results
@@ -251,30 +315,28 @@ async function fetchSearchResults(query) {
   }
 }
 
-// Function to display search results
+// Function to display search results in the popup
 function displaySearchResults(results) {
-  // Clear previous search results
-  searchResults.innerHTML = "";
+  searchResultsPopup.innerHTML = ""; // Clear previous results
 
-  // Iterate through the results and create HTML elements to display them
   results.forEach((result) => {
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
     resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    searchResults.appendChild(resultItem);
+    searchResultsPopup.appendChild(resultItem);
   });
 
-  // Show the search results container
-  searchResults.style.display = "block";
+  // Show the search results popup
+  searchResultsPopup.style.display = "block";
 }
 
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
 
-  // Hide the search results if the query is empty
+  // Hide the search results popup if the query is empty
   if (query === "") {
-    searchResults.style.display = "none";
+    searchResultsPopup.style.display = "none";
     return;
   }
 
@@ -284,13 +346,14 @@ searchInput.addEventListener("input", () => {
 
 // Event listener to close the search results when clicking outside
 document.addEventListener("click", (event) => {
-  if (!searchResults.contains(event.target) && event.target !== searchInput) {
-    searchResults.style.display = "none";
+  if (!searchResultsPopup.contains(event.target) && event.target !== searchInput) {
+    searchResultsPopup.style.display = "none";
   }
 });
 
 // Event listener to handle search when clicking the search icon
-searchIcon.addEventListener("click", () => {
+searchIcon.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent the default behavior of the click event
   const query = searchInput.value.trim();
 
   // Fetch search results when the search icon is clicked
@@ -361,3 +424,6 @@ addToCart = (productId) => {
       console.error("Error:", error);
     });
 };
+
+
+ 
