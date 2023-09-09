@@ -14,5 +14,6 @@ router.put("/add-to-wishlist/:productId", userController.addToWishList);
 router.get("/wishlist", userController.getWishList);
 router.delete("/removefromwishlist/:productId", userController.removeFromWishList);
 router.get("/viewprofile", userController.viewprofile);
+router.delete("/delete-account",userController.deleteUser);
 
 module.exports = router;
