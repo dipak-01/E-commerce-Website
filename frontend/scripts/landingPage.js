@@ -142,8 +142,8 @@ const productCardGenerator1 = (x) => {
           <h5>₹ ${product.price}</h5>
         </div>
         <div class="cart">
-          <a id="colorLink" href="" title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
-          <a href="#" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+        <a  onclick='addToWishList("${product._id}")' title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
+        <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
         </div>
         </a>
       </div>`;
@@ -175,8 +175,8 @@ const productCardGenerator2 = (y) => {
           <h5>₹ ${product.price}</h5>
         </div>
         <div class="cart">
-          <a id="colorLink" href="" title="Add to Wishlist"><i class="bx bx-heart wishlist "></i></a>
-          <a href="#" name="" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+        <a  onclick='addToWishList("${product._id}")' title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
+        <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
         </div>
         </a>
       </div>`;
@@ -309,3 +309,55 @@ searchIcon.addEventListener("click", () => {
 //     usremail: inputField1Value,
 //     usrpassword: inputField2Value,
 //   };
+
+
+
+addToWishList = (productId) => {
+  console.log("in func");
+  fetch(
+    `http://localhost:3000/add-to-wishlist/${productId}`,
+
+    {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to wish successfully.");
+      } else {
+        console.error("Failed to add product to wish.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+addToCart = (productId) => {
+  console.log("in func");
+  fetch(
+    `http://localhost:3000/add-to-cart-only/${productId}`,
+
+    {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to cart-only successfully.");
+      } else {
+        console.error("Failed to add product to cart-only.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};

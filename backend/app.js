@@ -1,142 +1,159 @@
-const User = require("./models/userModel");
-const Product = require("./models/productModel");
-const connectDb = require("./config/dbconnect");
 const express = require("express");
+const app = express();
+const userRoutes = require("../backend/routes/userRoutes");
+const productRoutes = require("../backend/routes/productRoutes");
+const connectDb = require("./config/dbconnect");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const app = express();
 
 const port = process.env.PORT || 3000;
 
-if (connectDb()) {
-  try {
-    app.listen(port, () => {
-      console.log(
-        `\nServer Started...\nSuccessfully Connected to Database...\nListening to Requests at Port: ${port}`
-      );
-    });
-  } catch (err) {
-    console.log(err);
+const startServer = async () => {
+  if (await connectDb()) {
+    try {
+      app.listen(port, () => {
+        console.log(
+          `\nSuccessfully Connected to Database...\nListening to Requests at Port: ${port}\nServer Started...`
+        );
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    console.log("Server Error");
   }
-} else {
-  console.log("Server Error");
-}
+};
 
-// app.use((req, res, next) => {
-//   console.log('Session:', req.session);
-//   next();
-// });
-
+startServer();
 app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
 
-app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-app.use(express.json()),
-  // app.use(express.static("public"));
+app.use(express.json()), app.use(express.urlencoded({ extended: true }));
 
-  // app.use((req,res,next)=>{
-  //   if(req.session.user){next()}
-  //   else{
-  //     res.status(401).send("Please Login!!!")
-  //   }
-  // })
-
-  app.use((req, res, next) => {
-    console.log("\nNew Request Made :");
-    console.log("Host : ", req.hostname);
-    console.log("Path : ", req.path);
-    console.log("Method : ", req.method);
-    next();
-  });
-
-app.post("/add-product", async (req, res) => {
-  try {
-    console.log(req.body);
-    const product = new Product(req.body);
-    const result = await product.save();
-    res.send("Product Added Successfully");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
+app.use((req, res, next) => {
+  console.log("\nNew Request Made :");
+  console.log("Host : ", req.hostname);
+  console.log("Path : ", req.path);
+  console.log("Method : ", req.method);
+  next();
 });
 
-app.get("/product/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const result = await Product.findById(id);
-    res.send(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
+app.use(userRoutes);
+app.use(productRoutes);
 
-app.get("/explore-all", async (req, res) => {
-  try {
-    const result = await Product.find();
-    res.send(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
 
-app.post("/user-signup", async (req, res) => {
-  try {
-    console.log(req.body);
-    const user = new User(req.body);
-    const result = await user.save();
-    res.send("Successfully Signed Up");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
 
-app.post("/user-logout", async (req, res) => {
-  try {
-    if (req.cookies.userId) {
-      // User is logged in, so we can proceed with logging them out
-    
-          res.clearCookie("userId");
-          console.log("Cookie Cleared");
-          res.send("Successfully Logged Out");
-    
-    } else {
-      // User is not logged in
-      res.status(401).json({message:"User Not logged In"});
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({message:"Internal Server Error"});
-  }
-});
 
-app.post("/user-login", async (req, res) => {
-  try {
-    const { usremail, usrpassword } = req.body;
-    const user = await User.findOne({ email: usremail });
-    const passwordmatch = user.password == usrpassword;
-    if (passwordmatch) {
-      if (req.cookies.userId) {
-        console.log("User is Already logged In...");
-        res.status(200).json({ message: "Already Logged In" });
-      } else {
-        res.cookie("userId", user._id, {
-          httpOnly: false,
-          sameSite: "none",
-          secure: true,
-        });
-        console.log("User Successfully Logged In...");
-        res.status(200).json({ message: "Successfully Logged In" });
-      }
-    } else {
-      res.status(401).json({ message: "Invalid Username or Password!!!" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use(express.static("public"));
+
+// app.use((req,res,next)=>{
+//   if(req.session.user){next()}
+//   else{
+//     res.status(401).send("Please Login!!!")
+//   }
+// })
 
 // app.post("/user-login", async (req, res) => {
 //   const { useremail, usrpassword } = req.body;
@@ -203,25 +220,6 @@ app.post("/user-login", async (req, res) => {
 //     console.log(err);
 //   }
 // });
-
-app.get("/cart", async (req, res) => {
-  try {
-    if (req.cookies.userId) {
-      console.log(req.cookies.userId);
-      const id = req.cookies.userId;
-      console.log("working");
-      const result = await User.findById(id);
-      console.log(result);
-      const data = result.cart;
-      res.send(data);
-    } else {
-      console.log("cookie not found");
-      res.send(req.cookies);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 // app.put("/add-to-cart/:id", async (req, res) => {
 //   try {

@@ -65,7 +65,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
       // Handle the response from the backend (if any)
       console.log("Received data");
       console.log(data);
-      //sessionStorage.setItem("userId", data);
+      window.location.href = "landingPage.html"
     })
     .catch((error) => {
       // Handle errors

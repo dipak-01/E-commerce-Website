@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    avatarUrl: {
+      type: String,
+    },
     firstName: {
       type: String,
       required: true,
@@ -40,7 +43,28 @@ const userSchema = new Schema(
     ],
     wishList: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        itemId: {
+          type: mongoose.Schema.Types.ObjectId,
+        },
+        quantity: {
+          type: Number,
+        },
+        size: {
+          type: Number,
+        },
+      },
+    ],
+    orderPlaced: [
+      {
+        itemId: {
+          type: mongoose.Schema.Types.ObjectId,
+        },
+        quantity: {
+          type: Number,
+        },
+        size: {
+          type: Number,
+        },
       },
     ],
     addrs1: {

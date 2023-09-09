@@ -13,8 +13,8 @@ const productCardGenerator = (x) => {
             <h5>₹ ${product.price}</h5>
           </div>
           <div class="cart">
-            <a href="#" title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
-            <a href="http://localhost:3000/user-signin" method="GET" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+          <a  onclick='addToWishList("${product._id}")' title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
+          <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
           </div>
           </a>
         </div>`;
@@ -46,7 +46,7 @@ productCardGenerator(x);
 //   const cardClone = cardTemplate.content.cloneNode(true);
 //   y.appendChild(cardClone);
 // }
-const element=document.querySelector(".dummySection")
+const element = document.querySelector(".dummySection");
 const dummyProductContainer = document.getElementById("dummyProductContainer");
 const productTemplate = document.querySelector(".product");
 
@@ -57,23 +57,52 @@ for (let i = 0; i < numberOfCards; i++) {
   dummyProductContainer.appendChild(productClone);
 }
 
+addToWishList = (productId) => {
+  console.log("in func");
+  fetch(
+    `http://localhost:3000/add-to-wishlist/${productId}`,
 
-// Function to create an empty product card HTML element
-// function createEmptyProductCard() {
-//   const productCard = document.createElement('div');
-//   productCard.classList.add('product');
-//   return productCard;
-// }
+    {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to wish successfully.");
+      } else {
+        console.error("Failed to add product to wish.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
 
-// // Function to append empty product cards to the dummySection
-// function appendEmptyProductCards() {
-//   const dummyProductContainer = document.querySelector('#dummyProductContainer');
+addToCart = (productId) => {
+  console.log("in func");
+  fetch(
+    `http://localhost:3000/add-to-cart-only/${productId}`,
 
-//   for (let i = 0; i < 10; i++) {
-//     const productCard = createEmptyProductCard();
-//     dummyProductContainer.appendChild(productCard);
-//   }
-// }
-
-// // Call the function to append empty product cards when the page loads
-// window.addEventListener('load', appendEmptyProductCards);
+    {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to cart-only successfully.");
+      } else {
+        console.error("Failed to add product to cart-only.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
