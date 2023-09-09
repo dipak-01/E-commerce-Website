@@ -653,11 +653,11 @@ form {
   font-size: 16px;
   min-width: 160px;
   outline: 0;
-  
+
   margin-bottom: 10px;
 }
 .pincode-check {
-  position: relative  ;
+  position: relative;
   right: 70px;
   cursor: pointer;
   background-color: transparent;
@@ -728,7 +728,7 @@ form {
   width: 30px;
 }
 @media (max-width: 964px) {
-  #prodetails { 
+  #prodetails {
     display: grid;
     width: 100%;
     padding: 0 20px;
@@ -739,7 +739,8 @@ form {
     flex-direction: row;
     width: 100%;
   }
-  #prodetails .single-pro-details, #prodetails .single-pro-detail  {
+  #prodetails .single-pro-details,
+  #prodetails .single-pro-detail {
     width: 100%;
     object-fit: cover;
 
@@ -766,7 +767,7 @@ form {
     grid-template-columns: 1fr;
   }
   #prodetails .single-pro-image,
-  #prodetail .single-pro-image  {
+  #prodetail .single-pro-image {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -957,7 +958,7 @@ body {
       rgb(255, 217, 4) var(--percent),
       rgb(244, 244, 244) var(--percent)
     );
-
+    background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -1009,10 +1010,6 @@ body {
 .nameStars {
   padding-left: 10px;
 }
-
-
-
-
 
 #featureSection .productContainer {
   display: flex;
@@ -1191,12 +1188,17 @@ body {
   }
 }
 
-.point{
+.point {
   cursor: pointer;
 }
-.clickable:hover{
-  opacity: .8;
+.clickable:hover {
+  opacity: 0.8;
 }
-.clickable:active{
- scale: 1.02;
+.clickable:active {
+  scale: 1.02;
+}
+.availability{
+  color: rgb(6, 6, 6);
+  font-size: medium ;
+  
 }

@@ -99,7 +99,7 @@ const productCardGenerator = (x) => {
               <div><i class="uil uil-truck"></i></div>
             </div>
         
-            <form autocomplete="off">
+             <div class="pin">
             <input
               type="text"
               placeholder="Enter pincode"
@@ -108,14 +108,15 @@ const productCardGenerator = (x) => {
               name="pincode"
               maxlength="6"
             />
-            <input
-              type="submit"
-              class="pincode-check pincode-button"
-              value="Check"
-            />
-          </form>
-          <div id="result"></div>
-            <div class="delivery-instruction">
+            <button
+      class="pincode-check pincode-button"
+      onclick="checkPincode()"
+    >
+      Check
+    </button>
+                
+          
+            <div class="delivery-instruction availability">
               Please enter PIN code to check delivery time & Pay on Delivery
               Availability
             </div>
@@ -207,7 +208,7 @@ function buyNow() {
       if (response.ok) {
         console.log("Product added to cart successfully.");
         console.log(data);
-        window.location.href="cart.html"
+        window.location.href = "cart.html";
       } else {
         console.error("Failed to add product to cart.");
       }
@@ -281,32 +282,23 @@ const productCardGenerator1 = (pro) => {
 let pro = document.getElementById("productContainer1");
 productCardGenerator1(pro);
 
+function checkPincode() {
+  const enteredPincode = document.querySelector(".pincode-code").value;
+  const validPincodePattern = /^\d{6}$/; // A simple pattern to check for 6-digit PIN code
+  const availabilityDiv = document.querySelector(".availability");
+  availabilityDiv.textContent = "";
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("pincode-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      checkPincode();
-  });
-
-  function checkPincode() {
-      const enteredPincode = document.querySelector(".pincode-code").value;
-      const validPincodePattern = /^\d{6}$/; // A simple pattern to check for 6-digit PIN code
-
-      if (validPincodePattern.test(enteredPincode)) {
-          // Simulate a check for delivery availability
-          const isDeliveryAvailable = Math.random() < 0.5; // Example: 50% chance of delivery availability
-
-          if (isDeliveryAvailable) {
-              document.getElementById("result").textContent = "Delivery is available for this PIN code.";
-          } else {
-              document.getElementById("result").textContent = "Sorry, delivery is not available for this PIN code.";
-          }
+  if (validPincodePattern.test(enteredPincode)) {
+      // Check if the PIN code is "0"
+      if (enteredPincode == "000000") {
+          availabilityDiv.textContent = "Delivery is not available for PIN code 0.";
       } else {
-          document.getElementById("result").textContent = "Please enter a valid 6-digit PIN code.";
+          availabilityDiv.textContent = "Delivery is available for this PIN code.";
       }
+  } else {
+      availabilityDiv.textContent = "Please enter a valid 6-digit PIN code.";
   }
-});   
-
+}
 // addToWishList = (productId) => {
 //   console.log("in func");
 //   fetch(
@@ -355,4 +347,3 @@ document.addEventListener("DOMContentLoaded", function () {
 //     .catch((error) => {
 //       console.error("Error:", error);
 //     });
-// };
