@@ -1026,7 +1026,7 @@ li {
   }
 }
 .log {
-  /* display: none;  */
+  display: none; 
 }
 .profile {
   position: fixed;
