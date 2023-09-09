@@ -83,15 +83,15 @@ const productCardGenerator = (x) => {
             </form>
             <div class="order">
               <div class="cart-button">
-                <button > Buy Now </button>
-                <button type="submit" onclick="addToCart()" class="add-to-cart">Add To Cart</button>
+                <button class="clickable" type="submit" onclick="buyNow()" > Buy Now </button>
+                <button class="clickable" type="submit" onclick="addToCart()" class="add-to-cart">Add To Cart</button>
                 
               </div>
               <div class="wishlist">
               
-                <button onclick='addToWishList("${
+                <button class="clickable" onclick='addToWishList("${
                   product._id
-                }")'><i class="uil uil-heart-alt"> </i></button>
+                }")'><i class="uil uil-heart-alt "> </i></button>
               </div>
             </div>
             <div class="delivery">
@@ -114,7 +114,7 @@ const productCardGenerator = (x) => {
               value="Check"
             />
           </form>
-            
+          <div id="result"></div>
             <div class="delivery-instruction">
               Please enter PIN code to check delivery time & Pay on Delivery
               Availability
@@ -172,6 +172,42 @@ function addToCart() {
       if (response.ok) {
         console.log("Product added to cart successfully.");
         console.log(data);
+      } else {
+        console.error("Failed to add product to cart.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+function buyNow() {
+  // Get the product ID, size, and quantity here
+  const productID = document.querySelector('input[name="productId"]').value;
+  const size = document.querySelector('select[name="size"]').value;
+  const quantity = document.querySelector('input[name="quantity"]').value;
+  console.log("Product ID:", productID);
+  console.log("Size:", size);
+  console.log("Quantity:", quantity);
+  // Create an object to hold the data
+  const data = {
+    size: size,
+    quantity: quantity,
+  };
+
+  // Send the data to the backend using a POST
+  fetch(`http://localhost:3000/add-to-cart/${productId}`, {
+    method: "PUT",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to cart successfully.");
+        console.log(data);
+        window.location.href="cart.html"
       } else {
         console.error("Failed to add product to cart.");
       }
@@ -244,6 +280,32 @@ const productCardGenerator1 = (pro) => {
 };
 let pro = document.getElementById("productContainer1");
 productCardGenerator1(pro);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("pincode-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      checkPincode();
+  });
+
+  function checkPincode() {
+      const enteredPincode = document.querySelector(".pincode-code").value;
+      const validPincodePattern = /^\d{6}$/; // A simple pattern to check for 6-digit PIN code
+
+      if (validPincodePattern.test(enteredPincode)) {
+          // Simulate a check for delivery availability
+          const isDeliveryAvailable = Math.random() < 0.5; // Example: 50% chance of delivery availability
+
+          if (isDeliveryAvailable) {
+              document.getElementById("result").textContent = "Delivery is available for this PIN code.";
+          } else {
+              document.getElementById("result").textContent = "Sorry, delivery is not available for this PIN code.";
+          }
+      } else {
+          document.getElementById("result").textContent = "Please enter a valid 6-digit PIN code.";
+      }
+  }
+});   
 
 // addToWishList = (productId) => {
 //   console.log("in func");

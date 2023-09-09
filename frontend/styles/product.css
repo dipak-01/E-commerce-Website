@@ -1190,3 +1190,13 @@ body {
     font-size: 30px;
   }
 }
+
+.point{
+  cursor: pointer;
+}
+.clickable:hover{
+  opacity: .8;
+}
+.clickable:active{
+ scale: 1.02;
+}

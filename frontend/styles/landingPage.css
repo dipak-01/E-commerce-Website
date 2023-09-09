@@ -88,6 +88,7 @@ body {
   color: #000000;
   text-decoration: none;
   font-weight: 700;
+  margin-right: 2px;
 }
 
 .nav-item {
@@ -119,7 +120,7 @@ body {
   display: none;
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 1310px) {
   .icons {
     display: inline-flex;
   }
@@ -225,33 +226,33 @@ body {
   }
   .search-bar {
     display: block;
-    margin-top: 10px; /* Adjust margin as needed */
+    margin-top: 10px;
+    color: #f5f5f5; /* Adjust margin as needed */
   }
 
   .search-bar input {
-    width: 100%;
-    /* max-width: 300px; */
+    /* width: 100%; */
+    color: #f5f5f5;
+    max-width: 300px;
     /* Set the maximum width for the search input */
   }
   .search-bar i {
+    flex-grow: 1;
     margin-left: 0; /* Remove left margin for the search icon */
   }
 }
-.search-bar i {
-  margin-left: 0; /* Remove left margin for the search icon */
-}
-
+/* Search bar styles */
 .search-bar {
-  flex-grow: 1; /* Allow the search bar to take up available space */
   display: flex;
-  align-items: center;
-  margin: 0 1.5rem; /* Adjust margin as needed */
-  background-color: #ffffff;
+
+  align-items: center; /* Align items vertically */
+  margin: 0 auto; /* Center the search bar horizontally */
+
+  background-color: #f5f5f5;
   border: 1px solid #111010;
   border-radius: 5px;
   padding: 5px 10px;
-  max-width: 400px;
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 .search-bar input {
@@ -259,6 +260,7 @@ body {
   outline: none;
   flex-grow: 1;
   color: #000000;
+  background-color: #f5f5f5;
 }
 
 .search-bar i {
@@ -266,6 +268,27 @@ body {
   margin-left: 10px;
   color: #000;
   cursor: pointer;
+}
+.search-details {
+  display: flex;
+}
+
+/* Search results popup styles */
+.search-results-popup {
+  position: absolute;
+  z-index: 40;
+  background-color: #f5f5f5;
+  text-align: left;
+  border-radius: 0 0px 10px 0;
+  border: 1px solid #111010;
+
+  top: 68%; /* Position below the search bar */
+  right: -10; /* Align with the right edge of the search bar */
+  padding: 5px 10px;
+  border-top: none;
+}
+.result-item {
+  padding: 10px;
 }
 
 /* .badge {
@@ -988,8 +1011,6 @@ li {
   }
 }
 @media (max-width: 525px) {
-  
-   
   .dummySection .product {
     min-width: 170px;
   }
@@ -1016,7 +1037,7 @@ li {
   border-radius: 30px;
   overflow: hidden;
   z-index: 99;
-  right: 20px;
+  right: 16px;
   cursor: pointer;
 }
 .profile img {

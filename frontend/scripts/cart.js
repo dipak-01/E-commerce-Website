@@ -57,17 +57,17 @@ function createProductCard(data2, data, objId) {
          </div>
         <div class="close">
           <button  onclick='deleteProduct("${objId}")' class="close-button">
-            <i class="uil uil-times"></i>
+            <i class="uil uil-times point"></i>
           </button>
         </div>
       </div>
       <div class="pdt-details-bottom">
         <div class="inputs">
           <div class="inputs-button">
-            <button  class="minus"><i class="uil uil-minus"></i></button>
+            <button  class="point"><i class="uil uil-minus"></i></button>
             <span class="Qty">${data.quantity} </span>
             <button class="add">
-              <i class="uil uil-plus"></i>
+              <i class="uil uil-plus point"></i>
             </button>
           </div>
         </div>

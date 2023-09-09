@@ -24,15 +24,19 @@
       <header class="header">
         <header class="header">
           <a href="landingPage.html" class="logo">UpStyle</a>
+          <div class="search-details">
+            <div class="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
 
-          <div class="search-bar">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search your Style"
-            />
-            <i class="bx bx-search" id="search-icon"></i>
+            <div class="search-results-popup" id="search-results-popup"></div>
           </div>
+
           <div class="profile">
             <img src="../Images/Avatars/5937172-removebg-preview.png" alt="" />
           </div>
@@ -77,6 +81,9 @@
         <div class="image image3">
           <img src="../Images/adds/hero-8-_1_..webp" alt="" class="slide" />
         </div>
+        <div class="image image3">
+          <img src="../Images/adds/hero-10-_1_..jpg" alt="" class="slide" />
+        </div>
       </div>
       <button class="button left-button">
         <i class="bx bx-chevron-left left"></i></button
@@ -87,7 +94,6 @@
     <button id="scrollToTopBtn" title="Go to top">
       <i class="bx bx-up-arrow"></i>
     </button>
-
 
     <div id="pro-contain">
       <h1>Feature Products</h1>
@@ -118,10 +124,7 @@
                   <a href="#" title="Add to Wishlist"
                     ><i class="bx bx-heart wishlist"></i
                   ></a>
-                  <a
-                    href=""
-                    method="GET"
-                    title="Add to cart"
+                  <a href="" method="GET" title="Add to cart"
                     ><i class="bx bxs-cart-add cart1"></i
                   ></a>
                 </div>
