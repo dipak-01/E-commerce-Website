@@ -11,7 +11,7 @@ const signup = async (req, res) => {
       "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744789110834/photo_4_2023-09-09_02-38-45.jpg",
       "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745116258404/photo_5_2023-09-09_02-38-45.jpg",
       "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745548275792/photo_6_2023-09-09_02-38-45.jpg",
-    ] ;
+    ];
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -42,7 +42,7 @@ const login = async (req, res) => {
         res.cookie("userId", user._id, {
           httpOnly: false,
           sameSite: "none",
-          secure: true,
+          //secure: true,
         });
         console.log("User Successfully Logged In...");
         res.status(200).json({ message: "Successfully Logged In" });
@@ -336,6 +336,25 @@ const viewprofile = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  const userId = req.cookies.userId;
+  try {
+    if (req.cookies.userId) {
+      const deletedUser = await User.findOneAndDelete({ _id: userId });
+      if (deletedUser) {
+        res.clearCookie("userId");
+        res.status(200).send("Account Deleted !");
+      } else {
+        res.status(404).send("User not found");
+      }
+    } else {
+      res.status(400).send("Please Login First...");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -349,4 +368,5 @@ module.exports = {
   getWishList,
   removeFromWishList,
   viewprofile,
+  deleteUser,
 };
