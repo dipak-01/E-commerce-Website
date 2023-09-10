@@ -129,7 +129,6 @@
 //     .then((data) => {
 //       // Display fetched user profile data
 
-
 //       document.querySelector("#addr1Input").textContent = data.address1; // Display Address 1
 //       document.querySelector("#addr2Input").textContent = data.address2; // Display Address 2
 //     })
@@ -147,7 +146,9 @@ function fetchUserProfile() {
       return res.json();
     })
     .then((data) => {
+      console.log(data);
       // Display fetched user profile data
+      document.querySelector(".avatar img").src = data.avatarUrl;
       document.querySelector(".firstName").textContent = data.firstName;
       document.querySelector(".lastName").textContent = data.lastName;
       document.querySelector("#firstNameInput").value = data.firstName;
@@ -155,8 +156,8 @@ function fetchUserProfile() {
       document.querySelector("#emailInput").textContent = data.email;
       document.querySelector(".email").textContent = data.email;
       document.querySelector("#phoneInput").textContent = data.phone;
-      document.querySelector("#addr1Input").value = data.address1;
-      document.querySelector("#addr2Input").value = data.address2;
+      document.querySelector("#addr1").value = data.addrs1;
+      document.querySelector("#addr2").value = data.addrs2;
     })
     .catch((err) => {
       console.log(err);
@@ -184,16 +185,15 @@ document
     e.preventDefault();
 
     // Collect data from the form
-    const newFirstName = document.querySelector("#firstNameInput").value;
-    const newLastName = document.querySelector("#lastNameInput").value;
-    const newEmail = document.querySelector("#emailInput").textContent;
-    const newPhone = document.querySelector("#phoneInput").textContent;
-    const newAddress1 = document.querySelector("#addr1Input").textContent;
-    const newAddress2 = document.querySelector("#addr2Input").textContent;
+    const firstName = document.querySelector("#firstNameInput").value;
+    const lastName = document.querySelector("#lastNameInput").value;
+    const password = document.querySelector("#passwordInput").value;
+    const addrs1 = document.querySelector("#addr1").value;
+    const addrs2 = document.querySelector("#addr2").value;
 
     // Update the displayed data
-    document.querySelector(".firstName").textContent = newFirstName;
-    document.querySelector(".lastName").textContent = newLastName;
+    document.querySelector(".firstName").textContent = firstName;
+    document.querySelector(".lastName").textContent = lastName;
 
     // Hide the form and display the updated data
     document.querySelector(".user-info").style.display = "none";
@@ -202,23 +202,24 @@ document
     document.querySelector("#editProfile").style.display = "block";
 
     // Send the updated data to the server using a fetch request
-    fetch("http://localhost:3000/updateprofile", {
+    fetch("http://localhost:3000/user-update", {
       method: "PUT",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        newFirstName,
-        newLastName,
-
-        newAddress1,
-        newAddress2,
+        firstName,
+        lastName,
+        addrs1,
+        addrs2,
+        password,
       }),
     })
       .then((response) => {
         if (response.ok) {
           console.log("Profile updated successfully.");
+          window.location.href = "profile.html";
         } else {
           console.error("Failed to update profile data.");
         }
@@ -251,4 +252,27 @@ document.querySelector("#editProfile").addEventListener("click", function (e) {
     passwordField.style.display = "none";
     updateButton.style.display = "none";
   }
+});
+
+document.querySelector(".logout").addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("in logout");
+  fetch("http://localhost:3000/user-logout",  {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("user logout successfully.");
+        window.location.href = "landingPage.html";
+      } else {
+        console.error("Failed to logout.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 });

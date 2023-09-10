@@ -616,3 +616,23 @@ p {
     padding: 0 35px;
   }
 }
+.logout{
+  background-color: transparent;
+  padding:0 80px;
+  border-radius: 5px;
+  outline: none;
+   /* border: 1px solid rgb(31, 29, 29); */
+   border: 1px solid #F0F8FF;
+}
+.logout  {
+  border: none;
+}
+.logout a{
+  border: none;
+  border: 1px solid #F0F8FF;
+  padding: 90px;
+}
+.logout2{
+  border: 1px solid #F0F8FF;
+  outline: none;
+}

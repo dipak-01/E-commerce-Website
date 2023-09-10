@@ -360,15 +360,19 @@ const deleteUser = async (req, res) => {
 const update = async(req,res) => {
   const userId = req.cookies.userId;
   const {firstName,lastName,addrs1,addrs2,password} = req.body;
+  console.log({firstName,lastName,addrs1,addrs2,password});
   try {
     if (req.cookies.userId) {
-      const user = await User.find(userId);
+      console.log(req.cookies.userId);
+      const user = await User.findById(userId );
+      console.log(user);
       if (user) {
         user.firstName = firstName;
         user.lastName = lastName;
         user.addrs1 = addrs1;
         user.addrs2 = addrs2;
         user.password = password;
+        await user.save();
         res.status(200).send("Details Updated");
       } else {
         res.status(404).send("User not found");
