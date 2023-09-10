@@ -357,6 +357,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const update = async(req,res) => {
+  const userId = req.cookies.userId;
+  const {firstName,lastName,addrs1,addrs2,password} = req.body;
+  try {
+    if (req.cookies.userId) {
+      const user = await User.find(userId);
+      if (user) {
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.addrs1 = addrs1;
+        user.addrs2 = addrs2;
+        user.password = password;
+        res.status(200).send("Details Updated");
+      } else {
+        res.status(404).send("User not found");
+      }
+    } else {
+      res.status(400).send("Please Login First...");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 module.exports = {
   signup,
   login,
@@ -371,4 +395,5 @@ module.exports = {
   removeFromWishList,
   viewprofile,
   deleteUser,
+  update,
 };
