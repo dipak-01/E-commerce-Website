@@ -42,7 +42,7 @@ const login = async (req, res) => {
         res.cookie("userId", user._id, {
           httpOnly: false,
           sameSite: "none",
-          //secure: true,
+          secure: true,
         });
         console.log("User Successfully Logged In...");
         res.status(200).json({ message: "Successfully Logged In" });
@@ -324,8 +324,10 @@ const removeFromWishList = async (req, res) => {
 const viewprofile = async (req, res) => {
   try {
     if (req.cookies.userId) {
+      console.log(req.cookies.userId);
       console.log("User is Present...");
       const user = await User.findById(req.cookies.userId);
+      console.log(user);
       res.send(user);
     } else {
       console.log("Please Login...");

@@ -84,13 +84,21 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #000000;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 900;
   margin-right: 2px;
+  /* border: 1px solid black; */
+  padding: 6px;
+   
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif, Geneva, Tahoma, sans-serif;
 }
-
+.logo-image{
+  position: absolute;
+  height: 50px;
+  width: 140px;
+}
 .nav-item {
   position: relative;
   color: #000000;
@@ -1051,3 +1059,4 @@ li {
   scale: 1.1;
   transition: 0.2s ease-in-out;
 }
+ 
