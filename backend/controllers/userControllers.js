@@ -5,12 +5,12 @@ const signup = async (req, res) => {
   try {
     console.log(req.body);
     let avatarUrl = [
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743195275355/photo_1_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743417569470/photo_2_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744419999784/photo_3_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744789110834/photo_4_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745116258404/photo_5_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745548275792/photo_6_2023-09-09_02-38-45.jpg",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735476621373/5937171-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735715684454/5937172-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735942180864/5937173-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736130932878/5937174-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736378384426/5937175-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736634241054/5937176-removebg-preview.png",
     ];
     function getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -42,7 +42,7 @@ const login = async (req, res) => {
         res.cookie("userId", user._id, {
           httpOnly: false,
           sameSite: "none",
-          //secure: true,
+          secure: true,
         });
         console.log("User Successfully Logged In...");
         res.status(200).json({ message: "Successfully Logged In" });
@@ -102,7 +102,7 @@ const addToCartOnly = async (req, res) => {
     }
 
     // Save the user's updated cart
-    await user.save();
+      await user.save();
     res.status(200).send("Product added to cart successfully");
   } catch (err) {
     console.error(err);
