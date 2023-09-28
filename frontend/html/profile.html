@@ -88,7 +88,6 @@
     <!-- PROFILE SECTION -->
 
     <div class="profile-container">
-      <!-- <main> -->
       <div class="top-redirect">
         <ul>
           <li>Home</li>
@@ -99,34 +98,25 @@
       <div class="profile-page">
         <div class="profile left">
           <div class="avatar">
-            <img src="../Images/hero.png" alt="" />
-            <h2>Jon Dave</h2>
-            <p>JD360@gmail.com</p>
+            <img class="avatar" src="" alt="avatar" />
+            <h2 class="firstName">John</h2>
+            <p class="lastName">Doe</p>
+            <p class="email">johndoe@example.com</p>
           </div>
           <div class="other-details">
             <ul>
               <li>
-                <a href="">Accounts <span></span></a>
+                <a href="#">Accounts <span></span></a>
               </li>
               <li>
-                <a href="">Change Password <span></span></a>
+                <a href="#" id="editProfile">Edit Profile</a>
               </li>
               <li>
-                <a href="">Checkout Details <span></span></a>
-              </li>
-              <li>
-                <a href=""> My Order<span></span></a>
-              </li>
-              <li>
-                <a href="">Delete Account <span></span></a>
-              </li>
-              <li>
-                <a href="">Logout<span></span></a>
+                <button class="logout"><a class="logout2" >Logout</a></button>
               </li>
             </ul>
           </div>
         </div>
-
         <div class="profile-details right">
           <h2>ACCOUNT</h2>
           <div class="user-details">
@@ -134,71 +124,58 @@
               <div class="inline">
                 <div class="form-grp Fname">
                   <label for="">First Name</label>
-                  <input type="text" name="fname" />
+                  <!-- Input field for First Name -->
+                  <input
+                    class="firstName"
+                    id="firstNameInput"
+                    type="text"
+                    name="fname"
+                  />
                 </div>
                 <div class="form-grp Lname">
                   <label for="">Last Name</label>
-                  <input type="text" name="lname" />
+                  <!-- Input field for Last Name -->
+                  <input
+                    class="lastName"
+                    id="lastNameInput"
+                    type="text"
+                    name="lname"
+                  />
                 </div>
               </div>
-              <div class="form-grp country">
-                <label for="">Country</label>
-                <select name="" id="">
-                  <option value="">--Select Your Country</option>
-                  <option value="">India</option>
-                  <option value="">Sri Lanka</option>
-                  <option value="">Bangladesh</option>
-                  <option value="">Pakistan</option>
-                </select>
-              </div>
-
               <div class="form-grp address">
                 <label for="">Address 1</label>
-                <textarea name="address" id="" rows="5"></textarea>
+                <textarea id="addr1" name="address" id="" rows="5"></textarea>
               </div>
               <div class="form-grp address">
                 <label for="">Address 2</label>
-                <textarea name="address" id="" rows="5"></textarea>
+                <textarea id="addr2" name="address" id="" rows="5"></textarea>
               </div>
               <div class="inline">
                 <div class="form-grp email">
-                  <label for="">Email </label>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    name="email"
-                  />
-                </div>
-                <div class="form-grp password">
-                  <label for="">Password </label>
-                  <input
-                    type="password"
-                    placeholder="Create password"
-                    required
-                    name="password"
-                  />
+                  <label for="">Email : </label>
+                  <!-- Display email using a <p> element -->
+                  <p name="email" id="emailInput"></p>
                 </div>
               </div>
               <div class="form-grp Contact">
-                <label for="">Contact #</label>
-                <input
-                  type="tel"
-                  placeholder="Enter Phone Number"
-                  maxlength="10"
-                  required
-                  name="phone"
-                />
+                <label for="">Contact </label>
+                <!-- Display phone using a <p> element -->
+                <p name="phone" id="phoneInput"></p>
+              </div>
+              <div class="form-grp password" style="display: none">
+                <!-- Hidden password field -->
+                <label for="">Password</label>
+                <!-- Input field for Password -->
+                <input id="passwordInput" type="password" name="password" />
               </div>
               <div class="update">
-                <button>Update</button>
+                <button id="updateProfile" style="display: none">Update</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-
-      <!-- </main> -->
     </div>
 
     <section>
@@ -279,6 +256,6 @@
       </footer>
     </section>
 
-    <script src="../scripts/landingPage.js"></script>
+    <script src="../scripts/profile.js"></script>
   </body>
 </html>
