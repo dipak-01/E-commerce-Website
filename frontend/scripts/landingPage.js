@@ -325,16 +325,40 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
+   
+    // console.log(productId);
+    // const resultItem = document.createElement("div");
+    // resultItem.classList.add("result-item");
+    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
+    // const titleLink = document.createElement("a");
+    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
+    // resultItem.appendChild(titleLink);
+    // titleLink.textContent = result.title;
+    // searchResultsPopup.appendChild(resultItem);
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
-    resultItem.textContent = result.title; // Replace with the appropriate property from your API response
+
+    // Create an anchor tag for the result item
+    const resultLink = document.createElement("a");
+    resultLink.href = `product.html?id=${result._id}`; // Replace with the appropriate URL from your API response
+
+    // Create a span for the title and set its text content
+    const titleSpan = document.createElement("span");
+    titleSpan.textContent = result.title; // Replace with the appropriate property from your API response
+
+    // Append the title span to the anchor tag
+    resultLink.appendChild(titleSpan);
+
+    // Append the anchor tag to the result item
+    resultItem.appendChild(resultLink);
+
     searchResultsPopup.appendChild(resultItem);
   });
 
   // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
-
+searchResultsPopup.style.display = "none"
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
@@ -510,3 +534,5 @@ async function WishlistArray() {
     console.error(err);
   }
 }
+
+ 

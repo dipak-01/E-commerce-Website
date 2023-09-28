@@ -24,8 +24,8 @@
       <header class="header">
         <header class="header">
           <a href="landingPage.html" class="logo">UpStyle</a>
-          <div class="search-details">
-            <div class="search-bar">
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
               <input
                 type="text"
                 id="search-input"
@@ -33,8 +33,9 @@
               />
               <i class="bx bx-search" id="search-icon"></i>
             </div>
-
-            <div class="search-results-popup" id="search-results-popup"></div>
+            <div class="insidesearch">
+              <div class="search-results-popup" id="search-results-popup" style="display: none;"></div>
+            </div>
           </div>
 
           <div class="profile">
@@ -84,14 +85,18 @@
           <img src="../Images/adds/hero-8-_1_..webp" alt="" class="slide" />
         </div>
         <div class="image image3">
-          <img src="../Images/adds/hero-10-_1_.(1).webp " alt="" class="slide" />
+          <img
+            src="../Images/adds/hero-10-_1_.(1).webp "
+            alt=""
+            class="slide"
+          />
         </div>
+        <button class="button left-button">
+          <i class="bx bx-chevron-left left"></i></button
+        ><button class="button right-button">
+          <i class="bx bx-chevron-right right"></i>
+        </button>
       </div>
-      <button class="button left-button">
-        <i class="bx bx-chevron-left left"></i></button
-      ><button class="button right-button">
-        <i class="bx bx-chevron-right right"></i>
-      </button>
     </section>
     <button id="scrollToTopBtn" title="Go to top">
       <i class="bx bx-up-arrow"></i>
@@ -203,9 +208,7 @@
         />
       </div>
     </section>
-    <div>
-      <img src="../Images/icons8-cart-ios-16 (1)/icons8-heart-32.png" alt="" />
-    </div>
+    
     <section>
       <div class="explore_all">
         <div class="explore">
