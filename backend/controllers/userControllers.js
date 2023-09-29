@@ -44,6 +44,11 @@ const login = async (req, res) => {
           sameSite: "none",
           secure: true,
         });
+        res.cookie("avatarUrl", user.avatarUrl, {
+          httpOnly: false,
+          sameSite: "none",
+          secure: true,
+        });
         console.log("User Successfully Logged In...");
         res.status(200).json({ message: "Successfully Logged In" });
       }
@@ -61,6 +66,7 @@ const logout = async (req, res) => {
       // User is logged in, so we can proceed with logging them out
 
       res.clearCookie("userId");
+      res.clearCookie("avatarUrl");
       console.log("Cookie Cleared");
       res.send("Successfully Logged Out");
     } else {
