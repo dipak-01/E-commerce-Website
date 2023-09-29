@@ -39,7 +39,11 @@
               <i class="bx bx-search" id="search-icon"></i>
             </div>
             <div class="insidesearch">
-              <div class="search-results-popup" id="search-results-popup" style="display: none;"></div>
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
             </div>
           </div>
 
@@ -132,7 +136,7 @@
 
         <!-- PRODUCTS -->
 
-        <section id="products-dum"  >
+        <section id="products-dum">
           <div class="products">
             <div class="product-img">
               <img
@@ -183,7 +187,7 @@
             <!-- <div class="coupon-tag"></div> -->
             <div class="coupon-icon"><i class="uil uil-tag-alt"></i></div>
             <div class="apply-container">
-              <div class="coupon-tag  ">Apply Coupons</div>
+              <div class="coupon-tag">Apply Coupons</div>
               <div class="apply clickable"><button>Apply</button></div>
             </div>
           </div>
@@ -196,21 +200,22 @@
           <div class="breakdown-tag"><strong> CART BREAKDOWN</strong></div>
           <div class="mrp price-details">
             <div>Total MRP</div>
-            <div>₹2000</div>
+            <span>₹ <span id="totalMrpValue">NULL</span></span>
           </div>
           <div class="discount price-details">
             <div>Discount on MRP</div>
-            <div>-₹200</div>
+            <span>₹ <span id="discountPrice">NULL</span></span>
           </div>
           <div class="delivery-charges price-details">
             <div>Convenience Fee</div>
-            <div>₹99</div>
+            <span>₹<span id="convenienceFee">NULL</span></span>
+          </div>
+          <div class="amount">
+            <div>Total Amount</div>
+            <span>₹ <span id="totalamt">NULL</span></span>
           </div>
         </div>
-        <div class="amount">
-          <div>Total Amount</div>
-          <div>₹2000</div>
-        </div>
+
         <div class="pay">
           <button class="clickable">PAY NOW</button>
         </div>

@@ -357,6 +357,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
+
 // Event listener to handle search when clicking the search icon
 searchIcon.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent the default behavior of the click event
@@ -365,3 +366,4 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+ 

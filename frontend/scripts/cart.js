@@ -1,4 +1,3 @@
-console.log("wor");
 let totalMrp = 0;
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
@@ -21,11 +20,12 @@ const productCardGenerator = (x) => {
           .then((res2) => res2.json())
           .then((data2) => {
             console.log(data2);
+            totalMrp += data2.price * data[i].quantity;
             let productCard = createProductCard(data2, data[i], objId);
             x.insertAdjacentHTML("beforeend", productCard);
             element.style.display = "none";
             element1.style.display = "none";
-            logTotal();
+            updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee);
           });
       }
     });
@@ -44,8 +44,8 @@ console.log("2");
 
 function createProductCard(data2, data, objId) {
   console.log("3");
-  totalMrp = totalMrp + data2.price;
-
+  totalMrp = totalMrp + data2.price * data.quantity;
+  console.log(totalMrp);
   return `
   <div class="products"  data-objid="${objId}">
     <div class="product-img">
@@ -76,7 +76,6 @@ function createProductCard(data2, data, objId) {
     </div> 
     </div>
   </div>`;
-  logTotal();
 }
 
 let x = document.getElementById("products");
@@ -142,16 +141,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-   
-    // console.log(productId);
-    // const resultItem = document.createElement("div");
-    // resultItem.classList.add("result-item");
-    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    // const titleLink = document.createElement("a");
-    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
-    // resultItem.appendChild(titleLink);
-    // titleLink.textContent = result.title;
-    // searchResultsPopup.appendChild(resultItem);
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
@@ -175,7 +164,7 @@ function displaySearchResults(results) {
   // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
-searchResultsPopup.style.display = "none"
+searchResultsPopup.style.display = "none";
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
@@ -208,3 +197,18 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+
+const discountPrice = 2000;
+const convenienceFee = 100;
+
+function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
+  // Display the updated total MRP value in the HTML element
+  const totalMrpValueElement = document.getElementById("totalMrpValue");
+  const discountElement = document.getElementById("discountPrice");
+  const feeElement = document.getElementById("convenienceFee");
+  const totalAmt = document.getElementById("totalamt");
+  totalMrpValueElement.textContent = totalMrp.toFixed(2);
+  discountElement.textContent = discountPrice;
+  feeElement.textContent = convenienceFee;
+  totalAmt.textContent = totalMrp.toFixed(2)-discountPrice-convenienceFee;
+}

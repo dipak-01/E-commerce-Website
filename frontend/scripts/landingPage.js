@@ -1,3 +1,59 @@
+// if (checkUserLoggedIn()) {
+//   // User is logged in, you can show relevant content
+//   console.log("User is logged in");
+//   // Add your code to show logged-in content or perform actions here
+// } else {
+//   // User is not logged in, you can show a login form or other appropriate content
+//   console.log("User is not logged in");
+//   // Add your code to show the login form or perform actions here
+// }
+// console.log(`Cookies: ${decodeURIComponent(document.cookie)}`);
+
+// Get the value of the "userId" cookie
+// function getCookie(name) {
+//   const cookieValue = document.cookie
+//     .split('; ')
+//     .find(cookie => cookie.startsWith(`${name}= `));
+
+//   if (cookieValue) {
+//     return decodeURIComponent(cookieValue.split('=')[1]);
+//   } else {
+//     return null; // Cookie not found
+//   }
+// }
+
+// const userId = getCookie("userId");
+
+// if (userId) {
+//   console.log(`User ID: ${userId}`);
+// } else {
+//   console.log("User ID cookie not found.");
+// }
+
+// // Get the value of the "avatarUrl" cookie
+// const avatarUrlCookie = document.cookie.match(/avatarUrl=([^;]+)/);
+// let avatarUrl = null;
+
+// if (avatarUrlCookie) {
+//   avatarUrl = decodeURIComponent(avatarUrlCookie[1]); // Decode the URL-encoded value
+//   console.log(`Avatar URL: ${avatarUrl}`);
+// } else {
+//   console.log("Avatar URL cookie not found.");
+// }
+// Get the values from cookies
+// const encodedAvatarUrl = getCookie("avatarUrl");
+const cook=document.cookie
+console.log(cook);
+// const encodedUserId = getCookie("userId");
+// console.log(encodedUserId);
+// // Decode the values
+// const avatarUrl = decodeURIComponent(encodedAvatarUrl);
+// const userId = decodeURIComponent(encodedUserId);
+
+// // Now you can use these decoded values
+// console.log("Decoded Avatar URL:", avatarUrl);
+// console.log("Decoded User ID:", userId);
+
 const imageUrls = [
   "../Images/models/model1 (1).webp",
   "../Images/models/model1 (2).webp",
@@ -452,7 +508,7 @@ function toggleWishlist(productId) {
     wishlistIcon.style.color = "red";
   }
 }
-
+console.log("fi");
 function setColorBasedOnWishlistData() {
   wishlistData.forEach((item) => {
     const productId = item.itemId;
@@ -534,33 +590,31 @@ async function WishlistArray() {
   }
 }
 
-function checkUserLoggedIn() {
-  const userIdCookie = getCookie("userId");
-  if (userIdCookie) {
-    // User is logged in
-    return true;
-  } else {
-    // User is not logged in
-    return false;
-  }
-}
+// function checkUserLoggedIn() {
+//   console.log("inside checkuserlogin");
+//   const userIdCookie = getCookiee("userId");
+//   console.log(userIdCookie);
+//   if (userIdCookie) {
+//     // User is logged in
+//     return true;
+//   } else {
+//     // User is not logged in
+//     return false;
+//   }
+// }
 
-function getCookie(cookieName) {
-  const cookies = document.cookie.split('; ');
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].split('=');
-    if (cookie[0] === cookieName) {
-      return decodeURIComponent(cookie[1]);
-    }
-  }
-  return null;
-}
-if (checkUserLoggedIn()) {
-  // User is logged in, you can show relevant content
-  console.log("User is logged in");
-  // Add your code to show logged-in content or perform actions here
-} else {
-  // User is not logged in, you can show a login form or other appropriate content
-  console.log("User is not logged in");
-  // Add your code to show the login form or perform actions here
-}
+// function getCookiee(cookieName) {
+//   return document.cookie.userId;
+// }
+// function getCookie(cookieName) {
+//   const cookies = document.cookie.split("; ");
+//   for (let i = 0; i < cookies.length; i++) {
+//     const cookie = cookies[i].split("=");
+//     if (cookie[0] === cookieName) {
+//       return decodeURIComponent(cookie[1]);
+//     }
+//   }
+//   return null;
+// }
+
+// Get the value of the "userID" cookie
