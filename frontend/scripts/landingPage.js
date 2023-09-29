@@ -1,58 +1,14 @@
-// if (checkUserLoggedIn()) {
-//   // User is logged in, you can show relevant content
-//   console.log("User is logged in");
-//   // Add your code to show logged-in content or perform actions here
-// } else {
-//   // User is not logged in, you can show a login form or other appropriate content
-//   console.log("User is not logged in");
-//   // Add your code to show the login form or perform actions here
-// }
-// console.log(`Cookies: ${decodeURIComponent(document.cookie)}`);
-
-// Get the value of the "userId" cookie
-// function getCookie(name) {
-//   const cookieValue = document.cookie
-//     .split('; ')
-//     .find(cookie => cookie.startsWith(`${name}= `));
-
-//   if (cookieValue) {
-//     return decodeURIComponent(cookieValue.split('=')[1]);
-//   } else {
-//     return null; // Cookie not found
-//   }
-// }
-
-// const userId = getCookie("userId");
-
-// if (userId) {
-//   console.log(`User ID: ${userId}`);
-// } else {
-//   console.log("User ID cookie not found.");
-// }
-
-// // Get the value of the "avatarUrl" cookie
-// const avatarUrlCookie = document.cookie.match(/avatarUrl=([^;]+)/);
-// let avatarUrl = null;
-
-// if (avatarUrlCookie) {
-//   avatarUrl = decodeURIComponent(avatarUrlCookie[1]); // Decode the URL-encoded value
-//   console.log(`Avatar URL: ${avatarUrl}`);
-// } else {
-//   console.log("Avatar URL cookie not found.");
-// }
-// Get the values from cookies
-// const encodedAvatarUrl = getCookie("avatarUrl");
-const cook=document.cookie
-console.log(cook);
-// const encodedUserId = getCookie("userId");
-// console.log(encodedUserId);
-// // Decode the values
-// const avatarUrl = decodeURIComponent(encodedAvatarUrl);
-// const userId = decodeURIComponent(encodedUserId);
-
-// // Now you can use these decoded values
-// console.log("Decoded Avatar URL:", avatarUrl);
-// console.log("Decoded User ID:", userId);
+fetch("http://localhost:3000/user-status", {
+  method: "get",
+  credentials: "include",
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const imageUrls = [
   "../Images/models/model1 (1).webp",

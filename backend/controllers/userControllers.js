@@ -1,6 +1,35 @@
 const User = require("../models/userModel");
 const Product = require("../models/productModel");
 
+const status = async(req,res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const user = await User.findById(req.cookies.userId);
+      const data = {
+        status : true,
+        avatarUrl : user.avatarUrl
+      }; 
+      let result = JSON.stringify(data);
+      console.log(result);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(result);
+    } else {
+      console.log("cookie not found");
+      const data = {
+        status : false,
+        avatarUrl : null
+      }; 
+      let result = JSON.stringify(data);
+      console.log(result);
+      res.setHeader('Content-Type', 'application/json');
+      res.send(result);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const signup = async (req, res) => {
   try {
     console.log(req.body);
@@ -41,12 +70,7 @@ const login = async (req, res) => {
       } else {
         res.cookie("userId", user._id, {
           httpOnly: false,
-          sameSite: "none",
-          secure: true,
-        });
-        res.cookie("avatarUrl", user.avatarUrl, {
-          httpOnly: false,
-          sameSite: "none",
+          sameSite: "None",
           secure: true,
         });
         console.log("User Successfully Logged In...");
@@ -58,15 +82,12 @@ const login = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-};
+};``
 
 const logout = async (req, res) => {
   try {
     if (req.cookies.userId) {
-      // User is logged in, so we can proceed with logging them out
-
       res.clearCookie("userId");
-      res.clearCookie("avatarUrl");
       console.log("Cookie Cleared");
       res.send("Successfully Logged Out");
     } else {
@@ -108,7 +129,7 @@ const addToCartOnly = async (req, res) => {
     }
 
     // Save the user's updated cart
-      await user.save();
+    await user.save();
     res.status(200).send("Product added to cart successfully");
   } catch (err) {
     console.error(err);
@@ -363,14 +384,14 @@ const deleteUser = async (req, res) => {
   }
 };
 
-const update = async(req,res) => {
+const update = async (req, res) => {
   const userId = req.cookies.userId;
-  const {firstName,lastName,addrs1,addrs2,password} = req.body;
-  console.log({firstName,lastName,addrs1,addrs2,password});
+  const { firstName, lastName, addrs1, addrs2, password } = req.body;
+  console.log({ firstName, lastName, addrs1, addrs2, password });
   try {
     if (req.cookies.userId) {
       console.log(req.cookies.userId);
-      const user = await User.findById(userId );
+      const user = await User.findById(userId);
       console.log(user);
       if (user) {
         user.firstName = firstName;
@@ -389,9 +410,10 @@ const update = async(req,res) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 module.exports = {
+  status,
   signup,
   login,
   logout,
