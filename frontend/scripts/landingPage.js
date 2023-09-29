@@ -325,7 +325,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-   
     // console.log(productId);
     // const resultItem = document.createElement("div");
     // resultItem.classList.add("result-item");
@@ -358,7 +357,7 @@ function displaySearchResults(results) {
   // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
-searchResultsPopup.style.display = "none"
+searchResultsPopup.style.display = "none";
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
@@ -535,4 +534,33 @@ async function WishlistArray() {
   }
 }
 
- 
+function checkUserLoggedIn() {
+  const userIdCookie = getCookie("userId");
+  if (userIdCookie) {
+    // User is logged in
+    return true;
+  } else {
+    // User is not logged in
+    return false;
+  }
+}
+
+function getCookie(cookieName) {
+  const cookies = document.cookie.split('; ');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].split('=');
+    if (cookie[0] === cookieName) {
+      return decodeURIComponent(cookie[1]);
+    }
+  }
+  return null;
+}
+if (checkUserLoggedIn()) {
+  // User is logged in, you can show relevant content
+  console.log("User is logged in");
+  // Add your code to show logged-in content or perform actions here
+} else {
+  // User is not logged in, you can show a login form or other appropriate content
+  console.log("User is not logged in");
+  // Add your code to show the login form or perform actions here
+}

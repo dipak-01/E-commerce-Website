@@ -43,7 +43,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.4rem 10%;
+  padding: 1.4rem 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,6 +51,7 @@ body {
 }
 
 .header::before {
+  position: fixed;
   content: "";
   top: 0;
   left: 0;
@@ -60,10 +61,10 @@ body {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(70px);
   z-index: -1;
-  height: 5rem;
 }
 
 .header::after {
+  position: fixed;
   content: "";
   top: 0;
   left: -100%;
@@ -84,12 +85,23 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #000000;
   text-decoration: none;
-  font-weight: 700;
-}
+  font-weight: 900;
+  margin-right: 2px;
+  /* border: 1px solid black; */
+  padding: 6px;
 
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif, "Arial Narrow", Arial, sans-serif, Geneva,
+    Tahoma, sans-serif;
+}
+.logo-image {
+  position: absolute;
+  height: 50px;
+  width: 140px;
+}
 .nav-item {
   position: relative;
   color: #000000;
@@ -108,8 +120,8 @@ body {
 
 .icons {
   position: absolute;
-  right: 5%;
-  font-size: 2.3rem;
+  left: 2%;
+  font-size: 2rem;
   color: #000000;
   cursor: pointer;
   display: none;
@@ -119,7 +131,7 @@ body {
   display: none;
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 1310px) {
   .icons {
     display: inline-flex;
   }
@@ -169,6 +181,14 @@ body {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(0.15s * var(--i));
+  }
+  .search-details {
+    display: flex;
+    width: 600px;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    width: 120%;
   }
 }
 
@@ -230,11 +250,13 @@ body {
 
   .search-bar input {
     width: 100%;
-    /* max-width: 300px; */
-    /* Set the maximum width for the search input */
   }
+
   .search-bar i {
     margin-left: 0; /* Remove left margin for the search icon */
+  }
+  .search-results-popup {
+    width: 100%;
   }
 }
 .search-bar i {
@@ -242,7 +264,7 @@ body {
 }
 
 .search-bar {
-  flex-grow: 1; /* Allow the search bar to take up available space */
+  /* Allow the search bar to take up available space */
   display: flex;
   align-items: center;
   margin: 0 1.5rem; /* Adjust margin as needed */
@@ -250,7 +272,7 @@ body {
   border: 1px solid #111010;
   border-radius: 5px;
   padding: 5px 10px;
-  max-width: 400px;
+  /* max-width: 500px; */
   color: black;
 }
 
@@ -267,7 +289,95 @@ body {
   color: #000;
   cursor: pointer;
 }
+.search-details {
+  position: relative;
+  display: grid;
+  margin-right: 3px;
+}
 
+/* Search results popup styles */
+.search-results-popup {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 40;
+  background-color: #f5f5f5;
+  text-align: left;
+  border-radius: 0 0px 10px 0;
+  border: 1px solid #7c7c7c;
+  height: 500px;
+  top: 100%;
+  border-top: none;
+  width: 80%;
+}
+.result-item {
+  padding: 10px;
+  color: black;
+}
+.result-item span {
+  color: black;
+}
+.insidesearch {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 24px;
+}
+.search-results-popup::-webkit-scrollbar {
+  width: 0.1rem; /* Set the width to a very thin value */
+}
+
+/* Optionally, you can style the scrollbar track and thumb */
+.search-results-popup::-webkit-scrollbar-track {
+  background: transparent; /* Make the scrollbar track transparent */
+}
+
+.search-results-popup::-webkit-scrollbar-thumb {
+  background: transparent; /* Make the scrollbar thumb transparent */
+}
+@media (max-width: 520px) {
+  .search-details {
+    position: static;
+    display: grid;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    top: 100%;
+    left: 0;
+    text-align: justify;
+    border-radius: 0 0px 10px 10px;
+
+    width: 100%;
+  }
+  .result-item {
+    padding-left: 20px;
+    color: black;
+  }
+}
+.log {
+  display: none;
+}
+.profilee {
+  position: fixed;
+  background-color: #f45b69;
+  border: 1px solid #000;
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 99;
+  right: 16px;
+  cursor: pointer;
+}
+.profilee img {
+  width: 100%;
+  /* height: auto; */
+  /* object-fit: cover; */
+  overflow: hidden;
+  /* z-index: -4; */
+}
+.profilee:hover {
+  scale: 1.1;
+  transition: 0.2s ease-in-out;
+}
 #scrollToTopBtn {
   display: none;
   position: fixed;
@@ -635,4 +745,7 @@ p {
 .logout2{
   border: 1px solid #F0F8FF;
   outline: none;
+}
+.log{
+  display: none;
 }

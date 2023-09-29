@@ -352,9 +352,9 @@ body {
     color: black;
   }
 }
-.log {
+ .profile{
   display: none;
-}
+ }
 .profile {
   position: fixed;
   background-color: #f45b69;
