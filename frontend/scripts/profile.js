@@ -38,6 +38,102 @@
 //   })
 //   .then((data) => {
 //     console.log("Received data:", data);
+const productCardGenerator1 = (pro) => {
+  function createProductCard(product) {
+    return `
+      <div class="product">
+      <a href="product.html?id=${product._id}">
+        <img src="${product.imageUrl1}" alt=" product img" />
+        <img id="change" src="${product.imageUrl2}" alt=" product img" />
+        <div class="descr">
+          <span>NIKE</span>
+          <h4>${product.title}</h4>
+          <h5>₹ ${product.price}</h5>
+        </div>
+        <div class="cart">
+        <a  onclick='removeWl("${product._id}")' title="Remove from Wishlist"><i class="bx bx-x wishlist"></i></a>
+        <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+        </div>
+        </a>
+      </div>`;
+  }
+  fetch("http://localhost:3000/wishlist", { credentials: "include" })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.length == 0) {
+        document.getElementById("emptyWish").style.display="block"
+      }
+      for (let i = 0; i < data.length; i++) {
+        let objId = data[i].itemId;
+        console.log(objId);
+        fetch(`http://localhost:3000/product/${objId}`)
+          .then((res2) => res2.json())
+          .then((data2) => {
+            console.log(data2);
+
+            let productCard = createProductCard(data2);
+            pro.insertAdjacentHTML("beforeend", productCard);
+            // element.style.display = "none";
+            // element1.style.display = "none";
+          });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+let pro = document.getElementById("productContainer1");
+productCardGenerator1(pro);
+function removeWl(productId) {
+  console.log("inside func");
+  console.log(`http://localhost:3000/remove/${productId}`);
+  fetch(`http://localhost:3000/removefromwishlist/${productId}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product removed successfully.");
+        location.reload();
+      } else {
+        console.error("Failed to remove product to cart.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+function addToCart(productId) {
+  console.log("in func");
+  fetch(`http://localhost:3000/add-to-cart-only/${productId}`, {
+    method: "PUT",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Product added to cart-only successfully.");
+        colorCart(productId); // Change color after successful addition to cart
+      } else {
+        console.error("Failed to add product to cart-only.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+function colorCart(productId) {
+  console.log("inside color cart");
+  const cartIcon = document.querySelector(`.carting-${productId}`);
+  cartIcon.style.color = "blue";
+}
 
 //     const firstNameElement = document.querySelector("#firstName");
 //     const lastNameElement = document.querySelector("#lastName");
@@ -257,7 +353,7 @@ document.querySelector("#editProfile").addEventListener("click", function (e) {
 document.querySelector(".logout").addEventListener("click", function (e) {
   e.preventDefault();
   console.log("in logout");
-  fetch("http://localhost:3000/user-logout",  {
+  fetch("http://localhost:3000/user-logout", {
     method: "POST",
     credentials: "include",
     headers: {
@@ -299,7 +395,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-   
     // console.log(productId);
     // const resultItem = document.createElement("div");
     // resultItem.classList.add("result-item");
@@ -332,7 +427,7 @@ function displaySearchResults(results) {
   // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
-searchResultsPopup.style.display = "none"
+searchResultsPopup.style.display = "none";
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
@@ -357,7 +452,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-
 // Event listener to handle search when clicking the search icon
 searchIcon.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent the default behavior of the click event
@@ -366,4 +460,40 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
- 
+
+// const productCardGenerator1 = (pro) => {
+//   function createProductCard(product) {
+//     return `
+//       <div class="product">
+//       <a href="product.html?id=${product._id}">
+//         <img src="${product.imageUrl1}" alt=" product img" />
+//         <img id="change" src="${product.imageUrl2}" alt=" product img" />
+//         <div class="descr">
+//           <span>NIKE</span>
+//           <h4>${product.title}</h4>
+//           <h5>₹ ${product.price}</h5>
+//         </div>
+//         <div class="cart">
+
+//         <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
+//         </div>
+//         </a>
+//       </div>`;
+//   }
+//   fetch("http://localhost:3000/getWishList")
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data);
+//       // Generate product cards and append them to the container
+//       data.forEach((item) => {
+//         let productCard = createProductCard(item);
+//         pro.insertAdjacentHTML("beforeend", productCard);
+//       });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
+// let pro = document.getElementById("productContainer1");
+// productCardGenerator1(pro);

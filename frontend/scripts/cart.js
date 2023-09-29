@@ -44,8 +44,7 @@ console.log("2");
 
 function createProductCard(data2, data, objId) {
   console.log("3");
-  totalMrp = totalMrp + data2.price * data.quantity;
-  console.log(totalMrp);
+   
   return `
   <div class="products"  data-objid="${objId}">
     <div class="product-img">
