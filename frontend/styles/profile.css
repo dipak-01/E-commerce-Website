@@ -130,7 +130,7 @@ body {
 #check {
   display: none;
 }
-
+nav  {display:flex}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -150,7 +150,7 @@ body {
 
   .navbar {
     position: absolute;
-
+  display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -191,6 +191,7 @@ body {
     width: 120%;
   }
 }
+
 
 @media (max-width: 850px) {
   .icons {

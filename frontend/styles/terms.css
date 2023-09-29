@@ -130,7 +130,7 @@ body {
 #check {
   display: none;
 }
-
+nav  {display:flex}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -148,9 +148,9 @@ body {
     display: block;
   }
 
-     .navbar {
+  .navbar {
     position: absolute;
-    
+  display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -164,7 +164,6 @@ body {
 
   #check:checked ~ .navbar {
     height: 19.3rem;
-   
   }
 
   .nav-item {
@@ -182,7 +181,6 @@ body {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(0.15s * var(--i));
-    
   }
   .search-details {
     display: flex;
