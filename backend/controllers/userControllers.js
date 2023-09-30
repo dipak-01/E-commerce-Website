@@ -1,28 +1,28 @@
 const User = require("../models/userModel");
 const Product = require("../models/productModel");
 
-const status = async(req,res) => {
+const status = async (req, res) => {
   try {
     if (req.cookies.userId) {
       console.log(req.cookies.userId);
       const user = await User.findById(req.cookies.userId);
       const data = {
-        status : true,
-        avatarUrl : user.avatarUrl
-      }; 
+        status: true,
+        avatarUrl: user.avatarUrl,
+      };
       let result = JSON.stringify(data);
       console.log(result);
-      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Content-Type", "application/json");
       res.send(result);
     } else {
       console.log("cookie not found");
       const data = {
-        status : false,
-        avatarUrl : null
-      }; 
+        status: false,
+        avatarUrl: null,
+      };
       let result = JSON.stringify(data);
       console.log(result);
-      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Content-Type", "application/json");
       res.send(result);
     }
   } catch (err) {
@@ -82,12 +82,16 @@ const login = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-};``
+};
 
 const logout = async (req, res) => {
   try {
     if (req.cookies.userId) {
-      res.clearCookie("userId");
+      res.clearCookie("userId", {
+        httpOnly: false,
+        sameSite: "None",
+        secure: true,
+      });
       console.log("Cookie Cleared");
       res.send("Successfully Logged Out");
     } else {
