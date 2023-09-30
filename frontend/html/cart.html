@@ -23,10 +23,35 @@
   </head>
   <body class="scrollable">
     <section>
+      <!-- <div class="header-poster">
+        <img src="Images/header-border-top.png" alt="" />
+      </div> -->
       <header class="header">
         <header class="header">
-          <a href="landingPage.html" class="logo">UpStyle</a>
-
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
+          <div style="display: none" class="profile">
+            <a href="profile.html"><img src="" alt="" /></a>
+          </div>
+          <div class="search-results">
+            <!-- Search results will be displayed here -->
+          </div>
           <input type="checkbox" id="check" />
           <label for="check" class="icons">
             <i class="bx bx-menu" id="menu-icon"></i>
@@ -35,7 +60,7 @@
 
           <nav class="navbar">
             <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-            <a href="error404.html" class="nav-item" style="--i: 1">About</a>
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
             <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
             <a href="exploreAll.html" class="nav-item" style="--i: 3"
               >Explore all</a
@@ -43,13 +68,14 @@
             <a href="contactUs.html" class="nav-item" style="--i: 4"
               >Contact us</a
             >
-            <a href="login.html" class="nav-item" style="--i: 5"
+            <a href="login.html" class="nav-item log" style="--i: 5"
               ><i class="bx bxs-user navbar-icon"> </i
             ></a>
             <a href="cart.html" class="nav-item" style="--i: 6"
               ><i class="bx bx-shopping-bag navbar-icon"></i
             ></a>
           </nav>
+          <!-- </div> -->
         </header>
       </header>
     </section>
@@ -75,7 +101,7 @@
           <div class="showMore">
             <aside>
               <details>
-                <summary>Show More</summary>
+                <summary class="point">Show More</summary>
                 Get a fantastic 12.5% instant discount when you make any
                 purchase with your Up Style Kotak Credit Card. This exclusive
                 offer is subject to terms and conditions.
@@ -98,7 +124,7 @@
           </div> -->
         <div class="items">
           <div class="items-count">
-            <strong> ITEM(S) IN YOUR CART (2) </strong>
+            <strong> ITEM(S) IN YOUR CART </strong>
           </div>
           <div class="add-items">
             <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
@@ -107,7 +133,7 @@
 
         <!-- PRODUCTS -->
 
-        <section id="products-dum"  >
+        <section id="products-dum">
           <div class="products">
             <div class="product-img">
               <img
@@ -151,7 +177,7 @@
 
       <!-- RIGHT -->
 
-      <div class="right">
+      <div class="right" style="display: none">
         <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
@@ -159,7 +185,7 @@
             <div class="coupon-icon"><i class="uil uil-tag-alt"></i></div>
             <div class="apply-container">
               <div class="coupon-tag">Apply Coupons</div>
-              <div class="apply"><button>Apply</button></div>
+              <div class="apply clickable"><button>Apply</button></div>
             </div>
           </div>
           <div class="coupon-offer">
@@ -167,27 +193,48 @@
           </div>
         </div>
 
-        <div class="breakdown">
+        <div class="breakdown" id="breakdown">
           <div class="breakdown-tag"><strong> CART BREAKDOWN</strong></div>
           <div class="mrp price-details">
             <div>Total MRP</div>
-            <div>₹2000</div>
+            <span>₹ <span id="totalMrpValue">...</span></span>
           </div>
           <div class="discount price-details">
             <div>Discount on MRP</div>
-            <div>-₹200</div>
+            <span>₹ <span id="discountPrice">...</span></span>
           </div>
           <div class="delivery-charges price-details">
             <div>Convenience Fee</div>
-            <div>₹99</div>
+            <span>₹<span id="convenienceFee">...</span></span>
           </div>
-        </div>
-        <div class="amount">
-          <div>Total Amount</div>
-          <div>₹2000</div>
+          <!-- <form action="#"> -->
+          <div class="amount">
+            <div>Total Amount</div>
+            <span>₹ <span id="totalamt">...</span></span>
+          </div>
+
+          <!-- </form> -->
         </div>
         <div class="pay">
-          <button>PAY NOW</button>
+          <form class="pay-form">
+            <input type="hidden" id="myInput" name="amount" value="" />
+            <input
+              type="hidden"
+              id="description"
+              name="description"
+              value="Shoes Buying"
+            />
+            <input type="hidden" id="name" name="name" value="Shoes" />
+            <button
+              id="pay"
+              type="submit"
+              value="Pay Now"
+              style="display: none"
+              class="clickable"
+            >
+              PAY NOW
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -199,8 +246,8 @@
         <div class="container1">
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
-            <a class="li" href="comingSoon.html">Become a Member</a>
-            <a class="li" href="comingSoon.html">Send us Feedback</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -231,7 +278,7 @@
                   >Git-hub Repo</a
                 >
               </li>
-              <li><a class="about" href="#">Creators </a></li>
+              <li><a class="about" href="about.html">Creators </a></li>
             </ul>
           </div>
           <div class="quick_links">
@@ -275,6 +322,84 @@
       src="https://kit.fontawesome.com/d538e6589c.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="../scripts/status.js"></script>
     <script src="../scripts/cart.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var payForms = document.querySelectorAll(".pay-form");
+
+        payForms.forEach(function (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const amount = document.querySelector("#myInput").value;
+            const description = document.querySelector("#description").value;
+            const name = document.querySelector("#name").value;
+
+            var formData = new FormData(form);
+
+            fetch("http://localhost:3000/createOrder", {
+              method: "POST",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                amount,
+                description,
+                name,
+              }),
+            })
+              .then(function (response) {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then(function (res) {
+                if (res.success) {
+                  var options = {
+                    key: res.key_id,
+                    amount: res.amount,
+                    currency: "INR",
+                    name: res.product_name,
+                    description: res.description,
+                    image: "https://dummyimage.com/600x400/000/fff",
+                    order_id: res.order_id,
+                    handler: function (response) {
+                      alert("Payment Succeeded");
+                      window.location.href="landingPage.html"
+                    },
+                    prefill: {
+                      contact: res.contact,
+                      name: res.name,
+                      email: res.email,
+                    },
+                    notes: {
+                      description: res.description,
+                    },
+                    theme: {
+                      color: "#2300a3",
+                    },
+                  };
+                  var razorpayObject = new Razorpay(options);
+                  razorpayObject.on("payment.failed", function (response) {
+                    alert("Payment Failed");
+                  });
+                  razorpayObject.open();
+                } else {
+                  alert(res.msg);
+                }
+              })
+              .catch(function (error) {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+              });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

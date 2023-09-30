@@ -1,17 +1,46 @@
 const User = require("../models/userModel");
 const Product = require("../models/productModel");
 
+const status = async (req, res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const user = await User.findById(req.cookies.userId);
+      const data = {
+        status: true,
+        avatarUrl: user.avatarUrl,
+      };
+      let result = JSON.stringify(data);
+      console.log(result);
+      res.setHeader("Content-Type", "application/json");
+      res.send(result);
+    } else {
+      console.log("cookie not found");
+      const data = {
+        status: false,
+        avatarUrl: null,
+      };
+      let result = JSON.stringify(data);
+      console.log(result);
+      res.setHeader("Content-Type", "application/json");
+      res.send(result);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const signup = async (req, res) => {
   try {
     console.log(req.body);
     let avatarUrl = [
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743195275355/photo_1_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813743417569470/photo_2_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744419999784/photo_3_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813744789110834/photo_4_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745116258404/photo_5_2023-09-09_02-38-45.jpg",
-      "https://cdn.discordapp.com/attachments/1145284931921125431/1149813745548275792/photo_6_2023-09-09_02-38-45.jpg",
-    ] ;
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735476621373/5937171-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735715684454/5937172-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537735942180864/5937173-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736130932878/5937174-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736378384426/5937175-removebg-preview.png",
+      "https://cdn.discordapp.com/attachments/1142746103029174274/1150537736634241054/5937176-removebg-preview.png",
+    ];
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -41,7 +70,7 @@ const login = async (req, res) => {
       } else {
         res.cookie("userId", user._id, {
           httpOnly: false,
-          sameSite: "none",
+          sameSite: "None",
           secure: true,
         });
         console.log("User Successfully Logged In...");
@@ -58,9 +87,11 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   try {
     if (req.cookies.userId) {
-      // User is logged in, so we can proceed with logging them out
-
-      res.clearCookie("userId");
+      res.clearCookie("userId", {
+        httpOnly: false,
+        sameSite: "None",
+        secure: true,
+      });
       console.log("Cookie Cleared");
       res.send("Successfully Logged Out");
     } else {
@@ -324,8 +355,10 @@ const removeFromWishList = async (req, res) => {
 const viewprofile = async (req, res) => {
   try {
     if (req.cookies.userId) {
+      console.log(req.cookies.userId);
       console.log("User is Present...");
       const user = await User.findById(req.cookies.userId);
+      console.log(user);
       res.send(user);
     } else {
       console.log("Please Login...");
@@ -336,7 +369,87 @@ const viewprofile = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  const userId = req.cookies.userId;
+  try {
+    if (req.cookies.userId) {
+      const deletedUser = await User.findOneAndDelete({ _id: userId });
+      if (deletedUser) {
+        res.clearCookie("userId");
+        res.status(200).send("Account Deleted !");
+      } else {
+        res.status(404).send("User not found");
+      }
+    } else {
+      res.status(400).send("Please Login First...");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const update = async (req, res) => {
+  const userId = req.cookies.userId;
+  const { firstName, lastName, addrs1, addrs2, password } = req.body;
+  console.log({ firstName, lastName, addrs1, addrs2, password });
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const user = await User.findById(userId);
+      console.log(user);
+      if (user) {
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.addrs1 = addrs1;
+        user.addrs2 = addrs2;
+        user.password = password;
+        await user.save();
+        res.status(200).send("Details Updated");
+      } else {
+        res.status(404).send("User not found");
+      }
+    } else {
+      res.status(400).send("Please Login First...");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const clearCart = async (req, res) => {
+  try {
+    const userId = req.cookies.userId;
+    console.log(userId);
+    const user = await User.findById(userId);
+    user.orderPlaced = user.cart;
+    user.cart = null;
+    await user.save();
+    res.status(200).send("Cart Cleared");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const orderPlaced = async(req,res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const id = req.cookies.userId;
+      const result = await User.findById(id);
+      console.log(result);
+      const data = result.orderPlaced;
+      res.send(data);
+    } else {
+      console.log("cookie not found");
+      res.send(req.cookies);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
+  status,
   signup,
   login,
   logout,
@@ -349,4 +462,8 @@ module.exports = {
   getWishList,
   removeFromWishList,
   viewprofile,
+  deleteUser,
+  update,
+  clearCart,
+  orderPlaced,
 };

@@ -72,3 +72,49 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
       console.error("There was a problem with the fetch operation:", error);
     });
 });
+
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the default form submission
+  
+  // Get the input field values
+  const inputFirstNameValue = document.getElementById("inputFirstName").value;
+  const inputLastNameValue = document.getElementById("inputLastName").value;
+  const inputEmailValue = document.getElementById("inputEmail").value;
+  const inputPhoneValue = document.getElementById("inputPhone").value;
+  const inputPasswordValue = document.getElementById("inputPassword").value;
+
+  // Create a data object to send to the backend
+  const data = {
+    firstName: inputFirstNameValue,
+    lastName: inputLastNameValue,
+    email: inputEmailValue,
+    phone: inputPhoneValue,
+    password: inputPasswordValue,
+  };
+
+  // Send the data to the backend using the fetch API
+  fetch("http://localhost:3000/user-signup", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json", // Set the content type to JSON
+    },
+    body: JSON.stringify(data), // Convert the data object to JSON
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json(); // Parse the response JSON if needed
+    })
+    .then((data) => {
+      // Handle the response from the backend (if any)
+      console.log("Received data");
+      console.log(data);
+      window.location.href = "landingPage.html"; 
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("There was a problem with the fetch operation:", error);
+    });
+});

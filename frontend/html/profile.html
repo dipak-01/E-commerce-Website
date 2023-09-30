@@ -23,19 +23,33 @@
       </div> -->
       <header class="header">
         <header class="header">
-          <a href="landingPage.html" class="logo">UpStyle</a>
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
 
-          <div class="search-bar">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search your Style"
-            />
-            <i class="bx bx-search" id="search-icon"></i>
+          <div style="display: none;" class="profilee">
+            <a href="profile.html"
+              ><img src="" alt=""
+            /></a>
           </div>
-          <div class="search-results">
-            <!-- Search results will be displayed here -->
-          </div>
+          <!-- <div class="search-results">
+            Search results will be displayed here  
+          </div> -->
           <input type="checkbox" id="check" />
           <label for="check" class="icons">
             <i class="bx bx-menu" id="menu-icon"></i>
@@ -44,7 +58,7 @@
 
           <nav class="navbar">
             <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-            <a href="error404.html" class="nav-item" style="--i: 1">About</a>
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
             <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
             <a href="exploreAll.html" class="nav-item" style="--i: 3"
               >Explore all</a
@@ -52,7 +66,7 @@
             <a href="contactUs.html" class="nav-item" style="--i: 4"
               >Contact us</a
             >
-            <a href="login.html" class="nav-item" style="--i: 5"
+            <a href="login.html" class="nav-item log" style="--i: 5"
               ><i class="bx bxs-user navbar-icon"> </i
             ></a>
             <a href="cart.html" class="nav-item" style="--i: 6"
@@ -86,9 +100,8 @@
     </section> -->
 
     <!-- PROFILE SECTION -->
-
+ 
     <div class="profile-container">
-      <!-- <main> -->
       <div class="top-redirect">
         <ul>
           <li>Home</li>
@@ -99,34 +112,25 @@
       <div class="profile-page">
         <div class="profile left">
           <div class="avatar">
-            <img src="../Images/hero.png" alt="" />
-            <h2>Jon Dave</h2>
-            <p>JD360@gmail.com</p>
+            <img class="avatar" src="" alt="avatar" />
+            <h2 class="firstName">John</h2>
+            <p class="lastName">Doe</p>
+            <p class="email">johndoe@example.com</p>
           </div>
           <div class="other-details">
             <ul>
               <li>
-                <a href="">Accounts <span></span></a>
+                <a href="#">Accounts <span></span></a>
               </li>
               <li>
-                <a href="">Change Password <span></span></a>
+                <a href="#" id="editProfile">Edit Profile</a>
               </li>
               <li>
-                <a href="">Checkout Details <span></span></a>
-              </li>
-              <li>
-                <a href=""> My Order<span></span></a>
-              </li>
-              <li>
-                <a href="">Delete Account <span></span></a>
-              </li>
-              <li>
-                <a href="">Logout<span></span></a>
+                <button class="logout"><a class="logout2">Logout</a></button>
               </li>
             </ul>
           </div>
         </div>
-
         <div class="profile-details right">
           <h2>ACCOUNT</h2>
           <div class="user-details">
@@ -134,80 +138,77 @@
               <div class="inline">
                 <div class="form-grp Fname">
                   <label for="">First Name</label>
-                  <input type="text" name="fname" />
+                  <!-- Input field for First Name -->
+                  <input
+                    class="firstName"
+                    id="firstNameInput"
+                    type="text"
+                    name="fname"
+                  />
                 </div>
                 <div class="form-grp Lname">
                   <label for="">Last Name</label>
-                  <input type="text" name="lname" />
+                  <!-- Input field for Last Name -->
+                  <input
+                    class="lastName"
+                    id="lastNameInput"
+                    type="text"
+                    name="lname"
+                  />
                 </div>
               </div>
-              <div class="form-grp country">
-                <label for="">Country</label>
-                <select name="" id="">
-                  <option value="">--Select Your Country</option>
-                  <option value="">India</option>
-                  <option value="">Sri Lanka</option>
-                  <option value="">Bangladesh</option>
-                  <option value="">Pakistan</option>
-                </select>
-              </div>
-
               <div class="form-grp address">
                 <label for="">Address 1</label>
-                <textarea name="address" id="" rows="5"></textarea>
+                <textarea id="addr1" name="address" id="" rows="5"></textarea>
               </div>
               <div class="form-grp address">
                 <label for="">Address 2</label>
-                <textarea name="address" id="" rows="5"></textarea>
+                <textarea id="addr2" name="address" id="" rows="5"></textarea>
               </div>
               <div class="inline">
                 <div class="form-grp email">
-                  <label for="">Email </label>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    name="email"
-                  />
-                </div>
-                <div class="form-grp password">
-                  <label for="">Password </label>
-                  <input
-                    type="password"
-                    placeholder="Create password"
-                    required
-                    name="password"
-                  />
+                  <label for="">Email : </label>
+                  <!-- Display email using a <p> element -->
+                  <p name="email" id="emailInput"></p>
                 </div>
               </div>
               <div class="form-grp Contact">
-                <label for="">Contact #</label>
-                <input
-                  type="tel"
-                  placeholder="Enter Phone Number"
-                  maxlength="10"
-                  required
-                  name="phone"
-                />
+                <label for="">Contact </label>
+                <!-- Display phone using a <p> element -->
+                <p name="phone" id="phoneInput"></p>
+              </div>
+              <div class="form-grp password" style="display: none">
+                <!-- Hidden password field -->
+                <label for="">Password</label>
+                <!-- Input field for Password -->
+                <input id="passwordInput" type="password" name="password" />
               </div>
               <div class="update">
-                <button>Update</button>
+                <button id="updateProfile" style="display: none">Update</button>
               </div>
             </form>
           </div>
         </div>
       </div>
+      <div id="pro-contain">
+        <br><br>
+        <h2>Your Wishlist</h2>
 
-      <!-- </main> -->
+      </div>
+      <br><br><br>
+      <div id="emptyWish"><h3>Oops your Wishlist is Empty</h3></div>
+      <section class="productsFeature" id="featureSection">
+        <div class="productContainer" id="productContainer1"></div>
+      </section>
     </div>
-
+  
     <section>
       <footer class="footer" id="footer">
         <div class="container1">
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
-            <a class="li" href="comingSoon.html">Become a Member</a>
-            <a class="li" href="comingSoon.html">Send us Feedback</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -238,7 +239,7 @@
                   >Git-hub Repo</a
                 >
               </li>
-              <li><a class="about" href="comingSoon.html">Creators </a></li>
+              <li><a class="about" href="about.html">Creators </a></li>
             </ul>
           </div>
           <div class="quick_links">
@@ -278,7 +279,7 @@
         </div>
       </footer>
     </section>
-
-    <script src="../scripts/landingPage.js"></script>
+    <script src="../scripts/status.js"></script>
+    <script src="../scripts/profile.js"></script>
   </body>
 </html>

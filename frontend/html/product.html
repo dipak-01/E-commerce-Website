@@ -1,4 +1,4 @@
-<!DOCTYPE html>ype
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <link
@@ -21,10 +21,36 @@
   </head>
   <body class="scrollable">
     <section>
+      <!-- <div class="header-poster">
+        <img src="Images/header-border-top.png" alt="" />
+      </div> -->
       <header class="header">
         <header class="header">
-          <a href="landingPage.html" class="logo">UpStyle</a>
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
 
+          <div style="display: none" class="profile">
+            <a href="profile.html"><img src="" alt="" /></a>
+          </div>
+          <div class="search-results">
+            <!-- Search results will be displayed here -->
+          </div>
           <input type="checkbox" id="check" />
           <label for="check" class="icons">
             <i class="bx bx-menu" id="menu-icon"></i>
@@ -33,37 +59,34 @@
 
           <nav class="navbar">
             <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-            <a href="error404.html" class="nav-item" style="--i: 1">About</a>
-            <a href="comingSoon.html\" class="nav-item" style="--i: 2"
-              >Gallery</a
-            >
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
+            <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
             <a href="exploreAll.html" class="nav-item" style="--i: 3"
               >Explore all</a
             >
             <a href="contactUs.html" class="nav-item" style="--i: 4"
               >Contact us</a
             >
-            <a href="login.html" class="nav-item" style="--i: 5"
+            <a href="login.html" class="nav-item log" style="--i: 5"
               ><i class="bx bxs-user navbar-icon"> </i
             ></a>
             <a href="cart.html" class="nav-item" style="--i: 6"
               ><i class="bx bx-shopping-bag navbar-icon"></i
             ></a>
           </nav>
+          <!-- </div> -->
         </header>
       </header>
     </section>
-    <button id="scrollToTopBtn" title="Go to top">
-      <i class="bx bx-up-arrow"></i>
-    </button>
+
     <section id="dummy">
       <div id="prodetail" class="section-p1 skeleton">
         <div class="left single-pro-image">
           <div class="shoe shoe1">
-            <img src="" />
+            <img src="../Images/alternate-bg.webp" />
           </div>
           <div class="shoe shoe2">
-            <img src="   " />
+            <img src="../Images/alternate-bg.webp" />
           </div>
         </div>
         <div class="right single-pro-details">
@@ -140,7 +163,7 @@
       </div>
     </section>
 
-    <section id="prodetails" class="section-p1"></section>
+    <div id="prodetails" class="section-p1"></div>
     <h2 id="rate">Ratings</h2>
     <section id="review-section">
       <div class="reviewContainer">
@@ -166,15 +189,52 @@
           </p>
         </div>
       </div>
-      <div class="writeReview"></div>
+      <div class="writeReview">
+        <h1>Write a Review</h1>
+
+        <div class="rating">
+          <p>Rating:</p>
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5">&#9733;</label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4">&#9733;</label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3">&#9733;</label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2">&#9733;</label>
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1">&#9733;</label>
+        </div>
+
+        <div class="review">
+          <label for="reviewText">Your Review:</label>
+          <textarea
+            id="reviewText"
+            name="reviewText"
+            rows="4"
+            cols="50"
+            placeholder="Write your review here..."
+          ></textarea>
+        </div>
+        <div class="butt">
+          <button class="butt" type="submit">Submit Review</button>
+        </div>
+      </div>
+    </section>
+    <div id="pro-contain">
+      <h1>Recommendations</h1>
+      <p>Curated Picks Just for You</p>
+    </div>
+    <section class="productsFeature" id="featureSection">
+      <div class="productContainer" id="productContainer1"></div>
     </section>
     <section>
       <footer class="footer" id="footer">
         <div class="container1">
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
-            <a class="li" href="comingSoon.html">Become a Member</a>
-            <a class="li" href="comingSoon.html">Send us Feedback</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -205,7 +265,7 @@
                   >Git-hub Repo</a
                 >
               </li>
-              <li><a class="about" href="#">Creators </a></li>
+              <li><a class="about" href="about.html">Creators </a></li>
             </ul>
           </div>
           <div class="quick_links">
@@ -245,7 +305,7 @@
         </div>
       </footer>
     </section>
-
+    <script src="../scripts/status.js"></script>
     <script src="../scripts/product.js"></script>
   </body>
 </html>

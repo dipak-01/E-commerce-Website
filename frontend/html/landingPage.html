@@ -23,15 +23,29 @@
       </div> -->
       <header class="header">
         <header class="header">
-          <a href="landingPage.html" class="logo">UpStyle</a>
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
 
-          <div class="search-bar">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search your Style"
-            />
-            <i class="bx bx-search" id="search-icon"></i>
+          <div style="display: none;" class="profile">
+            <a href="profile.html"
+              ><img src="" alt=""
+            /></a>
           </div>
           <div class="search-results">
             <!-- Search results will be displayed here -->
@@ -44,7 +58,7 @@
 
           <nav class="navbar">
             <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-            <a href="error404.html" class="nav-item" style="--i: 1">About</a>
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
             <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
             <a href="exploreAll.html" class="nav-item" style="--i: 3"
               >Explore all</a
@@ -52,7 +66,7 @@
             <a href="contactUs.html" class="nav-item" style="--i: 4"
               >Contact us</a
             >
-            <a href="login.html" class="nav-item" style="--i: 5"
+            <a href="login.html" class="nav-item log" style="--i: 5"
               ><i class="bx bxs-user navbar-icon"> </i
             ></a>
             <a href="cart.html" class="nav-item" style="--i: 6"
@@ -63,35 +77,35 @@
         </header>
       </header>
     </section>
+    <section class="slider-ad">
+      <div class="wrapper">
+        <div class="image image1" preload>
+          <img src="../Images/adds/hero 4.webp" alt="" class="slide" />
+        </div>
+        <div class="image image2">
+          <img src="../Images/adds/hero 5.webp" alt="" class="slide" />
+        </div>
+        <div class="image image3">
+          <img src="../Images/adds/hero-8-_1_..webp" alt="" class="slide" />
+        </div>
+        <div class="image image3">
+          <img
+            src="../Images/adds/hero-10-_1_.(1).webp "
+            alt=""
+            class="slide"
+          />
+        </div>
+        <button class="button left-button">
+          <i class="bx bx-chevron-left left"></i></button
+        ><button class="button right-button">
+          <i class="bx bx-chevron-right right"></i>
+        </button>
+      </div>
+    </section>
     <button id="scrollToTopBtn" title="Go to top">
       <i class="bx bx-up-arrow"></i>
     </button>
-    <!-- <section class="infinite-marquee">
-      <div class="marquee">
-        <div class="marquee__group">
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-        </div>
-        <div class="marquee__group" aria-hidden="true">
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-        </div>
-      </div>
-    </section> -->
 
-    <section>
-      <div class="video-container">
-        <video autoplay muted loop id="myVideo">
-          <source src="../Images/videobg.webm" type="video/webm" />
-        </video>
-      </div>
-    </section>
     <div id="pro-contain">
       <h1>Feature Products</h1>
       <p>SUMMER COLLECTION 2023</p>
@@ -103,12 +117,12 @@
             <div class="product skeleton">
               <a href=" ">
                 <img
-                  src="../Images/alternate bg.jpg"
+                  src="../Images/alternate-bg.webp"
                   alt="Example Product Image"
                 />
                 <img
                   id="dummyChange"
-                  src="../Images/alternate bg.jpg"
+                  src="../Images/alternate-bg.webp"
                   alt="Example Product Image"
                 />
                 <div class="descr">
@@ -121,10 +135,7 @@
                   <a href="#" title="Add to Wishlist"
                     ><i class="bx bx-heart wishlist"></i
                   ></a>
-                  <a
-                    href="http://localhost:3000/user-signin"
-                    method="GET"
-                    title="Add to cart"
+                  <a href="" method="GET" title="Add to cart"
                     ><i class="bx bxs-cart-add cart1"></i
                   ></a>
                 </div>
@@ -138,25 +149,14 @@
     <section class="productsFeature" id="featureSection">
       <div class="productContainer" id="productContainer1"></div>
     </section>
-    <section class="slider-ad">
-      <div class="wrapper">
-        <div class="image image1">
-          <img src="../Images/adds/hero 4.jpg" alt="" class="slide" />
-        </div>
-        <div class="image image2">
-          <img src="../Images/adds/hero 5.jpg" alt="" class="slide" />
-        </div>
-        <div class="image image3">
-          <img src="../Images/adds/hero 9.webp" alt="" class="slide" />
-        </div>
-
-        <button class="button left-button">
-          <i class="bx bx-chevron-left left"></i></button
-        ><button class="button right-button">
-          <i class="bx bx-chevron-right right"></i>
-        </button>
+    <section>
+      <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+          <source src="../Images/videobg.webm" type="video/webm" />
+        </video>
       </div>
     </section>
+
     <div id="pro-contain">
       <h1>Editors Curation</h1>
       <p>EXPLORE OUR COLLECTION</p>
@@ -168,12 +168,12 @@
             <div class="product skeleton">
               <a href=" ">
                 <img
-                  src="../Images/alternate bg.jpg"
+                  src="../Images/alternate-bg.webp"
                   alt="Example Product Image"
                 />
                 <img
                   id="dummyChange"
-                  src="../Images/alternate bg.jpg"
+                  src="../Images/alternate-bg.webp"
                   alt="Example Product Image"
                 />
                 <div class="descr">
@@ -236,8 +236,8 @@
         <div class="container1">
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
-            <a class="li" href="comingSoon.html">Become a Member</a>
-            <a class="li" href="comingSoon.html">Send us Feedback</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -268,7 +268,7 @@
                   >Git-hub Repo</a
                 >
               </li>
-              <li><a class="about" href="comingSoon.html">Creators </a></li>
+              <li><a class="about" href="about.html">Creators </a></li>
             </ul>
           </div>
           <div class="quick_links">
@@ -308,7 +308,7 @@
         </div>
       </footer>
     </section>
-
+    <script src="../scripts/status.js"></script>
     <script src="../scripts/landingPage.js"></script>
   </body>
 </html>

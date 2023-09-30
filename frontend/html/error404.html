@@ -1,58 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Error 404: Page Not Found</title>
-    <style>
-      *{
-    transition: all 0.6s;
-}
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/updated404.css" />
 
-html {
-    height: 100%;
-}
+    <!-- <style>
+      @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-body{
-    font-family: 'Lato', sans-serif;
-    color: #888;
-    margin: 0;
-}
-
-#main{
-    display: table;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-}
-
-.fof{
-	  display: table-cell;
-	  vertical-align: middle;
-}
-
-.fof h1{
-	  font-size: 50px;
-	  display: inline-block;
-	  padding-right: 12px;
-}
-
-@keyframes type{
-	  from{box-shadow: inset -3px 0px 0px #888;}
-	  to{box-shadow: inset -3px 0px 0px transparent;}
-}
-    </style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+    </style> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Error</title>
   </head>
   <body>
-    <div id="main">
-      <div class="fof">
-            <h1>Error 404: Page Not Found :(<br>Wait Redirecting You to Home Page</h1>
+    <div class="container">
+      <div class="error">
+        <h2>Oops! Page Not Found.</h2>
+        <h1>404</h1>
+        <p>We can't find the page You are looking For.</p>
+        <a href="landingPage.html">Back to Home.</a>
+      </div>
+      <div class="element">
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
+        <img src="../Images/product7.png" alt="" />
       </div>
     </div>
-
-    <script>
-      // Redirect to the landing page after a delay
-      setTimeout(function() {
-        window.location.href = "landingPage.html";
-      }, 3000); // Delay in milliseconds
-    </script>
   </body>
 </html>

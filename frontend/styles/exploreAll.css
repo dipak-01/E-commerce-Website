@@ -2,33 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-decoration: none;
-}
-a {
-  text-decoration: none;
-}
-span {
-  color: rgb(50, 87, 255);
-}
-body {
-  margin: 0;
-  min-height: 100vh;
-
-  font-family: "Fira Sans", sans-serif;
-  box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
-  background-color: #f5f5f5;
-}
-
-body {
-  display: flex;
-  justify-content: flex-end;
-  /* align-items: flex-start; */
-  flex-direction: column;
-
-  /* background-color: #f0f0f0; */
-  /* font-family: "Fira Sans", sans-serif;; */
 }
 .scrollable {
   overflow: scroll;
@@ -47,12 +20,30 @@ body {
 .scrollable::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
+a {
+  text-decoration: none;
+}
+span {
+  color: rgb(50, 87, 255);
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/844a2e12-df15-4697-b172-3e05db4d3413) */
+  font-family: "Fira Sans", sans-serif;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-color: #f5f5f5;
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.4rem 10%;
+  padding: 1.4rem 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,6 +51,7 @@ body {
 }
 
 .header::before {
+  position: fixed;
   content: "";
   top: 0;
   left: 0;
@@ -72,6 +64,7 @@ body {
 }
 
 .header::after {
+  position: fixed;
   content: "";
   top: 0;
   left: -100%;
@@ -92,12 +85,23 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #000000;
   text-decoration: none;
-  font-weight: 700;
-}
+  font-weight: 900;
+  margin-right: 2px;
+  /* border: 1px solid black; */
+  padding: 6px;
 
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif, "Arial Narrow", Arial, sans-serif, Geneva,
+    Tahoma, sans-serif;
+}
+.logo-image {
+  position: absolute;
+  height: 50px;
+  width: 140px;
+}
 .nav-item {
   position: relative;
   color: #000000;
@@ -116,8 +120,8 @@ body {
 
 .icons {
   position: absolute;
-  right: 5%;
-  font-size: 2.3rem;
+  left: 2%;
+  font-size: 2rem;
   color: #000000;
   cursor: pointer;
   display: none;
@@ -126,14 +130,8 @@ body {
 #check {
   display: none;
 }
-
-@media (max-width: 992px) {
-  /* .header {
-      padding: 1.3rem 5%;
-    } */
-}
-
-@media (max-width: 850px) {
+nav  {display:flex}
+@media (max-width: 1310px) {
   .icons {
     display: inline-flex;
   }
@@ -152,6 +150,7 @@ body {
 
   .navbar {
     position: absolute;
+  display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -183,6 +182,201 @@ body {
     opacity: 1;
     transition-delay: calc(0.15s * var(--i));
   }
+  .search-details {
+    display: flex;
+    width: 600px;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    width: 120%;
+  }
+}
+
+@media (max-width: 850px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+
+  .icons #close-icon {
+    display: none;
+  }
+
+  #check:checked ~ .icons #close-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(70px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar {
+    height: 19.3rem;
+  }
+
+  .nav-item {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
+  .search-bar {
+    display: block;
+    margin-top: 10px; /* Adjust margin as needed */
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-bar i {
+    margin-left: 0; /* Remove left margin for the search icon */
+  }
+  .search-results-popup {
+    width: 100%;
+  }
+}
+.search-bar i {
+  margin-left: 0; /* Remove left margin for the search icon */
+}
+
+.search-bar {
+  /* Allow the search bar to take up available space */
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem; /* Adjust margin as needed */
+  background-color: #ffffff;
+  border: 1px solid #111010;
+  border-radius: 5px;
+  padding: 5px 10px;
+  /* max-width: 500px; */
+  color: black;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  color: #000000;
+}
+
+.search-bar i {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  color: #000;
+  cursor: pointer;
+}
+.search-details {
+  position: relative;
+  display: grid;
+  margin-right: 3px;
+}
+
+/* Search results popup styles */
+.search-results-popup {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 40;
+  background-color: #f5f5f5;
+  text-align: left;
+  border-radius: 0 0px 10px 0;
+  border: 1px solid #7c7c7c;
+  height: 500px;
+  top: 100%;
+  border-top: none;
+  width: 80%;
+}
+.result-item {
+  padding: 10px;
+  color: black;
+}
+.result-item span {
+  color: black;
+}
+.insidesearch {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 24px;
+}
+.search-results-popup::-webkit-scrollbar {
+  width: 0.1rem; /* Set the width to a very thin value */
+}
+
+/* Optionally, you can style the scrollbar track and thumb */
+.search-results-popup::-webkit-scrollbar-track {
+  background: transparent; /* Make the scrollbar track transparent */
+}
+
+.search-results-popup::-webkit-scrollbar-thumb {
+  background: transparent; /* Make the scrollbar thumb transparent */
+}
+@media (max-width: 520px) {
+  .search-details {
+    position: static;
+    display: grid;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    top: 100%;
+    left: 0;
+    text-align: justify;
+    border-radius: 0 0px 10px 10px;
+
+    width: 100%;
+  }
+  .result-item {
+    padding-left: 20px;
+    color: black;
+  }
+}
+.log {
+  display: none;
+}
+.profile {
+  position: fixed;
+  background-color: #f45b69;
+  border: 1px solid #000;
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 99;
+  right: 16px;
+  cursor: pointer;
+}
+.profile img {
+  width: 100%;
+  /* height: auto; */
+  /* object-fit: cover; */
+  overflow: hidden;
+  /* z-index: -4; */
+}
+.profile:hover {
+  scale: 1.1;
+  transition: 0.2s ease-in-out;
 }
 #scrollToTopBtn {
   display: none;

@@ -48,31 +48,43 @@ const addReview = async (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found");
     }
-
-    // Check if the product is already in the user's cart
     const reviewexist = product.review.find((item) =>
       item.userId.equals(userId)
     );
 
     if (reviewexist) {
-      // Increment the quantity if the product is already in the cart
       reviewexist.rating = rating;
       reviewexist.reviewmsg = reviewmsg;
     } else {
-      // Add the product to the user's cart if it's not there
       product.review.push({
         userId: userId,
         rating: rating,
         reviewmsg: reviewmsg,
       });
     }
-
-    // Save the user's updated cart
     await product.save();
     res.status(200).send("Review added to Product successfully");
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
+  }
+};
+
+const getReview = async (req, res) => {
+  try {
+    if (req.params.productId) {
+      console.log(req.params.productId);
+      const productId = req.params.productId;
+      const result = await Product.findById(productId);
+      console.log(result);
+      const data = result.review;
+      res.send(data);
+    } else {
+      console.log("cookie not found");
+      res.send(req.cookies);
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -107,6 +119,7 @@ module.exports = {
   addProduct,
   getProduct,
   getAllproduct,
+  getReview,
   addReview,
   search,
 };
