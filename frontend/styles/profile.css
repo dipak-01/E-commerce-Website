@@ -551,7 +551,7 @@ li {
 /* .......PROFILE...... */
 
 .profile-container {
-  padding: 0 200px;
+  padding: 0px 200px;
   margin: 20px 0;
   background-color: white;
   /* margin-top: 40px; */
@@ -754,8 +754,9 @@ p {
 
 #featureSection .productContainer {
   display: flex;
-  justify-content: space-between;
-  padding: 40px 32px;
+  justify-content: flex-start !important;
+  
+  padding: 0px 32px;
   overflow-y: hidden;
   gap: 50px;
   scroll-behavior: smooth;
@@ -777,14 +778,14 @@ p {
 #featureSection .productContainer::-webkit-scrollbar-thumb:hover {
   background: #676464;
 }
-#featureSection .productContainer .product {
-  margin-left: auto;
-  margin-right: auto;
-}
+ 
 #featureSection {
   text-align: center;
-  padding: 20px;
-  margin: 20px;
+  padding:0 20px;
+  margin:0 20px;
+  padding-bottom: 40px;
+  padding-left: 0;
+  margin-left: 0;
   /* flex-wrap: wrap; */
 }
 #featureSection h1 {
@@ -799,7 +800,7 @@ p {
   color: rgb(87, 87, 87);
 }
 #featureSection .product {
-  width: 18.5%;
+  width: 18.5%; 
   min-width: 200px;
   padding: 10px 5px;
   border: 1px solid rgb(230, 229, 229);

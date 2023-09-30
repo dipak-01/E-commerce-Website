@@ -31,21 +31,25 @@
           <i class="bx bx-x" id="close-icon"></i>
         </label>
 
-      <nav class="navbar">
-        <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
-        <a href="about.html" class="nav-item" style="--i: 1">About</a>
-        <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
-        <a href="exploreAll.html" class="nav-item" style="--i: 3">Explore all</a>
-        <a href="contactUs.html" class="nav-item" style="--i: 4">Contact us</a>
-        <a href="login.html" id="form-open" class="nav-item"style="--i: 5"
-        ><i class="bx bxs-user navbar-icon"> </i
-      ></a>
-      <a href="cart.html" class="nav-item"style="--i: 6"
-        ><i class="bx bx-shopping-bag navbar-icon"></i
-      ></a>
-      </nav>
-    </header>
-</section>
+        <nav class="navbar">
+          <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
+          <a href="about.html" class="nav-item" style="--i: 1">About</a>
+          <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
+          <a href="exploreAll.html" class="nav-item" style="--i: 3"
+            >Explore all</a
+          >
+          <a href="contactUs.html" class="nav-item" style="--i: 4"
+            >Contact us</a
+          >
+          <a href="login.html" id="form-open" class="nav-item" style="--i: 5"
+            ><i class="bx bxs-user navbar-icon"> </i
+          ></a>
+          <a href="cart.html" class="nav-item" style="--i: 6"
+            ><i class="bx bx-shopping-bag navbar-icon"></i
+          ></a>
+        </nav>
+      </header>
+    </section>
     <div class="split-screen">
       <div class="left">
         <section class="copy">
@@ -95,7 +99,13 @@
                   </span>
                   <a href="#" class="forgot_pw">Forgot password?</a>
                 </div>
-                <button href="landingPage.html" type="submit" class="button login-button">Login Now</button>
+                <button
+                  href="landingPage.html"
+                  type="submit"
+                  class="button login-button"
+                >
+                  Login Now
+                </button>
                 <div class="login_signup">
                   Don't have an account? <a href="#" id="signup">Signup</a>
                 </div>
@@ -104,36 +114,42 @@
 
             <!-- Signup From -->
             <div class="form signup_form">
-              <form action="http://localhost:3000/user-signup" method="POST">
+              <form action="#" id="signupForm">
                 <h2>Signup</h2>
 
                 <div class="input_box">
                   <input
-                    type="name"
+                    type="text"
                     placeholder="Enter First Name"
                     required
                     name="firstName"
+                    id="inputFirstName"
                   />
                   <i class="uil uil-letter-english-a email"></i>
                 </div>
+
                 <div class="input_box">
                   <input
-                    type="name"
+                    type="text"
                     placeholder="Enter Last Name"
                     required
                     name="lastName"
+                    id="inputLastName"
                   />
                   <i class="uil uil-letter-english-a email"></i>
                 </div>
+
                 <div class="input_box">
                   <input
                     type="email"
                     placeholder="Enter your email"
                     required
                     name="email"
+                    id="inputEmail"
                   />
                   <i class="uil uil-envelope-alt email"></i>
                 </div>
+
                 <div class="input_box">
                   <input
                     type="tel"
@@ -141,29 +157,29 @@
                     maxlength="10"
                     required
                     name="phone"
+                    id="inputPhone"
                   />
                   <i class="uil uil-phone email"></i>
                 </div>
+
                 <div class="input_box">
                   <input
                     type="password"
                     placeholder="Create password"
                     required
                     name="password"
+                    id="inputPassword"
                   />
                   <i class="uil uil-lock password"></i>
                   <i class="uil uil-eye-slash pw_hide"></i>
                 </div>
-                <!-- <div class="input_box">
-              <input type="password" placeholder="Confirm password" required />
-              <i class="uil uil-lock password"></i>
-              <i class="uil uil-eye-slash pw_hide"></i>
-            </div> -->
 
-                <button class="button signup-button">Signup Now</button>
+                 <button class="button signup-button" href="landingPage.html" type="submit">
+                  Signup Now
+                </button> 
 
                 <div class="login_signup signup-login">
-                  Already have an account? <a href="#  " id="login">Login</a>
+                  Already have an account? <a href="#" id="login">Login</a>
                 </div>
               </form>
             </div>

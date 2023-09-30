@@ -1,4 +1,5 @@
 let log = document.querySelector(".log");
+ 
 
 let profile = document.querySelector(".profile");
 fetch("http://localhost:3000/user-status", {

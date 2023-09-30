@@ -1,8 +1,12 @@
 let totalMrp = 0;
+
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
   const element2 = document.getElementById("products-dum");
+  const element3 = document.querySelector(".breakdown");
+  const carting = document.querySelector(".right");
+  const element4 = document.getElementById("pay");
 
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
@@ -12,21 +16,26 @@ const productCardGenerator = (x) => {
         element.style.display = "none";
         element1.style.display = "none";
         element2.style.display = "block";
-      }
-      for (let i = 0; i < data.length; i++) {
-        let objId = data[i].itemId;
-        console.log(objId);
-        fetch(`http://localhost:3000/product/${objId}`)
-          .then((res2) => res2.json())
-          .then((data2) => {
-            console.log(data2);
-            totalMrp += data2.price * data[i].quantity;
-            let productCard = createProductCard(data2, data[i], objId);
-            x.insertAdjacentHTML("beforeend", productCard);
-            element.style.display = "none";
-            element1.style.display = "none";
-            updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee);
-          });
+      } else {
+        carting.style.display = "block";
+        carting.style.visibility = "visible";
+        element3.style.display = "block";
+        element4.style.display = "block";
+        for (let i = 0; i < data.length; i++) {
+          let objId = data[i].itemId;
+          console.log(objId);
+          fetch(`http://localhost:3000/product/${objId}`)
+            .then((res2) => res2.json())
+            .then((data2) => {
+              console.log(data2);
+              totalMrp += data2.price * data[i].quantity;
+              let productCard = createProductCard(data2, data[i], objId);
+              x.insertAdjacentHTML("beforeend", productCard);
+              element.style.display = "none";
+              element1.style.display = "none";
+              updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee);
+            });
+        }
       }
     });
 };
@@ -44,7 +53,7 @@ console.log("2");
 
 function createProductCard(data2, data, objId) {
   console.log("3");
-   
+
   return `
   <div class="products"  data-objid="${objId}">
     <div class="product-img">
@@ -209,5 +218,10 @@ function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
   totalMrpValueElement.textContent = totalMrp.toFixed(2);
   discountElement.textContent = discountPrice;
   feeElement.textContent = convenienceFee;
-  totalAmt.textContent = totalMrp.toFixed(2)-discountPrice-convenienceFee;
+  totalAmt.textContent = totalMrp.toFixed(2) - discountPrice - convenienceFee;
 }
+// Select the input field by its ID
+var inputField = document.getElementById("myInput");
+
+// Set the new value for the input field
+inputField.value = totalMrp;

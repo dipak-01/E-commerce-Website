@@ -46,11 +46,8 @@
               ></div>
             </div>
           </div>
-
-          <div class="profile">
-            <a href="profile.html"
-              ><img src="../Images/Avatars/5937172-removebg-preview.png" alt=""
-            /></a>
+          <div style="display: none" class="profile">
+            <a href="profile.html"><img src="" alt="" /></a>
           </div>
           <div class="search-results">
             <!-- Search results will be displayed here -->
@@ -180,7 +177,7 @@
 
       <!-- RIGHT -->
 
-      <div class="right">
+      <div class="right" style="display: none">
         <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
@@ -196,28 +193,43 @@
           </div>
         </div>
 
-        <div class="breakdown">
+        <div class="breakdown" id="breakdown">
           <div class="breakdown-tag"><strong> CART BREAKDOWN</strong></div>
           <div class="mrp price-details">
             <div>Total MRP</div>
-            <span>₹ <span id="totalMrpValue">NULL</span></span>
+            <span>₹ <span id="totalMrpValue">...</span></span>
           </div>
           <div class="discount price-details">
             <div>Discount on MRP</div>
-            <span>₹ <span id="discountPrice">NULL</span></span>
+            <span>₹ <span id="discountPrice">...</span></span>
           </div>
           <div class="delivery-charges price-details">
             <div>Convenience Fee</div>
-            <span>₹<span id="convenienceFee">NULL</span></span>
+            <span>₹<span id="convenienceFee">...</span></span>
           </div>
+          <!-- <form action="#"> -->
           <div class="amount">
             <div>Total Amount</div>
-            <span>₹ <span id="totalamt">NULL</span></span>
+            <span>₹ <span id="totalamt">...</span></span>
           </div>
-        </div>
 
+          <!-- </form> -->
+        </div>
         <div class="pay">
-          <button class="clickable">PAY NOW</button>
+          <form class="pay-form">
+            <input type="hidden" id="myInput" name="amount" value="" />
+            <input type="hidden" name="description" value="Shoes Buying" />
+            <input type="hidden" name="name" value="Shoes" />
+            <button
+              id="pay"
+              type="submit"
+              value="Pay Now"
+              style="display: none"
+              class="clickable"
+            >
+              PAY NOW
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -305,7 +317,74 @@
       src="https://kit.fontawesome.com/d538e6589c.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="../scripts/status.js"></script>
     <script src="../scripts/cart.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      
+        var payForms = document.querySelectorAll(".pay-form");
+
+        payForms.forEach(function (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(form);
+
+            fetch("http://localhost:3000/createOrder", {
+              method: "POST",
+              body: formData,
+            })
+              .then(function (response) {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then(function (res) {
+                if (res.success) {
+                  var options = {
+                    key: res.key_id,
+                    amount: res.amount,
+                    currency: "INR",
+                    name: res.product_name,
+                    description: res.description,
+                    image: "https://dummyimage.com/600x400/000/fff",
+                    order_id: res.order_id,
+                    handler: function (response) {
+                      alert("Payment Succeeded");
+                      // window.open("/", "_self")
+                    },
+                    prefill: {
+                      contact: res.contact,
+                      name: res.name,
+                      email: res.email,
+                    },
+                    notes: {
+                      description: res.description,
+                    },
+                    theme: {
+                      color: "#2300a3",
+                    },
+                  };
+                  var razorpayObject = new Razorpay(options);
+                  razorpayObject.on("payment.failed", function (response) {
+                    alert("Payment Failed");
+                  });
+                  razorpayObject.open();
+                } else {
+                  alert(res.msg);
+                }
+              })
+              .catch(function (error) {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+              });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

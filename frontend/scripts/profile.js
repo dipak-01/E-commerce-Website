@@ -254,6 +254,8 @@ function fetchUserProfile() {
       document.querySelector("#phoneInput").textContent = data.phone;
       document.querySelector("#addr1").value = data.addrs1;
       document.querySelector("#addr2").value = data.addrs2;
+      document.querySelector("#passwordInput").value = data.password;
+
     })
     .catch((err) => {
       console.log(err);
