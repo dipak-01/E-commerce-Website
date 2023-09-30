@@ -1,5 +1,5 @@
 let totalMrp = 0;
-
+ 
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
@@ -219,9 +219,9 @@ function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
   discountElement.textContent = discountPrice;
   feeElement.textContent = convenienceFee;
   totalAmt.textContent = totalMrp.toFixed(2) - discountPrice - convenienceFee;
-}
-// Select the input field by its ID
-var inputField = document.getElementById("myInput");
 
-// Set the new value for the input field
-inputField.value = totalMrp;
+  var inputField = document.getElementById("myInput");
+
+  inputField.value = totalMrp-discountPrice-convenienceFee;
+  console.log(inputField);
+}

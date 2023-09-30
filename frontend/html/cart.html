@@ -218,8 +218,13 @@
         <div class="pay">
           <form class="pay-form">
             <input type="hidden" id="myInput" name="amount" value="" />
-            <input type="hidden" name="description" value="Shoes Buying" />
-            <input type="hidden" name="name" value="Shoes" />
+            <input
+              type="hidden"
+              id="description"
+              name="description"
+              value="Shoes Buying"
+            />
+            <input type="hidden" id="name" name="name" value="Shoes" />
             <button
               id="pay"
               type="submit"
@@ -322,18 +327,28 @@
     <script src="../scripts/cart.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-      
         var payForms = document.querySelectorAll(".pay-form");
 
         payForms.forEach(function (form) {
           form.addEventListener("submit", function (e) {
             e.preventDefault();
+            const amount = document.querySelector("#myInput").value;
+            const description = document.querySelector("#description").value;
+            const name = document.querySelector("#name").value;
 
             var formData = new FormData(form);
 
             fetch("http://localhost:3000/createOrder", {
               method: "POST",
-              body: formData,
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                amount,
+                description,
+                name,
+              }),
             })
               .then(function (response) {
                 if (!response.ok) {
@@ -353,7 +368,7 @@
                     order_id: res.order_id,
                     handler: function (response) {
                       alert("Payment Succeeded");
-                      // window.open("/", "_self")
+                      window.location.href="landingPage.html"
                     },
                     prefill: {
                       contact: res.contact,

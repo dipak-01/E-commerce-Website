@@ -29,11 +29,11 @@ const createOrder = async(req,res) => {
                     orderId : order.id,
                     amount:amount,
                     key_id:RPAYIDK,
-                    product_name:req.body.name,
-                    description:req.body.description,
-                    contact:"7741952745",
-                    name: "Sahil Jaiswal",
-                    email: "jaiswalsahil7741@gmail.com"
+                    // product_name:req.body.name,
+                    // description:req.body.description,
+                    // contact:"7741952745",
+                    // name: "Sahil Jaiswal",
+                    // email: "jaiswalsahil7741@gmail.com"
                 });
             }
             else{
