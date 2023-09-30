@@ -17,5 +17,7 @@ router.delete("/removefromwishlist/:productId", userController.removeFromWishLis
 router.get("/viewprofile", userController.viewprofile);
 router.put('/user-update', userController.update)
 router.delete("/delete-account",userController.deleteUser);
+router.put("/clearCart",userController.clearCart);
+router.get("/orderPlaced",userController.orderPlaced);
 
 module.exports = router;
