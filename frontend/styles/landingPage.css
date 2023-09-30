@@ -130,7 +130,9 @@ body {
 #check {
   display: none;
 }
-nav  {display:flex}
+nav {
+  display: flex;
+}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -150,7 +152,7 @@ nav  {display:flex}
 
   .navbar {
     position: absolute;
-  display: block;
+    display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -352,9 +354,9 @@ nav  {display:flex}
     color: black;
   }
 }
- .profile{
+.profile {
   display: none;
- }
+}
 .profile {
   position: fixed;
   background-color: #f45b69;
@@ -592,12 +594,21 @@ li {
 }
 
 /* feature products */
-#featureSection .productContainer {
+#featureSection #productContainer1 {
   display: flex;
   justify-content: space-between;
   padding: 40px 32px;
   overflow-y: hidden;
   gap: 50px;
+  scroll-behavior: smooth;
+}
+#featureSection #productContainer2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* padding: 40px 32px; */
+  overflow-y: hidden;
+
   scroll-behavior: smooth;
 }
 #featureSection .productContainer::-webkit-scrollbar {
@@ -1111,4 +1122,3 @@ li {
     margin: 1px;
   }
 }
-

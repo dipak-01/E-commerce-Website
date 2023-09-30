@@ -130,9 +130,11 @@
             <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
           </div>
         </div>
-
+        <div class="plzlogin">
+          <h1>Please <a href="login.html">login</a> to view cart</h1>
+        </div>
         <!-- PRODUCTS -->
-          <!-- <section class="plzlogin" style="display: block;">
+        <!-- <section class="plzlogin" style="display: block;">
             <h1>Please <a href="login.html">Login</a> to view your Cart Products</h1>
           </section> -->
         <section id="products-dum">
@@ -162,7 +164,7 @@
             </div>
           </div>
         </section>
-        <section   class="product-dummy">
+        <section id="products-dummy1" class="product-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -179,7 +181,7 @@
 
       <!-- RIGHT -->
 
-      <div class="right" style="display: none">
+      <div class="right">
         <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
@@ -216,9 +218,9 @@
           </div>
 
           <!-- </form> -->
-        </div> <form class="pay-form"> 
-        <div class="pay">
-         
+        </div>
+        <form class="pay-form">
+          <div class="pay">
             <input type="hidden" id="myInput" name="amount" value="1" />
             <input
               type="hidden"
@@ -236,8 +238,8 @@
             >
               PAY NOW
             </button>
-          
-        </div></form>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -325,7 +327,40 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="../scripts/status.js"></script>
+    <script>
+      const element = document.getElementById("products-dummy");
+      const element1 = document.getElementById("products-dummy1");
+      const carting = document.querySelector(".right");
+
+      let log = document.querySelector(".log");
+
+      let profile = document.querySelector(".profile");
+      fetch("http://localhost:3000/user-status", {
+        method: "get",
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.status) {
+            profile.style.display = "block";
+            let avatarUrl = data.avatarUrl;
+            let imgElement = document.querySelector(".profile img");
+            imgElement.src = avatarUrl;
+            log.style.display = "none";
+          } else {
+            profile.style.display = "none";
+            log.style.display = "block";
+            element.style.display = "none";
+            element1.style.display = "none";
+            carting.style.display = "none";
+            carting.style.visibility = "hidden";
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
     <script src="../scripts/cart.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -370,7 +405,7 @@
                     order_id: res.order_id,
                     handler: function (response) {
                       alert("Payment Succeeded");
-                      window.location.href="landing.html"
+                      window.location.href = "landing.html";
                     },
                     prefill: {
                       contact: res.contact,

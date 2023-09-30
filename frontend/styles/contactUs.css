@@ -263,12 +263,15 @@ nav  {display:flex}
 .search-bar i {
   margin-left: 0; /* Remove left margin for the search icon */
 }
-
+button:active{
+  transform: scale(1.05);
+  opacity: .6; /* Increase the scale (you can adjust the value) */
+}
 .search-bar {
   /* Allow the search bar to take up available space */
   display: flex;
   align-items: center;
-  margin: 0 1.5rem; /* Adjust margin as needed */
+   
   background-color: #ffffff;
   border: 1px solid #111010;
   border-radius: 5px;

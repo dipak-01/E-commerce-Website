@@ -685,7 +685,8 @@ p {
 /* Media queries--for profile */
 @media screen and (max-width: 850px) {
   .profile-page {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
   .left {
@@ -912,4 +913,8 @@ p {
 #emptyWish{
   text-align: center;
   display: none;
+}
+button:active{
+  transform: scale(1.05);
+  opacity: .6; /* Increase the scale (you can adjust the value) */
 }

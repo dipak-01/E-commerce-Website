@@ -270,7 +270,8 @@ const productCardGenerator1 = (pro) => {
     .then((res) => res.json())
     .then((data) => {
       // Generate product cards and append them to the container
-      for (let i = 8; i < 13; i++) {
+      let a = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
+      for (let i = a; i < a + 5; i++) {
         let productCard = createProductCard(data[i]);
         pro.insertAdjacentHTML("beforeend", productCard);
       }
@@ -289,14 +290,14 @@ function checkPincode() {
   availabilityDiv.textContent = "";
 
   if (validPincodePattern.test(enteredPincode)) {
-      // Check if the PIN code is "0"
-      if (enteredPincode == "000000") {
-          availabilityDiv.textContent = "Delivery is not available for PIN code 0.";
-      } else {
-          availabilityDiv.textContent = "Delivery is available for this PIN code.";
-      }
+    // Check if the PIN code is "0"
+    if (enteredPincode == "000000") {
+      availabilityDiv.textContent = "Delivery is not available for PIN code 0.";
+    } else {
+      availabilityDiv.textContent = "Delivery is available for this PIN code.";
+    }
   } else {
-      availabilityDiv.textContent = "Please enter a valid 6-digit PIN code.";
+    availabilityDiv.textContent = "Please enter a valid 6-digit PIN code.";
   }
 }
 // addToWishList = (productId) => {
@@ -370,7 +371,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-   
     // console.log(productId);
     // const resultItem = document.createElement("div");
     // resultItem.classList.add("result-item");
@@ -403,7 +403,7 @@ function displaySearchResults(results) {
   // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
-searchResultsPopup.style.display = "none"
+searchResultsPopup.style.display = "none";
 // Event listener for input changes
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();

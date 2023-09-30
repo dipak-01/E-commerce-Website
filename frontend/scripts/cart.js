@@ -1,13 +1,13 @@
 let totalMrp = 0;
  
 const productCardGenerator = (x) => {
-  const element = document.querySelector("products-dummy");
-  // const element1 = document.getElementById("products-dummy1");
+  const element = document.getElementById("products-dummy");
+  const element1 = document.getElementById("products-dummy1");
   const element2 = document.getElementById("products-dum");
   const element3 = document.querySelector(".breakdown");
   const carting = document.querySelector(".right");
   const element4 = document.getElementById("pay");
-  const element5 = document.querySelector(".plzlogin");
+  // const element5 = document.querySelector(".plzlogin");
 
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
@@ -16,7 +16,7 @@ const productCardGenerator = (x) => {
       console.log(data);
       if (data.length == 0) {
         element.style.display = "none";
-        // element1.style.display = "none";
+        element1.style.display = "none";
         element2.style.display = "block";
       } else {
       
