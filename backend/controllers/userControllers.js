@@ -416,6 +416,38 @@ const update = async (req, res) => {
   }
 };
 
+const clearCart = async (req, res) => {
+  try {
+    const userId = req.cookies.userId;
+    console.log(userId);
+    const user = await User.findById(userId);
+    user.orderPlaced = user.cart;
+    user.cart = null;
+    await user.save();
+    res.status(200).send("Cart Cleared");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const orderPlaced = async(req,res) => {
+  try {
+    if (req.cookies.userId) {
+      console.log(req.cookies.userId);
+      const id = req.cookies.userId;
+      const result = await User.findById(id);
+      console.log(result);
+      const data = result.orderPlaced;
+      res.send(data);
+    } else {
+      console.log("cookie not found");
+      res.send(req.cookies);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   status,
   signup,
@@ -432,4 +464,6 @@ module.exports = {
   viewprofile,
   deleteUser,
   update,
+  clearCart,
+  orderPlaced,
 };

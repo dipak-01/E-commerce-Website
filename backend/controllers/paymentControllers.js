@@ -1,4 +1,5 @@
 const Razorpay = require('razorpay');
+const User = require("../models/userModel");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -12,7 +13,16 @@ const instance = new Razorpay({
 
 const createOrder = async(req,res) => {
   try {
+    const userId = req.cookies.userId;
+    console.log(userId);
     console.log(req.body);
+    const user = await User.findById(userId);
+    const name = user.firstName + "" + user.lastName;
+    console.log(name);
+    const phone = user.phone
+    console.log(phone);
+    const email = user.email;
+    console.log(email);
     const amount = req.body.amount*100;
     const options = {
         amount: amount,
@@ -29,11 +39,11 @@ const createOrder = async(req,res) => {
                     orderId : order.id,
                     amount:amount,
                     key_id:RPAYIDK,
-                    // product_name:req.body.name,
-                    // description:req.body.description,
-                    // contact:"7741952745",
-                    // name: "Sahil Jaiswal",
-                    // email: "jaiswalsahil7741@gmail.com"
+                    product_name:req.body.name,
+                    description:req.body.description,
+                    contact: phone,
+                    name: name,
+                    email: email
                 });
             }
             else{
