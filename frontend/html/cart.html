@@ -132,7 +132,9 @@
         </div>
 
         <!-- PRODUCTS -->
-
+          <!-- <section class="plzlogin" style="display: block;">
+            <h1>Please <a href="login.html">Login</a> to view your Cart Products</h1>
+          </section> -->
         <section id="products-dum">
           <div class="products">
             <div class="product-img">
@@ -149,7 +151,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy">
+        <section id="products-dummy" class="product-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -160,7 +162,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy1">
+        <section   class="product-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -214,10 +216,10 @@
           </div>
 
           <!-- </form> -->
-        </div>
+        </div> <form class="pay-form"> 
         <div class="pay">
-          <form class="pay-form">
-            <input type="hidden" id="myInput" name="amount" value="" />
+         
+            <input type="hidden" id="myInput" name="amount" value="1" />
             <input
               type="hidden"
               id="description"
@@ -234,8 +236,8 @@
             >
               PAY NOW
             </button>
-          </form>
-        </div>
+          
+        </div></form>
       </div>
     </div>
 
@@ -368,7 +370,7 @@
                     order_id: res.order_id,
                     handler: function (response) {
                       alert("Payment Succeeded");
-                      window.location.href="landingPage.html"
+                      window.location.href="landing.html"
                     },
                     prefill: {
                       contact: res.contact,

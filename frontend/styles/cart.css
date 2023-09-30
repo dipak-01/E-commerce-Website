@@ -683,6 +683,14 @@ li {
   color: #ff3f6c;
 }
 
+.plzlogin{
+  padding: 30px;
+  text-align: center;
+}
+.plzlogin a{
+  text-decoration: none;
+ color: #ff3f6c;
+}
 /* PRODUCTS */
 .products {
   display: flex;
@@ -854,7 +862,7 @@ li {
 }
 
 .breakdown {
-  border-bottom: 1px solid #535766a9;
+  border-bottom: 1px solid #000000a9;
 }
 .amount {
   display: flex;
