@@ -35,7 +35,6 @@ const addReview = async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId;
   const { rating, reviewmsg } = req.body;
-
   console.log(productId);
   console.log(userId);
   console.log({ rating, reviewmsg });
@@ -47,6 +46,9 @@ const addReview = async (req, res) => {
     // Find the product by ID and update their cart
     if (!product) {
       return res.status(404).send("Product not found");
+    }
+    if (!userId) {
+      return res.status(404).send("Please Login...");
     }
     const reviewexist = product.review.find((item) =>
       item.userId.equals(userId)

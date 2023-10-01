@@ -50,6 +50,8 @@ const signup = async (req, res) => {
     const randomLink = avatarUrl[randomIndex];
     const user = new User(req.body);
     user.avatarUrl = randomLink;
+    user.addrs1 = "Address 1";
+    user.addrs2 = "Address 2";
     await user.save();
     res.send("Successfully Signed Up");
   } catch (err) {
@@ -154,6 +156,7 @@ const addToCart = async (req, res) => {
 
     // Find the user by their ID and update their cart
     if (!user) {
+      console.log("cookie not found");
       return res.status(404).send("User not found. Please Login");
     }
 
@@ -375,7 +378,11 @@ const deleteUser = async (req, res) => {
     if (req.cookies.userId) {
       const deletedUser = await User.findOneAndDelete({ _id: userId });
       if (deletedUser) {
-        res.clearCookie("userId");
+        res.clearCookie("userId", {
+          httpOnly: false,
+          sameSite: "None",
+          secure: true,
+        });
         res.status(200).send("Account Deleted !");
       } else {
         res.status(404).send("User not found");
@@ -422,7 +429,7 @@ const clearCart = async (req, res) => {
     console.log(userId);
     const user = await User.findById(userId);
     user.orderPlaced = user.cart;
-    user.cart = null;
+    user.cart = [];
     await user.save();
     res.status(200).send("Cart Cleared");
   } catch (err) {
@@ -448,6 +455,23 @@ const orderPlaced = async(req,res) => {
   }
 };
 
+const view = async (req, res) => {
+  try {
+    if (req.params.userId) {
+      console.log(req.params.userId);
+       const user = await User.findById(req.params.userId);
+      console.log(user);
+      res.send(user);
+    } else {
+      console.log("Please Login...");
+      res.status(404).json({ message: "Please Login..." });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 module.exports = {
   status,
   signup,
@@ -466,4 +490,5 @@ module.exports = {
   update,
   clearCart,
   orderPlaced,
+  view,
 };

@@ -6,6 +6,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/product.css" />
+    <link rel="icon" href="../Images/loader/pngwing.com(1).png" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
@@ -123,7 +124,7 @@
 
           <div class="order">
             <div class="cart-button">
-              <button>Buy Now</button>
+              <button class="buynow">Buy Now</button>
               <button type="submit" class="add-to-cart">Add To Cart</button>
             </div>
             <div class="wishlist">
@@ -164,9 +165,44 @@
     </section>
 
     <div id="prodetails" class="section-p1"></div>
-    <h2 id="rate">Ratings</h2>
+    
     <section id="review-section">
-      <div class="reviewContainer">
+      <div class="writeReview">
+        <h1>Write a Review</h1>
+        <form id="reviewForm">
+          <div class="rate">
+            <div class="rate2">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+          </div>
+          <div class="review">
+            <label for="reviewText">Your Review:</label>
+            <textarea
+              id="reviewText"
+              name="reviewText"
+              rows="4"
+              cols="50"
+              placeholder="Write your review here..."
+            ></textarea>
+          </div>
+          <div class="butt">
+            <button class="butt" type="button" onclick="submitReview()">
+              Submit Review
+            </button>
+          </div>
+        </form>
+      </div><h2 id="rate">Reviews</h2>
+      <div id="outerContainer">
+        <!-- <div class="reviewContainer">
         <div class="top">
           <div class="avatar">
             <img src="../Images/Avatars/5937171-removebg-preview.png" alt="" />
@@ -188,39 +224,10 @@
             Et quod sed doloribus autem.
           </p>
         </div>
-      </div>
-      <div class="writeReview">
-        <h1>Write a Review</h1>
-
-        <div class="rating">
-          <p>Rating:</p>
-          <input type="radio" id="star5" name="rating" value="5" />
-          <label for="star5">&#9733;</label>
-          <input type="radio" id="star4" name="rating" value="4" />
-          <label for="star4">&#9733;</label>
-          <input type="radio" id="star3" name="rating" value="3" />
-          <label for="star3">&#9733;</label>
-          <input type="radio" id="star2" name="rating" value="2" />
-          <label for="star2">&#9733;</label>
-          <input type="radio" id="star1" name="rating" value="1" />
-          <label for="star1">&#9733;</label>
-        </div>
-
-        <div class="review">
-          <label for="reviewText">Your Review:</label>
-          <textarea
-            id="reviewText"
-            name="reviewText"
-            rows="4"
-            cols="50"
-            placeholder="Write your review here..."
-          ></textarea>
-        </div>
-        <div class="butt">
-          <button class="butt" type="submit">Submit Review</button>
-        </div>
+      </div> -->
       </div>
     </section>
+  
     <div id="pro-contain">
       <h1>Recommendations</h1>
       <p>Curated Picks Just for You</p>
@@ -234,7 +241,7 @@
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
             <a class="li" href="error404.html">Become a Member</a>
-            <a class="li" href="error404.html">Send us Feedback</a>
+            <a class="li" href="contactUs.html#target">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">

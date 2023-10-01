@@ -504,7 +504,10 @@ li {
 .header::before {
   background-color: whitesmoke;
 }
-
+button:active{
+  transform: scale(1.05);
+  opacity: .6; /* Increase the scale (you can adjust the value) */
+}
 /* @media screen and (min-width: 300px) {
   .right form {
     width: auto;

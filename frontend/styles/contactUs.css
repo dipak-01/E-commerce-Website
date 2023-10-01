@@ -130,8 +130,9 @@ body {
 #check {
   display: none;
 }
-
-nav  {display:flex}
+nav {
+  display: flex;
+}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -151,7 +152,7 @@ nav  {display:flex}
 
   .navbar {
     position: absolute;
-  display: block;
+    display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -353,7 +354,7 @@ nav  {display:flex}
     color: black;
   }
 }
-.log {
+.profile {
   display: none;
 }
 .profile {
@@ -379,6 +380,21 @@ nav  {display:flex}
   scale: 1.1;
   transition: 0.2s ease-in-out;
 }
+/* .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+#CartCount {
+  font-size: 12px;
+  background: transparent;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+} */
 #scrollToTopBtn {
   display: none;
   position: fixed;
@@ -404,31 +420,7 @@ nav  {display:flex}
   box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
   padding: 13px 13px;
 }
-#scrollToTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  font-size: larger;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  border: none;
-  cursor: pointer;
-  padding: 12px 12px;
-  border-radius: 25px;
-  border: 2px solid rgb(0, 0, 0);
-  box-shadow: 2px 1px 0 0 rgb(45, 44, 44);
-}
 
-#scrollToTopBtn:hover {
-  background-color: rgb(238, 238, 238);
-  transform: translate(1px, 1px);
-}
-#scrollToTopBtn:active {
-  box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
-  padding: 13px 13px;
-}
 
 /* -----------Footer------------- */
 .container1 {
@@ -556,7 +548,7 @@ textarea {
 }
 :placeholder-shown {
   font-family: "Fira Sans", sans-serif;
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 .contact_us {
   display: flex;

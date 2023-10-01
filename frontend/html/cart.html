@@ -7,6 +7,7 @@
     <!-- <link rel="stylesheet" href="login.css
   "> -->
     <link rel="stylesheet" href="../styles/cart.css" />
+    <link rel="icon" href="../Images/loader/pngwing.com(1).png" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
@@ -81,7 +82,7 @@
     </section>
     <!-- CART -->
 
-    <div class="cart">
+    <div id="cart" class="cart">
       <div class="left">
         <div class="my-cart"><strong> My Cart</strong></div>
         <div class="offers">
@@ -130,9 +131,13 @@
             <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
           </div>
         </div>
-
+        <!-- <div class="plzlogin">
+          <h1>Please <a href="login.html">login</a> to view cart</h1>
+        </div> -->
         <!-- PRODUCTS -->
-
+        <!-- <section class="plzlogin" style="display: block;">
+            <h1>Please <a href="login.html">Login</a> to view your Cart Products</h1>
+          </section> -->
         <section id="products-dum">
           <div class="products">
             <div class="product-img">
@@ -149,7 +154,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy">
+        <section id="products-dummy" class="product-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -160,7 +165,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy1">
+        <section id="products-dummy1" class="product-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -177,7 +182,7 @@
 
       <!-- RIGHT -->
 
-      <div class="right" style="display: none">
+      <div id="right" class="right" style="display: none">
         <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
@@ -215,9 +220,9 @@
 
           <!-- </form> -->
         </div>
-        <div class="pay">
-          <form class="pay-form">
-            <input type="hidden" id="myInput" name="amount" value="" />
+        <form class="pay-form">
+          <div class="pay">
+            <input type="hidden" id="myInput" name="amount" value="1" />
             <input
               type="hidden"
               id="description"
@@ -234,11 +239,19 @@
             >
               PAY NOW
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
-
+    <section
+      id="plzlogin"
+      style="display: none; text-align: center; padding: 50px"
+    >
+      <h2>
+        Please <a href="login.html" style="color: tomato">Login</a> to View your
+        Cart
+      </h2>
+    </section>
     <!-- footer -->
 
     <section>
@@ -247,7 +260,7 @@
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
             <a class="li" href="error404.html">Become a Member</a>
-            <a class="li" href="error404.html">Send us Feedback</a>
+            <a class="li" href="contactUs.html#target">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -323,7 +336,43 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="../scripts/status.js"></script>
+    <script>
+      const element = document.getElementById("products-dummy");
+      const element1 = document.getElementById("products-dummy1");
+      const element2 = document.getElementById("plzlogin");
+      const carting = document.querySelector(" .right");
+
+      let log = document.querySelector(".log");
+
+      let profile = document.querySelector(".profile");
+      fetch("http://localhost:3000/user-status", {
+        method: "get",
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.status) {
+            profile.style.display = "block";
+            let avatarUrl = data.avatarUrl;
+            let imgElement = document.querySelector(".profile img");
+            imgElement.src = avatarUrl;
+            log.style.display = "none";
+            z;
+          } else {
+            profile.style.display = "none";
+            log.style.display = "block";
+            element.style.display = "none";
+            element1.style.display = "none";
+            element2.style.display = "block";
+            carting.style.display = "none";
+            carting.style.visibility = "hidden";
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
     <script src="../scripts/cart.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -367,8 +416,19 @@
                     image: "https://dummyimage.com/600x400/000/fff",
                     order_id: res.order_id,
                     handler: function (response) {
-                      alert("Payment Succeeded");
-                      window.location.href="landingPage.html"
+                      fetch("http://localhost:3000/clearCart", {
+                        method: "PUT",
+                        credentials: "include",
+                        headers: {
+                          "Content-Type": "application/json", // Set the content type to JSON
+                        },
+                      }).then((response) => {
+                        if (response.ok) {
+                          console.log("Received data");
+                          alert("Payment Succeeded");
+                          window.location.href = "landingPage.html";
+                        }
+                      });
                     },
                     prefill: {
                       contact: res.contact,

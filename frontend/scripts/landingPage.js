@@ -195,7 +195,7 @@ const productCardGenerator2 = (y) => {
     .then((data) => {
       console.log("inside2");
       // Generate product cards and append them to the container
-      for (let i = 6; i < 11; i++) {
+      for (let i = 6; i < 16; i++) {
         console.log("inside for2");
         let productCard = createProductCard(data[i]);
         element1.style.display = "none";
