@@ -44,7 +44,7 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 
 ## Contribution
 
-We welcome contributions to further enhance the spiritual experience for our users. To contribute, follow these steps:
+Embark on a thrilling sneaker adventure with us! To contribute, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature/your-feature`
