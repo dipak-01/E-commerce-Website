@@ -695,6 +695,15 @@ li {
   }
 }
 @media (max-width: 525px) {
+  #featureSection {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  #featureSection .product {
+    width: 18.5%;
+    min-width: 160px;
+  }
   .underline span {
     animation: footmoving 4s linear infinite;
   }

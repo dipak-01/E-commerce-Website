@@ -235,7 +235,7 @@
     </section>
     <!-- footer -->
 
-    <section>
+    <section id="foot">
       <footer class="footer" id="footer">
         <div class="container1">
           <div class="big_links">
@@ -405,9 +405,10 @@
                         },
                       }).then((response) => {
                         if (response.ok) {
+                          console.log( response);
                           console.log("Received data");
-                          alert("Payment Succeeded");
-                          window.location.href = "landingPage.html";
+                           
+                          window.location.href = "shipping.html";
                         }
                       });
                     },

@@ -775,15 +775,25 @@ li {
   }
 }
 @media (max-width: 525px) {
+  #featureSection {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  #featureSection .product {
+    width: 18.5%;
+    min-width: 150px;
+  }
+
   .underline span {
     animation: footmoving 4s linear infinite;
   }
   #pro-contain h1 {
-    padding-top: 20px;
+    padding-top: 40px;
     font-size: 30px;
   }
   #featureSection .product {
-    min-width: 170px;
+    min-width: 150px;
   }
   #featureSection .productContainer {
     padding: 10px 5px;
@@ -816,6 +826,7 @@ li {
   overflow: hidden;
   margin-top: 90px;
   width: 100%;
+  
   /* position: relative; */
 }
 
@@ -931,15 +942,24 @@ li {
 }
 
 .explore img {
-  height: 25%;
+  height: 400px;
   width: 100%;
   border: 1px solid black;
   object-fit: cover;
 }
 @media (max-width: 768px) {
+  .explore img {
+    height: 200px;}
+    .image img {
+      position: relative;
+      width: 100%;
+      height: 160px;}
+    #changingImage {
+      width: 100%;
+      height: 220px;}
   .explore_btn {
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 10px;
+    padding: 10px 13px;
   }
   .explore {
     padding: 40px 0;

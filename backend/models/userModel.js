@@ -65,6 +65,10 @@ const userSchema = new Schema(
         size: {
           type: Number,
         },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
       },
     ],
     addrs1: {

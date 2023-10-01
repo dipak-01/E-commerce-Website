@@ -29,6 +29,7 @@ span {
 }
 body {
   margin: 0;
+  display: inline-block;
   min-height: 100vh;
   /* background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/844a2e12-df15-4697-b172-3e05db4d3413) */
   font-family: "Fira Sans", sans-serif;
@@ -414,7 +415,7 @@ nav {
   position: relative;
   background-color: rgb(17, 16, 16);
   /* height: 300px; */
-  width: 100%;
+  width: 100vw;
   left: 0;
   right: 0;
   bottom: 0;
@@ -593,7 +594,7 @@ li {
   width: 100%;
   margin-bottom: 10px;
   padding: 16px 18px 12px 18px;
-  font-weight: 700;
+  font-weight: 100;
   font-size: 14px;
   /* margin-left: 30px; */
   padding-bottom: 10px;
@@ -741,7 +742,7 @@ li {
 
 .inputs {
   display: flex;
-  border: 1px solid #ff3f6c;
+  border: 1px solid #d1d1d1;
   border-radius: 2px;
 }
 .inputs-button button {
@@ -749,7 +750,7 @@ li {
   background-color: white;
 }
 .Qty {
-  border: 1px solid #ff3f6c;
+  border: 1px solid #e5e5e5;
   padding: 0 5px;
 }
 /*  RIGHT */
@@ -1046,3 +1047,11 @@ a {
 .payment-success i {
   padding-left: 4px;
 }
+
+.offers{
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-direction: column;
+  }

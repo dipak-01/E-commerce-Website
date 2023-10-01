@@ -1,5 +1,5 @@
 let totalMrp = 0;
- 
+
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
@@ -7,18 +7,16 @@ const productCardGenerator = (x) => {
   const element3 = document.querySelector(".breakdown");
   const carting = document.querySelector(".cart .right");
   const element4 = document.getElementById("pay");
- 
+
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
-      
       console.log(data);
       if (data.length == 0) {
         element.style.display = "none";
         element1.style.display = "none";
         element2.style.display = "block";
       } else {
-      
         carting.style.display = "block";
         carting.style.visibility = "visible";
         element3.style.display = "block";
@@ -41,9 +39,9 @@ const productCardGenerator = (x) => {
       }
     });
 };
- 
+
 console.log("2");
- 
+
 function createProductCard(data2, data, objId) {
   console.log("3");
 
@@ -126,11 +124,9 @@ const searchResultsPopup = document.getElementById("search-results-popup");
 // Function to fetch search results
 async function fetchSearchResults(query) {
   try {
-    // Replace with your API endpoint for fetching search results
     const response = await fetch(`http://localhost:3000/search?query=${query}`);
     const data = await response.json();
 
-    // Display search results
     displaySearchResults(data);
   } catch (error) {
     console.error("Error fetching search results:", error);
@@ -145,18 +141,14 @@ function displaySearchResults(results) {
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
-    // Create an anchor tag for the result item
     const resultLink = document.createElement("a");
-    resultLink.href = `product.html?id=${result._id}`; // Replace with the appropriate URL from your API response
+    resultLink.href = `product.html?id=${result._id}`;
 
-    // Create a span for the title and set its text content
     const titleSpan = document.createElement("span");
-    titleSpan.textContent = result.title; // Replace with the appropriate property from your API response
+    titleSpan.textContent = result.title;
 
-    // Append the title span to the anchor tag
     resultLink.appendChild(titleSpan);
 
-    // Append the anchor tag to the result item
     resultItem.appendChild(resultLink);
 
     searchResultsPopup.appendChild(resultItem);
@@ -190,9 +182,8 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Event listener to handle search when clicking the search icon
 searchIcon.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent the default behavior of the click event
+  event.preventDefault();
   const query = searchInput.value.trim();
 
   // Fetch search results when the search icon is clicked
@@ -202,19 +193,20 @@ searchIcon.addEventListener("click", (event) => {
 const discountPrice = 2000;
 const convenienceFee = 100;
 
+
 function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
   // Display the updated total MRP value in the HTML element
   const totalMrpValueElement = document.getElementById("totalMrpValue");
   const discountElement = document.getElementById("discountPrice");
   const feeElement = document.getElementById("convenienceFee");
   const totalAmt = document.getElementById("totalamt");
-  totalMrpValueElement.textContent = totalMrp.toFixed(2);
+  totalMrpValueElement.textContent = totalMrp ;
   discountElement.textContent = discountPrice;
   feeElement.textContent = convenienceFee;
   totalAmt.textContent = totalMrp.toFixed(2) - discountPrice - convenienceFee;
 
   var inputField = document.getElementById("myInput");
 
-  inputField.value = totalMrp-discountPrice-convenienceFee;
+  inputField.value = totalMrp - discountPrice - convenienceFee;
   console.log(inputField);
 }

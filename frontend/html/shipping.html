@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UpStyle | Cart | Summary</title>
-    <!-- <link rel="stylesheet" href="login.css
-  "> -->
+
     <link rel="stylesheet" href="../styles/shipping.css" />
     <link
       rel="stylesheet"
@@ -85,53 +84,15 @@
       <div class="left">
         <div class="my-cart"><strong> Order Details </strong></div>
         <div class="offers order-details">
-          <p>Order Date:</p>
-          <p>Order No:</p>
-          <p>Order Total:</p>
-          <!-- <div class="avail-offer">
-            <div class="offer-icon">
-              <i class="bx bxs-offer"></i>
-            </div>
-            <div class="offertag">Available Offers</div>
-          </div>
-          <div class="instant-discount">
-            <p>Get Flat ₹2000 off on your first order. TCA</p>
-            <p>
-              12.5% Instant Discount on every spends with UpStyle Kotak Credit
-              Card. TCA
-            </p>
-          </div>
-          <div class="showMore">
-            <aside>
-              <details>
-                <summary class="point">Show More</summary>
-                Get a fantastic 12.5% instant discount when you make any
-                purchase with your Up Style Kotak Credit Card. This exclusive
-                offer is subject to terms and conditions.
-              </details>
-            </aside>
-          </div> -->
+          <p>Order Date: <span class="date"></span></p>
+          <p>Order No: <span class="orderNo"></span></p>
+          <p>Order Total: <span class="orderTotal"></span>₹</p>
         </div>
-        <!-- <div class="login-directs">
-            <div class="delivery-icon">
-              <i class="uil uil-truck"></i>
-            </div>
-            <div class="login-directs-info">
-              <div class="login-offer">
-                Login to <strong>avoid conveince fee</strong> on your first order.
-              </div>
-              <div class="login-button">
-                <button class="login-directs-link">Login</button>
-              </div>
-            </div>
-          </div> -->
+
         <div class="items">
           <div class="items-count">
             <strong> ITEM(S) ORDERED </strong>
           </div>
-          <!-- <div class="add-items">
-            <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
-          </div> -->
         </div>
 
         <!-- PRODUCTS -->
@@ -185,23 +146,16 @@
           <div class="shipping-title"><strong>SHIPPING ADDRESS</strong></div>
         </div>
         <div class="shipping-detail offers">
-          <div class="customer-name">Name:</div>
-          <div class="customer-name">Phone No:</div>
-          <div class="customer-address">Address:</div>
+          <div class="customer-name">
+            Name:
+            <span class="firstName"></span>
+            <span class="lastName"></span>
+          </div>
+          <div class="customer-name">Phone No:<span class="phone"></span></div>
+          <div class="customer-address">
+            Address: <span class="addr1"></span>
+          </div>
         </div>
-        <!-- <div class="coupon-container">
-          <div class="coupon-head"><strong> COUPONS </strong></div>
-          <div class="coupons">
-            <div class="coupon-icon"><i class="uil uil-tag-alt"></i></div>
-            <div class="apply-container">
-              <div class="coupon-tag">Apply Coupons</div>
-              <div class="apply clickable"><button>Apply</button></div>
-            </div>
-          </div>
-          <div class="coupon-offer">
-            <p><strong>Place your order</strong> to get upto ₹ 2000 OFF</p>
-          </div>
-        </div> -->
 
         <div class="breakdown" id="breakdown">
           <div class="breakdown-tag"><strong> ORDER SUMMARY </strong></div>
@@ -225,23 +179,11 @@
 
           <!-- </form> -->
         </div>
-        <div class="offers payment-success">
+        <div class="payment-success">
           <i class="uil uil-check-circle"></i
           ><strong>Payment Successful</strong>
         </div>
-        <div class="pay">
-          <form class="pay-form">
-            <input type="hidden" id="myInput" name="amount" value="" />
-            <input
-              type="hidden"
-              id="description"
-              name="description"
-              value="Shoes Buying"
-            />
-            <input type="hidden" id="name" name="name" value="Shoes" />
-            <a class="home" href="landingPage.html">Back to Home.</a>
-          </form>
-        </div>
+        <a class="home" href="landingPage.html">Back to Home</a>
       </div>
     </div>
 
@@ -330,82 +272,6 @@
     ></script>
     <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
     <script src="../scripts/status.js"></script>
-    <!-- <script src="../scripts/cart.js"></script> -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var payForms = document.querySelectorAll(".pay-form");
-
-        payForms.forEach(function (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const amount = document.querySelector("#myInput").value;
-            const description = document.querySelector("#description").value;
-            const name = document.querySelector("#name").value;
-
-            var formData = new FormData(form);
-
-            fetch("http://localhost:3000/createOrder", {
-              method: "POST",
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                amount,
-                description,
-                name,
-              }),
-            })
-              .then(function (response) {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                return response.json();
-              })
-              .then(function (res) {
-                if (res.success) {
-                  var options = {
-                    key: res.key_id,
-                    amount: res.amount,
-                    currency: "INR",
-                    name: res.product_name,
-                    description: res.description,
-                    image: "https://dummyimage.com/600x400/000/fff",
-                    order_id: res.order_id,
-                    handler: function (response) {
-                      alert("Payment Succeeded");
-                      window.location.href = "landingPage.html";
-                    },
-                    prefill: {
-                      contact: res.contact,
-                      name: res.name,
-                      email: res.email,
-                    },
-                    notes: {
-                      description: res.description,
-                    },
-                    theme: {
-                      color: "#2300a3",
-                    },
-                  };
-                  var razorpayObject = new Razorpay(options);
-                  razorpayObject.on("payment.failed", function (response) {
-                    alert("Payment Failed");
-                  });
-                  razorpayObject.open();
-                } else {
-                  alert(res.msg);
-                }
-              })
-              .catch(function (error) {
-                console.error(
-                  "There was a problem with the fetch operation:",
-                  error
-                );
-              });
-          });
-        });
-      });
-    </script>
+    <script src="../scripts/shipping.js"></script>
   </body>
 </html>

@@ -28,6 +28,7 @@ span {
   color: rgb(50, 87, 255);
 }
 body {
+  display: inline-block;
   margin: 0;
   min-height: 100vh;
   /* background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/844a2e12-df15-4697-b172-3e05db4d3413) */
@@ -454,7 +455,7 @@ nav {
   position: relative;
   background-color: rgb(17, 16, 16);
   height: auto;
-  width: 100%;
+  width: 100vw;
   left: 0;
   right: 0;
   bottom: 0;
@@ -968,6 +969,7 @@ form {
 }
 body {
   display: flex;
+
   justify-content: flex-end;
   /* align-items: flex-start; */
   flex-direction: column;
@@ -1098,7 +1100,7 @@ body {
   width: 100%;
   gap: 20px;
 }
-#outerContainer{
+#outerContainer {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -1361,13 +1363,12 @@ h1 {
   color: #333;
 }
 
- 
-.rate  {
-   position:relative; 
+.rate {
+  position: relative;
   height: 46px;
   padding: 0 10px;
 }
-.rate2{
+.rate2 {
   position: absolute;
 }
 .rate2:not(:checked) > input {
@@ -1376,7 +1377,7 @@ h1 {
 }
 .rate2:not(:checked) > label {
   float: right;
- 
+
   width: 1em;
   overflow: hidden;
   white-space: nowrap;
@@ -1432,4 +1433,3 @@ textarea {
     width: 100%;
   }
 }
- 

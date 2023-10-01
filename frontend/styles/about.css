@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 .scrollable {
   overflow: scroll;
@@ -36,6 +37,7 @@ body {
   background-size: cover;
   background-position: center;
   background-color: #f5f5f5;
+  
 }
 
 .header {
@@ -425,38 +427,7 @@ nav {
   padding: 13px 13px;
 }
 
-/* MARQUEE */
-.marquee {
-  display: flex;
-  overflow: hidden;
-  height: 5px;
-  user-select: none;
-  gap: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: #f45b69;
-  /* transform: skewY(-3deg); */
-  /* transform: rotate(-5deg) translateY(-30px) translateX(50px); */
-  margin-top: 63px;
-}
-.marquee__group {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  min-width: 100%;
-  animation: scroll 15s linear infinite reverse;
-  top: 20%;
-}
-.marquee__group span {
-  color: rgb(9, 9, 9);
-  font-size: 90%;
-  font-weight: 800;
-  white-space: nowrap;
-  font-family: "Syne", sans-serif !important;
-  /*text-transform: uppercase;*/
-}
+ 
 
 @keyframes scroll {
   from {
@@ -691,13 +662,15 @@ button:active{
 /* Our Team */
 
 .our-team {
+   
   display: block;
-  /* background-color: #27005d; */
-  background-color: white;
+  background: rgb(218,156,181);
+  background: radial-gradient(circle, rgba(218,156,181,1) 6%, rgba(237,215,224,1) 56%, rgba(179,164,220,1) 100%);
   border-top: 1px solid black;
 }
 
 .our-team h1 {
+
   text-align: center;
   color: black;
   font-size: 2.9rem;
@@ -733,7 +706,7 @@ button:active{
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   background-color: #27005d91;
 }
 
@@ -743,13 +716,13 @@ button:active{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  opacity: 0.5;
+  opacity: 1;
   transition: 0.5s;
 }
 .container .cards .content .img {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   border: 10px solid rgba(0, 0, 0, 0.25);
@@ -776,15 +749,20 @@ button:active{
 }
 
 .container .cards .content .pro-details h3 span {
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 15px;
+  padding: 30px;
+  font-weight: 900;
   text-transform: initial;
-  color: #fff;
+  color: #000000;
 }
 
 .container .cards .links- {
   position: absolute;
-  bottom: 50px;
+  bottom: 22px;
   display: flex;
-  font-size: 20px;
+  font-size: 40px;
+  color: black;
+}
+.bxl-instagram-alt, .bxl-github, .bxl-linkedin-square{
+  color: rgb(196, 196, 196) !important; 
 }
