@@ -436,3 +436,36 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+function submitReview() {
+  const rating = document.querySelector('input[name="rate"]:checked').value;
+
+  const reviewmsg = document.getElementById("reviewText").value;
+
+  const reviewData = {
+    rating: rating,
+    reviewmsg: reviewmsg,
+  };
+
+  const jsonData = JSON.stringify(reviewData);
+  console.log(jsonData);
+
+  fetch(`http://localhost:3000/product-review/${productId}`, {
+    credentials: "include",
+    method: "POST", // Use POST or the appropriate method for your backend
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Review submitted successfully!");
+        // You can redirect or perform any other action here
+      } else {
+        alert("Error submitting review.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}

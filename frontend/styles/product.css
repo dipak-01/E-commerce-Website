@@ -131,7 +131,9 @@ body {
   display: none;
 }
 
-nav  {display:flex}
+nav {
+  display: flex;
+}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -151,7 +153,7 @@ nav  {display:flex}
 
   .navbar {
     position: absolute;
-  display: block;
+    display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -192,7 +194,6 @@ nav  {display:flex}
     width: 120%;
   }
 }
-
 
 @media (max-width: 850px) {
   .icons {
@@ -722,9 +723,9 @@ li {
   width: 50%;
   background-color: #ff8b9f;
 }
-button:active{
+button:active {
   transform: scale(1.05);
-  opacity: .6; /* Increase the scale (you can adjust the value) */
+  opacity: 0.6; /* Increase the scale (you can adjust the value) */
 }
 .cart-button button {
   width: 100%;
@@ -759,7 +760,7 @@ button:active{
 .wishlist button i {
   padding: 0 5px;
   font-size: 16px;
-color: tomato;
+  color: tomato;
   gap: 4px;
 }
 .uil-heart-alt {
@@ -1337,7 +1338,7 @@ body {
 }
 h1 {
   font-size: 24px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: #333;
 }
 
@@ -1353,36 +1354,45 @@ h1 {
   color: #333;
 }
 
-.rating input[type="radio"] {
-  display: none;
+ 
+.rate  {
+   position:relative; 
+  height: 46px;
+  padding: 0 10px;
 }
-
-.rating label {
-  font-size: 24px;
+.rate2{
+  position: absolute;
+}
+.rate2:not(:checked) > input {
+  position: absolute;
+  opacity: 0;
+}
+.rate2:not(:checked) > label {
+  float: right;
+ 
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
   cursor: pointer;
+  font-size: 30px;
   color: #ccc;
 }
-
-.rating input[type="radio"]:checked ~ label {
-  color: #ffc107; /* Yellow color for selected stars */
+.rate2:not(:checked) > label:before {
+  content: "★ ";
 }
-
-/* Flip the order of labels to display stars from left to right */
-.rating label {
-  order: 2; /* Default order */
+.rate2 > input:checked ~ label {
+  color: #ffc700;
 }
-
-.rating label:first-child {
-  order: 3; /* Move the first label (1 star) to the rightmost position */
+.rate2:not(:checked) > label:hover,
+.rate2:not(:checked) > label:hover ~ label {
+  color: #deb217;
 }
-
-.review {
-  margin-bottom: 20px;
-}
-
-.review label {
-  font-weight: bold;
-  color: #333;
+.rate2 > input:checked + label:hover,
+.rate2 > input:checked + label:hover ~ label,
+.rate2 > input:checked ~ label:hover,
+.rate2 > input:checked ~ label:hover ~ label,
+.rate2 > label:hover ~ input:checked ~ label {
+  color: #c59b08;
 }
 
 textarea {
@@ -1393,7 +1403,7 @@ textarea {
   resize: vertical;
 }
 
-.butt button[type="submit"] {
+.butt button[type="button"] {
   background-color: #ff3e6c;
   color: #fff;
   border: none;
@@ -1403,15 +1413,16 @@ textarea {
   font-size: 16px;
 }
 
-.butt button [type="submit"]:hover {
+.butt button [type="button"]:hover {
   background-color: #ff3e6c;
 }
 @media (max-width: 600px) {
-  #review-section{
+  #review-section {
     flex-direction: column;
-     
   }
-  .reviewContainer ,.writeReview{
+  .reviewContainer,
+  .writeReview {
     width: 100%;
   }
 }
+ 

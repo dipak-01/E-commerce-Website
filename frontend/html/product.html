@@ -191,34 +191,37 @@
       </div>
       <div class="writeReview">
         <h1>Write a Review</h1>
-
-        <div class="rating">
-          <p>Rating:</p>
-          <input type="radio" id="star5" name="rating" value="5" />
-          <label for="star5">&#9733;</label>
-          <input type="radio" id="star4" name="rating" value="4" />
-          <label for="star4">&#9733;</label>
-          <input type="radio" id="star3" name="rating" value="3" />
-          <label for="star3">&#9733;</label>
-          <input type="radio" id="star2" name="rating" value="2" />
-          <label for="star2">&#9733;</label>
-          <input type="radio" id="star1" name="rating" value="1" />
-          <label for="star1">&#9733;</label>
-        </div>
-
-        <div class="review">
-          <label for="reviewText">Your Review:</label>
-          <textarea
-            id="reviewText"
-            name="reviewText"
-            rows="4"
-            cols="50"
-            placeholder="Write your review here..."
-          ></textarea>
-        </div>
-        <div class="butt">
-          <button class="butt" type="submit">Submit Review</button>
-        </div>
+        <form id="reviewForm">
+          <div class="rate">
+            <div class="rate2">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+          </div>
+          <div class="review">
+            <label for="reviewText">Your Review:</label>
+            <textarea
+              id="reviewText"
+              name="reviewText"
+              rows="4"
+              cols="50"
+              placeholder="Write your review here..."
+            ></textarea>
+          </div>
+          <div class="butt">
+            <button class="butt" type="button" onclick="submitReview()">
+              Submit Review
+            </button>
+          </div>
+        </form>
       </div>
     </section>
     <div id="pro-contain">

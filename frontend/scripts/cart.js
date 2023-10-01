@@ -5,7 +5,7 @@ const productCardGenerator = (x) => {
   const element1 = document.getElementById("products-dummy1");
   const element2 = document.getElementById("products-dum");
   const element3 = document.querySelector(".breakdown");
-  const carting = document.querySelector(".right");
+  const carting = document.querySelector(".cart .right");
   const element4 = document.getElementById("pay");
   // const element5 = document.querySelector(".plzlogin");
 

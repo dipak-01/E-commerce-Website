@@ -81,7 +81,7 @@
     </section>
     <!-- CART -->
 
-    <div class="cart">
+    <div id="cart" class="cart">
       <div class="left">
         <div class="my-cart"><strong> My Cart</strong></div>
         <div class="offers">
@@ -130,9 +130,9 @@
             <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
           </div>
         </div>
-        <div class="plzlogin">
+        <!-- <div class="plzlogin">
           <h1>Please <a href="login.html">login</a> to view cart</h1>
-        </div>
+        </div> -->
         <!-- PRODUCTS -->
         <!-- <section class="plzlogin" style="display: block;">
             <h1>Please <a href="login.html">Login</a> to view your Cart Products</h1>
@@ -181,7 +181,7 @@
 
       <!-- RIGHT -->
 
-      <div class="right">
+      <div id="right" class="right" style="display: none;">
         <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
@@ -330,7 +330,7 @@
     <script>
       const element = document.getElementById("products-dummy");
       const element1 = document.getElementById("products-dummy1");
-      const carting = document.querySelector(".right");
+      const carting = document.querySelector(" .right");
 
       let log = document.querySelector(".log");
 
@@ -348,6 +348,7 @@
             let imgElement = document.querySelector(".profile img");
             imgElement.src = avatarUrl;
             log.style.display = "none";
+            z;
           } else {
             profile.style.display = "none";
             log.style.display = "block";
