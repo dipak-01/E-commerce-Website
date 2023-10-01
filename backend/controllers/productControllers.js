@@ -47,6 +47,9 @@ const addReview = async (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found");
     }
+    if (!userId) {
+      return res.status(404).send("Please Login...");
+    }
     const reviewexist = product.review.find((item) =>
       item.userId.equals(userId)
     );
