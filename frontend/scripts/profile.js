@@ -1,43 +1,3 @@
-// fetch(`http://localhost:3000/viewprofile `, { credentials: "include" })
-//   .then((res) => {
-//     if (!res.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     return res.text();
-//   })
-//   .then((text) => {
-//     if (text.trim() === "") {
-//       console.error("Empty response");
-//     } else {
-//       const data = JSON.parse(text);
-//       console.log(data);
-//       const firstNameElement = document.querySelector("#firstName");
-//       const lastNameElement = document.querySelector("#lastName");
-//       const phoneElement = document.querySelector(".contact");
-//       const emailElement = document.querySelector("#email");
-//     //   const avatarElement = document.getElementById("avatar");
-
-//       firstNameElement.textContent = data.firstName; // Update with the actual data field from your API response
-//       lastNameElement.textContent = data.lastName; // Update with the actual data field
-//       phoneElement.textContent = data.phone; // Update with the actual data field
-//       emailElement.textContent = data.email; // Update with the actual data field
-//     //   avatarElement.src = data.avatarUrl;
-//       console.log(firstNameElement.textContent);
-//     }
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-// fetch(`http://localhost:3000/viewprofile`, { credentials: "include" })
-//   .then((res) => {
-//     if (!res.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     return res.json(); // Parse response as JSON
-//   })
-//   .then((data) => {
-//     console.log("Received data:", data);
 const productCardGenerator1 = (pro) => {
   function createProductCard(product) {
     return `
@@ -62,7 +22,7 @@ const productCardGenerator1 = (pro) => {
     .then((data) => {
       console.log(data);
       if (data.length == 0) {
-        document.getElementById("emptyWish").style.display="block"
+        document.getElementById("emptyWish").style.display = "block";
       }
       for (let i = 0; i < data.length; i++) {
         let objId = data[i].itemId;
@@ -134,105 +94,6 @@ function colorCart(productId) {
   const cartIcon = document.querySelector(`.carting-${productId}`);
   cartIcon.style.color = "blue";
 }
-
-//     const firstNameElement = document.querySelector("#firstName");
-//     const lastNameElement = document.querySelector("#lastName");
-//     const phoneElement = document.querySelector("#phone");
-//     const emailElement = document.querySelector("#email");
-
-//     firstNameElement.textContent = data.firstName;
-//     lastNameElement.textContent = data.lastName;
-//     phoneElement.textContent = data.phone;
-//     emailElement.textContent = data.email;
-
-//     console.log("Updated content:", {
-//       firstName: firstNameElement.textContent,
-//       lastName: lastNameElement.textContent,
-//       phone: phoneElement.textContent,
-//       email: emailElement.textContent,
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-//   // Function to toggle between displaying data and editing data
-// function toggleEditProfile() {
-//   const firstNameElement = document.querySelector(".firstName");
-//   const lastNameElement = document.querySelector(".lastName");
-//   const emailElement = document.querySelector(".email");
-//   const firstNameInput = document.createElement("input");
-//   const lastNameInput = document.createElement("input");
-//   const emailInput = document.createElement("input");
-
-//   firstNameInput.value = firstNameElement.textContent;
-//   lastNameInput.value = lastNameElement.textContent;
-//   emailInput.value = emailElement.textContent;
-
-//   firstNameElement.innerHTML = "";
-//   lastNameElement.innerHTML = "";
-//   emailElement.innerHTML = "";
-
-//   firstNameElement.appendChild(firstNameInput);
-//   lastNameElement.appendChild(lastNameInput);
-//   emailElement.appendChild(emailInput);
-
-//   // Focus the first input field
-//   firstNameInput.focus();
-
-//   // Add event listeners to update the data on input blur and Enter key press
-//   firstNameInput.addEventListener("blur", () => {
-//     firstNameElement.textContent = firstNameInput.value;
-//   });
-//   lastNameInput.addEventListener("blur", () => {
-//     lastNameElement.textContent = lastNameInput.value;
-//   });
-//   emailInput.addEventListener("blur", () => {
-//     emailElement.textContent = emailInput.value;
-//   });
-
-//   // Listen for the Enter key press to update the data
-//   firstNameInput.addEventListener("keyup", (event) => {
-//     if (event.key === "Enter") {
-//       firstNameElement.textContent = firstNameInput.value;
-//     }
-//   });
-//   lastNameInput.addEventListener("keyup", (event) => {
-//     if (event.key === "Enter") {
-//       lastNameElement.textContent = lastNameInput.value;
-//     }
-//   });
-//   emailInput.addEventListener("keyup", (event) => {
-//     if (event.key === "Enter") {
-//       emailElement.textContent = emailInput.value;
-//     }
-//   });
-// }
-
-// // Add click event listener to the "Edit Profile" link
-// const editProfileLink = document.getElementById("editProfile");
-// editProfileLink.addEventListener("click", toggleEditProfile);
-// Function to show the edit profile form
-// Function to fetch and display user profile data
-// function fetchUserProfile() {
-//   fetch("http://localhost:3000/viewprofile", { credentials: "include" })
-//     .then((res) => {
-//       if (!res.ok) {
-//         throw new Error("Network response was not ok");
-//       }
-//       return res.json();
-//     })
-//     .then((data) => {
-//       // Display fetched user profile data
-
-//       document.querySelector("#addr1Input").textContent = data.address1; // Display Address 1
-//       document.querySelector("#addr2Input").textContent = data.address2; // Display Address 2
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
-// Function to fetch and display user profile data
 function fetchUserProfile() {
   fetch("http://localhost:3000/viewprofile", { credentials: "include" })
     .then((res) => {
@@ -255,7 +116,6 @@ function fetchUserProfile() {
       document.querySelector("#addr1").value = data.addrs1;
       document.querySelector("#addr2").value = data.addrs2;
       document.querySelector("#passwordInput").value = data.password;
-
     })
     .catch((err) => {
       console.log(err);
@@ -419,15 +279,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-    // console.log(productId);
-    // const resultItem = document.createElement("div");
-    // resultItem.classList.add("result-item");
-    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    // const titleLink = document.createElement("a");
-    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
-    // resultItem.appendChild(titleLink);
-    // titleLink.textContent = result.title;
-    // searchResultsPopup.appendChild(resultItem);
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
@@ -484,40 +335,3 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
-
-// const productCardGenerator1 = (pro) => {
-//   function createProductCard(product) {
-//     return `
-//       <div class="product">
-//       <a href="product.html?id=${product._id}">
-//         <img src="${product.imageUrl1}" alt=" product img" />
-//         <img id="change" src="${product.imageUrl2}" alt=" product img" />
-//         <div class="descr">
-//           <span>NIKE</span>
-//           <h4>${product.title}</h4>
-//           <h5>₹ ${product.price}</h5>
-//         </div>
-//         <div class="cart">
-
-//         <a   onclick='addToCart("${product._id}")'    title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
-//         </div>
-//         </a>
-//       </div>`;
-//   }
-//   fetch("http://localhost:3000/getWishList")
-//     .then((res) => res.json())
-//     .then((data) => {
-//       console.log(data);
-//       // Generate product cards and append them to the container
-//       data.forEach((item) => {
-//         let productCard = createProductCard(item);
-//         pro.insertAdjacentHTML("beforeend", productCard);
-//       });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// let pro = document.getElementById("productContainer1");
-// productCardGenerator1(pro);

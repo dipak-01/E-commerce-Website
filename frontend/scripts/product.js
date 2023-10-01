@@ -372,54 +372,6 @@ function checkPincode() {
     availabilityDiv.textContent = "Please enter a valid 6-digit PIN code.";
   }
 }
-// addToWishList = (productId) => {
-//   console.log("in func");
-//   fetch(
-//     `http://localhost:3000/add-to-wishlist/${productId}`,
-
-//     {
-//       method: "PUT",
-//       credentials: "include",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//     .then((response) => {
-//       if (response.ok) {
-//         console.log("Product added to wish successfully.");
-//       } else {
-//         console.error("Failed to add product to wish.");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// };
-
-// addToCart = (productId) => {
-//   console.log("in func");
-//   fetch(
-//     `http://localhost:3000/add-to-cart-only/${productId}`,
-
-//     {
-//       method: "PUT",
-//       credentials: "include",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//     .then((response) => {
-//       if (response.ok) {
-//         console.log("Product added to cart-only successfully.");
-//       } else {
-//         console.error("Failed to add product to cart-only.");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
 const searchResultsPopup = document.getElementById("search-results-popup");
@@ -443,15 +395,7 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-    // console.log(productId);
-    // const resultItem = document.createElement("div");
-    // resultItem.classList.add("result-item");
-    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    // const titleLink = document.createElement("a");
-    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
-    // resultItem.appendChild(titleLink);
-    // titleLink.textContent = result.title;
-    // searchResultsPopup.appendChild(resultItem);
+ 
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
@@ -532,7 +476,7 @@ function submitReview() {
   })
     .then((response) => {
       if (response.ok) {
-       window.location.reload();
+        window.location.reload();
         // You can redirect or perform any other action here
       } else {
         alert("Error submitting review.");
@@ -542,5 +486,3 @@ function submitReview() {
       console.error("Error:", error);
     });
 }
-
- 
