@@ -102,16 +102,15 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     body: JSON.stringify(data), // Convert the data object to JSON
   })
     .then((response) => {
+      if(response.ok){
+        console.log("Received data");
+        console.log(data);
+        window.location.href = "login.html"; 
+      }
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       return response.json(); // Parse the response JSON if needed
-    })
-    .then((data) => {
-      // Handle the response from the backend (if any)
-      console.log("Received data");
-      console.log(data);
-      window.location.href = "landingPage.html"; 
     })
     .catch((error) => {
       // Handle errors
