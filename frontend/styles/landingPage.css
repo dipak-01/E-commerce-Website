@@ -908,7 +908,7 @@ li {
 .explore_btn {
   padding: 15px 30px;
   font-size: 18px;
-  background: white;
+  background: #dddddf;
   color: black;
   border: none;
   cursor: pointer;
@@ -920,7 +920,7 @@ li {
 }
 .explore_btns {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

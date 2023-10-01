@@ -352,7 +352,7 @@ document.querySelector("#editProfile").addEventListener("click", function (e) {
   }
 });
 
-document.querySelector(".logout").addEventListener("click", function (e) {
+document.getElementById("logout").addEventListener("click", function (e) {
   e.preventDefault();
   console.log("in logout");
   fetch("http://localhost:3000/user-logout", {
@@ -368,6 +368,28 @@ document.querySelector(".logout").addEventListener("click", function (e) {
         window.location.href = "landingPage.html";
       } else {
         console.error("Failed to logout.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+document.getElementById("deleteAcc").addEventListener("click", function (e) {
+  e.preventDefault();
+  // console.log("in logout");
+  fetch("http://localhost:3000/delete-account", {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("user deleted successfully.");
+        window.location.href = "landingPage.html";
+      } else {
+        console.error("Failed to delete.");
       }
     })
     .catch((error) => {
