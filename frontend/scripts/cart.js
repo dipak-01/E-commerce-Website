@@ -7,8 +7,7 @@ const productCardGenerator = (x) => {
   const element3 = document.querySelector(".breakdown");
   const carting = document.querySelector(".cart .right");
   const element4 = document.getElementById("pay");
-  // const element5 = document.querySelector(".plzlogin");
-
+ 
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
@@ -42,18 +41,9 @@ const productCardGenerator = (x) => {
       }
     });
 };
-// const productCard = createProductCard(data);
-
-// x.insertAdjacentHTML("beforeend", productCard);
-
+ 
 console.log("2");
-// };
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
+ 
 function createProductCard(data2, data, objId) {
   console.log("3");
 

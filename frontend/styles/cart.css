@@ -522,40 +522,19 @@ li {
     width: 100%;
   }
 }
-/* @media (max-widht:476px){
-  .section-p1{
-    padding: 20px;
-  }
-  #card-add{
-   
-    flex-direction: column; 
-  }
-  #coupon{
-    width: 100%;
-  }
-
-  #Subtotal{
-    width: 100%;
-    padding: 20px;
-  }
- } */
 
 /* CART */
 .cart {
-  /* max-width: 980px; */
-
   max-width: 100%;
   padding: 0 10px 16px;
   min-height: 320px;
   color: #282c3f;
-  /* margin: 0 311px; */
-  display: flex;
-  /* margin: 40px; */
+   display: flex;
 
   margin-left: 20%;
 }
 
- .cart {
+.cart {
   max-width: 980px;
   margin: auto;
   margin-top: 90px;
@@ -563,7 +542,7 @@ li {
   min-height: 320px;
   color: #282c3f;
 }
- .left {
+.left {
   display: inline-block;
   width: 70%;
   padding-right: 20px;
@@ -571,8 +550,7 @@ li {
   padding-top: 32px;
 }
 
- #right {
-  
+#right {
   vertical-align: top;
   display: none;
   width: 30%;
@@ -629,14 +607,12 @@ li {
 .login-directs {
   display: flex;
   width: 100%;
-  /* margin-bottom: 18px;
-  padding: 15px;
-  text-indent: -15px; */
+ 
   list-style: none;
   white-space: normal;
-  /* margin-bottom: 8px; */
+  
   padding: 10px;
-  /* justify-content: space-between; */
+  
   border: 1px solid #eaeaec;
   align-items: center;
 }
@@ -926,7 +902,7 @@ button:active {
   .cart {
     display: grid;
   }
- .left,
+  .left,
   .right {
     padding-right: 0px;
     width: 100%;
@@ -943,9 +919,9 @@ button:active {
   .cart {
     display: grid;
   }
-    .left,
-   .right {
-   width: 100%;
+  .left,
+  .right {
+    width: 100%;
   }
   .cart .left {
     padding-right: 0px;

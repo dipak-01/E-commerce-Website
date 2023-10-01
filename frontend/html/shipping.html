@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UpStyle | Cart</title>
-   
-    <link rel="stylesheet" href="../styles/cart.css" />
-    <link rel="icon" href="../Images/loader/pngwing.com(1).png" type="image/x-icon">
+    <title>UpStyle | Cart | Summary</title>
+    <!-- <link rel="stylesheet" href="login.css
+  "> -->
+    <link rel="stylesheet" href="../styles/shipping.css" />
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
@@ -81,11 +81,14 @@
     </section>
     <!-- CART -->
 
-    <div id="cart" class="cart">
+    <div class="cart">
       <div class="left">
-        <div class="my-cart"><strong> My Cart</strong></div>
-        <div class="offers">
-          <div class="avail-offer">
+        <div class="my-cart"><strong> Order Details </strong></div>
+        <div class="offers order-details">
+          <p>Order Date:</p>
+          <p>Order No:</p>
+          <p>Order Total:</p>
+          <!-- <div class="avail-offer">
             <div class="offer-icon">
               <i class="bx bxs-offer"></i>
             </div>
@@ -107,18 +110,32 @@
                 offer is subject to terms and conditions.
               </details>
             </aside>
-          </div>
+          </div> -->
         </div>
-   
+        <!-- <div class="login-directs">
+            <div class="delivery-icon">
+              <i class="uil uil-truck"></i>
+            </div>
+            <div class="login-directs-info">
+              <div class="login-offer">
+                Login to <strong>avoid conveince fee</strong> on your first order.
+              </div>
+              <div class="login-button">
+                <button class="login-directs-link">Login</button>
+              </div>
+            </div>
+          </div> -->
         <div class="items">
           <div class="items-count">
-            <strong> ITEM(S) IN YOUR CART </strong>
+            <strong> ITEM(S) ORDERED </strong>
           </div>
-          <div class="add-items">
+          <!-- <div class="add-items">
             <a href="exploreAll.html"><strong>ADD ITEMS </strong></a>
-          </div>
+          </div> -->
         </div>
-       
+
+        <!-- PRODUCTS -->
+
         <section id="products-dum">
           <div class="products">
             <div class="product-img">
@@ -135,7 +152,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy" class="product-dummy">
+        <section id="products-dummy">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -146,7 +163,7 @@
             </div>
           </div>
         </section>
-        <section id="products-dummy1" class="product-dummy">
+        <section id="products-dummy1">
           <div class="products skeleton">
             <div class="product-img">
               <img class="pro-image" src=" " alt="" />
@@ -163,11 +180,18 @@
 
       <!-- RIGHT -->
 
-      <div id="right" class="right" style="display: none">
-        <div class="coupon-container">
+      <div class="right">
+        <div class="Shipping-address">
+          <div class="shipping-title"><strong>SHIPPING ADDRESS</strong></div>
+        </div>
+        <div class="shipping-detail offers">
+          <div class="customer-name">Name:</div>
+          <div class="customer-name">Phone No:</div>
+          <div class="customer-address">Address:</div>
+        </div>
+        <!-- <div class="coupon-container">
           <div class="coupon-head"><strong> COUPONS </strong></div>
           <div class="coupons">
-            <!-- <div class="coupon-tag"></div> -->
             <div class="coupon-icon"><i class="uil uil-tag-alt"></i></div>
             <div class="apply-container">
               <div class="coupon-tag">Apply Coupons</div>
@@ -177,10 +201,10 @@
           <div class="coupon-offer">
             <p><strong>Place your order</strong> to get upto ₹ 2000 OFF</p>
           </div>
-        </div>
+        </div> -->
 
         <div class="breakdown" id="breakdown">
-          <div class="breakdown-tag"><strong> CART BREAKDOWN</strong></div>
+          <div class="breakdown-tag"><strong> ORDER SUMMARY </strong></div>
           <div class="mrp price-details">
             <div>Total MRP</div>
             <span>₹ <span id="totalMrpValue">...</span></span>
@@ -195,15 +219,19 @@
           </div>
           <!-- <form action="#"> -->
           <div class="amount">
-            <div>Total Amount</div>
+            <div>Grand Total</div>
             <span>₹ <span id="totalamt">...</span></span>
           </div>
 
           <!-- </form> -->
         </div>
-        <form class="pay-form">
-          <div class="pay">
-            <input type="hidden" id="myInput" name="amount" value="1" />
+        <div class="offers payment-success">
+          <i class="uil uil-check-circle"></i
+          ><strong>Payment Successful</strong>
+        </div>
+        <div class="pay">
+          <form class="pay-form">
+            <input type="hidden" id="myInput" name="amount" value="" />
             <input
               type="hidden"
               id="description"
@@ -211,28 +239,12 @@
               value="Shoes Buying"
             />
             <input type="hidden" id="name" name="name" value="Shoes" />
-            <button
-              id="pay"
-              type="submit"
-              value="Pay Now"
-              style="display: none"
-              class="clickable"
-            >
-              PAY NOW
-            </button>
-          </div>
-        </form>
+            <a class="home" href="landingPage.html">Back to Home.</a>
+          </form>
+        </div>
       </div>
     </div>
-    <section
-      id="plzlogin"
-      style="display: none; text-align: center; padding: 50px"
-    >
-      <h2>
-        Please <a href="login.html" style="color: tomato">Login</a> to View your
-        Cart
-      </h2>
-    </section>
+
     <!-- footer -->
 
     <section>
@@ -241,7 +253,7 @@
           <div class="big_links">
             <a class="li" href="comingSoon.html">Find a Store</a>
             <a class="li" href="error404.html">Become a Member</a>
-            <a class="li" href="contactUs.html#target">Send us Feedback</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
             <a class="li" href="comingSoon.html">Student Offer</a>
           </div>
           <div class="support_links">
@@ -316,45 +328,9 @@
       src="https://kit.fontawesome.com/d538e6589c.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-      const element = document.getElementById("products-dummy");
-      const element1 = document.getElementById("products-dummy1");
-      const element2 = document.getElementById("plzlogin");
-      const carting = document.querySelector(" .right");
-
-      let log = document.querySelector(".log");
-
-      let profile = document.querySelector(".profile");
-      fetch("http://localhost:3000/user-status", {
-        method: "get",
-        credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.status) {
-            profile.style.display = "block";
-            let avatarUrl = data.avatarUrl;
-            let imgElement = document.querySelector(".profile img");
-            imgElement.src = avatarUrl;
-            log.style.display = "none";
-            z;
-          } else {
-            profile.style.display = "none";
-            log.style.display = "block";
-            element.style.display = "none";
-            element1.style.display = "none";
-            element2.style.display = "block";
-            carting.style.display = "none";
-            carting.style.visibility = "hidden";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    </script>
-    <script src="../scripts/cart.js"></script>
+    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
+    <script src="../scripts/status.js"></script>
+    <!-- <script src="../scripts/cart.js"></script> -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var payForms = document.querySelectorAll(".pay-form");
@@ -397,19 +373,8 @@
                     image: "https://dummyimage.com/600x400/000/fff",
                     order_id: res.order_id,
                     handler: function (response) {
-                      fetch("http://localhost:3000/clearCart", {
-                        method: "PUT",
-                        credentials: "include",
-                        headers: {
-                          "Content-Type": "application/json", // Set the content type to JSON
-                        },
-                      }).then((response) => {
-                        if (response.ok) {
-                          console.log("Received data");
-                          alert("Payment Succeeded");
-                          window.location.href = "landingPage.html";
-                        }
-                      });
+                      alert("Payment Succeeded");
+                      window.location.href = "landingPage.html";
                     },
                     prefill: {
                       contact: res.contact,

@@ -81,24 +81,7 @@
     <button id="scrollToTopBtn" title="Go to top">
       <i class="bx bx-up-arrow"></i>
     </button>
-    <!-- <section class="infinite-marquee">
-      <div class="marquee">
-        <div class="marquee__group">
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-        </div>
-        <div class="marquee__group" aria-hidden="true">
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-          <span>SIGN UP NOW TO GET 10% OFF ♣</span>
-        </div>
-      </div>
-    </section> -->
+  
 
     <!-- PROFILE SECTION -->
  
@@ -127,7 +110,10 @@
                 <a href="#" id="editProfile">Edit Profile</a>
               </li>
               <li>
-                <button class="logout"><a class="logout2">Logout</a></button>
+                <button class="logout" id="logout"><a class="logout2">Logout</a></button>
+              </li>
+              <li>
+                <button class="logout" id="deleteAcc"><a class="logout2">Delete Account</a></button>
               </li>
             </ul>
           </div>
@@ -169,20 +155,16 @@
               <div class="inline">
                 <div class="form-grp email">
                   <label for="">Email : </label>
-                  <!-- Display email using a <p> element -->
-                  <p name="email" id="emailInput"></p>
+                   <p name="email" id="emailInput"></p>
                 </div>
               </div>
               <div class="form-grp Contact">
                 <label for="">Contact </label>
-                <!-- Display phone using a <p> element -->
-                <p name="phone" id="phoneInput"></p>
+                 <p name="phone" id="phoneInput"></p>
               </div>
               <div class="form-grp password" style="display: none">
-                <!-- Hidden password field -->
-                <label for="">Password</label>
-                <!-- Input field for Password -->
-                <input id="passwordInput" type="password" name="password" />
+                 <label for="">Password</label>
+                 <input id="passwordInput" type="password" name="password" />
               </div>
               <div class="update">
                 <button id="updateProfile" style="display: none">Update</button>
