@@ -1,6 +1,6 @@
-# UpStyle
+#  UpStyle 👟 
 
-Welcome to UpStyle, your premier destination for the latest and greatest in sneaker fashion. UpStyle is not just a sneaker store; it's a lifestyle brand that brings together enthusiasts, collectors, and trendsetters from all walks of life. We're more than just shoes; we're a culture.
+Welcome to UpStyle, your premier destination for the latest and greatest in sneaker fashion. UpStyle is not just a sneaker store; it's a lifestyle brand that brings together enthusiasts, collectors, and trendsetters from all walks of life. We're more than just shoes; we're a cultural hub where fashion meets art, design meets comfort, and individuality reigns supreme. Step into UpStyle, where every sneaker tells a unique story, and every step you take is a stride toward self-expression.
 
 
 
@@ -28,34 +28,60 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/dipak-01/E-commerce-Website.git`
-2. Navigate to the project directory: `link`
-3. Open `index.html` in your preferred web browser.
+2. Install dependencies: `npm install`
+3. Run the application: `npm start`
+4. Visit `http://localhost:3000` in your web browser.
 
-   
+
+## How to Use
+
+- Browse through the extensive range of sneakers available on the website.
+- Click on any item to view detailed information and add it to your cart.
+- Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
+- Create an account with ease to enjoy personalized recommendations, order history tracking, and a seamless checkout process.
+- Proceed to checkout and complete your purchase with ease.
+- Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
+
+## Contribution
+
+We welcome contributions to further enhance the spiritual experience for our users. To contribute, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Create a pull request.
+
+## Feedback
+
+Your feedback is valuable to us! Feel free to open an issue on GitHub for any suggestions, bug reports, or improvements.
+
+
+
 ## Contact Us
 
 
 Have questions or suggestions? Feel free to reach out to our dedicated customer support team. We're here to assist you in any way we can.
 
-Email: support@upstyle.com
-Phone: 1-800-UPSTYLE
+Email: UpStyle7741@gmail.com
 
 
 # ⚙ Techonologies/Libraries/Packages Used
 ## Frontend 
-- **[Font-Awesome](https://fontawesome.com/)** - For getting different icons 
+- **[HTML](https://developer.mozilla.org/en-US/docs/Web/CSS)** - For creating the structure and content of web pages
+- **[CSS](https://developer.mozilla.org/en-US/docs/Web/HTML)** - For describing the presentation and layout of HTML (or other markup) documents in web development
+- **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)** - For adding interactivity and functionality to websites
+- **[Boxicons](https://boxicons.com/)** - For getting different icons
 - **[Google Fonts](https://fonts.google.com/)** - For getting different fonts
-- **[particles.js](https://vincentgarreau.com/particles.js/)** - For creative backgrounds 
+
 
 ## Backend
 - **[NodeJS](https://nodejs.org/en/docs/)** - For the server
 - **[ExpressJS](https://expressjs.com/)** - For handling the incoming requests from the clients
-- **[PostgreSQL](https://www.postgresql.org/)** - Database that stores information of all users and products. It is used with [pg](https://www.npmjs.com/package/pg), a PostgreSQL client for NodeJS
-- **[bcrypt](https://www.npmjs.com/package/bcrypt)** - To hash passwords befoe saving them in database
-- **[JSON Web Token](https://jwt.io/)** - To authenticate the client who has made any request
+- **[MongoDB](https://www.mongodb.com)** - For storing and managing unstructured or semi-structured data, often in a flexible, schema-less format.
 - **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment varibles
 
 
 ---
 
-Join us at UpStyle and elevate your sneaker game to new heights. Discover, connect, and express your unique style with the freshest kicks in the game. Welcome to the UpStyle family!
+🙏 Thank you for joining us on exciting journey into the world of sneakers! 🙏
