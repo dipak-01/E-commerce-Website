@@ -242,7 +242,9 @@
         </form>
       </div>
     </div>
-
+    <section id="plzlogin" style="display: none; text-align: center; padding: 50px;">
+      <h2>Please <a href="login.html" style="color: tomato;">Login</a> to View your Cart</h2>
+    </section>
     <!-- footer -->
 
     <section>
@@ -330,6 +332,7 @@
     <script>
       const element = document.getElementById("products-dummy");
       const element1 = document.getElementById("products-dummy1");
+      const element2 = document.getElementById("plzlogin");
       const carting = document.querySelector(" .right");
 
       let log = document.querySelector(".log");
@@ -354,6 +357,7 @@
             log.style.display = "block";
             element.style.display = "none";
             element1.style.display = "none";
+            element2.style.display="block";
             carting.style.display = "none";
             carting.style.visibility = "hidden";
           }

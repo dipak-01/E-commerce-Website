@@ -1094,7 +1094,14 @@ body {
   padding: 15px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   width: 100%;
+  gap: 20px;
+}
+#outerContainer{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 .reviewContainer {
@@ -1103,7 +1110,7 @@ body {
   border: 1px solid #d7d5d5;
   padding: 10px;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
 }
 .top {
   display: flex;
@@ -1334,7 +1341,7 @@ body {
   border: 1px solid #d7d5d5;
   padding: 10px;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
 }
 h1 {
   font-size: 24px;

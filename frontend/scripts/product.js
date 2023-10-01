@@ -1,6 +1,78 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 const skeletonSection = document.querySelector("#dummy");
+px = document.getElementById("outerContainer");
+
+fetch(`http://localhost:3000/product-review/${productId}`, {
+  method: "get",
+  credentials: "include",
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+
+    for (let i = 0; i < data.length; i++) {
+      let userId = data[i].userId;
+      let rating = data[i].rating;
+      let reviewmsg = data[i].reviewmsg;
+      let createdAt = data[i].createdAt;
+      console.log(userId);
+      console.log(createdAt);
+
+      fetch(`http://localhost:3000/viewprofile/${userId}`)
+        .then((res2) => res2.json())
+        .then((data2) => {
+          let firstName = data2.firstName;
+          let lastName = data2.lastName;
+          let avatarUrl = data2.avatarUrl;
+
+          console.log(data2);
+          console.log(lastName);
+          let productCard = createReview(
+            firstName,
+            lastName,
+            avatarUrl,
+            rating,
+            reviewmsg,
+            createdAt
+          );
+          px.insertAdjacentHTML("beforeend", productCard);
+        });
+    }
+  });
+function createReview(
+  firstName,
+  lastName,
+  avatarUrl,
+  rating,
+  reviewmsg,
+  createdAt
+) {
+  console.log("ccc");
+
+  return `
+  <div class="reviewContainer">
+  <div class="top">
+    <div class="avatar">
+      <img src="${avatarUrl}" alt="" />
+    </div>
+    <div class="nameStars">
+      <div class="userName">${firstName} ${lastName}</div>
+      <div
+        class="Stars"
+        style="--rating: ${rating}"
+        aria-label="Rating of this product is ${rating} out of 5."
+      ></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <h4>Reviewed in India on ${createdAt}</h4>
+    <p>
+    ${reviewmsg}
+    </p>
+  </div>
+</div>`;
+}
 // const dataSection = document.querySelector("#prodetails");
 console.log("prductId");
 
@@ -436,6 +508,7 @@ searchIcon.addEventListener("click", (event) => {
   // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+
 function submitReview() {
   const rating = document.querySelector('input[name="rate"]:checked').value;
 
@@ -451,7 +524,7 @@ function submitReview() {
 
   fetch(`http://localhost:3000/product-review/${productId}`, {
     credentials: "include",
-    method: "POST", // Use POST or the appropriate method for your backend
+    method: "PUT", // Use POST or the appropriate method for your backend
     headers: {
       "Content-Type": "application/json",
     },
@@ -459,7 +532,7 @@ function submitReview() {
   })
     .then((response) => {
       if (response.ok) {
-        alert("Review submitted successfully!");
+       window.location.reload();
         // You can redirect or perform any other action here
       } else {
         alert("Error submitting review.");
@@ -469,3 +542,5 @@ function submitReview() {
       console.error("Error:", error);
     });
 }
+
+ 

@@ -35,7 +35,6 @@ const addReview = async (req, res) => {
   const productId = req.params.productId;
   const userId = req.cookies.userId;
   const { rating, reviewmsg } = req.body;
-
   console.log(productId);
   console.log(userId);
   console.log({ rating, reviewmsg });

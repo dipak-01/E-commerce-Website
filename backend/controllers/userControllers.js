@@ -455,6 +455,23 @@ const orderPlaced = async(req,res) => {
   }
 };
 
+const view = async (req, res) => {
+  try {
+    if (req.params.userId) {
+      console.log(req.params.userId);
+       const user = await User.findById(req.params.userId);
+      console.log(user);
+      res.send(user);
+    } else {
+      console.log("Please Login...");
+      res.status(404).json({ message: "Please Login..." });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 module.exports = {
   status,
   signup,
@@ -473,4 +490,5 @@ module.exports = {
   update,
   clearCart,
   orderPlaced,
+  view,
 };
