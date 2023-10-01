@@ -30,7 +30,7 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 1. Clone the repository: `git clone https://github.com/dipak-01/E-commerce-Website.git`
 2. Install dependencies: `npm install`
 3. Run the application: `npm start`
-4. Visit `http://localhost:3000` in your web browser.
+4. Open `index.html` using LiveServer VS Code Extension.
 
 
 ## How to Use
@@ -63,7 +63,7 @@ Your feedback is valuable to us! Feel free to open an issue on GitHub for any su
 
 Have questions or suggestions? Feel free to reach out to our dedicated customer support team. We're here to assist you in any way we can.
 
-Email: UpStyle7741@gmail.com
+Email: upstyle7741@gmail.com
 
 
 # ⚙ Techonologies/Libraries/Packages Used
