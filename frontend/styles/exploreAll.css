@@ -130,7 +130,9 @@ body {
 #check {
   display: none;
 }
-nav  {display:flex}
+nav {
+  display: flex;
+}
 @media (max-width: 1310px) {
   .icons {
     display: inline-flex;
@@ -150,7 +152,7 @@ nav  {display:flex}
 
   .navbar {
     position: absolute;
-  display: block;
+    display: block;
     top: 100%;
     left: 0;
     width: 100%;
@@ -624,7 +626,7 @@ li {
   font-weight: 100;
   padding-top: 5px;
 }
- 
+
 #featureSection .product .cart {
   display: flex;
   font-size: 30px;
@@ -700,83 +702,10 @@ li {
 .object-id {
   display: none;
 }
- 
+
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }
-/* .skeleton .product img{
-  width: 100%;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 0;
-  margin: 0;
-  object-fit: contain;
-  border-radius: 10px;
-}
-.skeleton .product{
-  width: 18.5%;
-  min-width: 200px;
-  padding: 10px 5px;
-  border: 1px solid rgb(230, 229, 229);
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 10px 0px;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-}
- 
-.skeleton .product .descr{
- padding-left: 0px;
-
-}
- 
-.skeleton span {
-  text-align: start;
-  width: 20%;
-  color: #e6eaea;
-  background-color: #e6eaea;
-  height: 1.5rem;
-  margin-bottom: 5px;
-  border-radius:.8rem;  margin-left: 10px;
-  padding-bottom: 5px;
-}
-.skeleton h5 {
-  width: 40%;
-  background-color: #e6eaea;
-  height: 1.3rem;
-  border-radius:.8rem;
-  margin-left: 10px;
-  margin-top: 5px;
-}
-.skeleton h4 {
-  width: 80%;
-  background-color: #e6eaea;
-  height: 1.3rem;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  border-radius:.8rem;  margin-left: 10px;
-}
-.skeleton h1 {
-  font-size: 40px;
-  padding-top: 40px;
-  padding-bottom: 10px;
-  padding: 40px 30px 10px 30px;
-}
-.skeleton .wishlist::before {
-  background-color: #e6eaea;
-  color: #e6eaea;
-}
-.skeleton .wishlist {
-  background-color: #e6eaea;
-  color: #e6eaea;
-}
-.skeleton .cart1 {
-  background: #e6eaea;
-  color: #e6eaea;
-}
-.skeleton .product .cart1::before {
-  color: #e6eaea;
-}   */
 @keyframes skeleton-loading {
   0% {
     background-color: hsl(0, 0%, 95%);
@@ -920,7 +849,7 @@ li {
   transition: 0.1s ease;
 }
 .skeleton {
-  animation: skeleton-loading .8s linear infinite alternate;
+  animation: skeleton-loading 0.8s linear infinite alternate;
 }
 @keyframes skeleton-loading {
   0% {

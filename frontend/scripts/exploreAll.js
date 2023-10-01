@@ -41,15 +41,7 @@ const productCardGenerator = (x) => {
 let x = document.getElementById("productContainer");
 productCardGenerator(x);
 
-// let y = document.getElementById("dummyProductContainer");
-// const cardTemplate = document.getElementById("dummySection");
-
-// const numberOfCards = 10;
-
-// for (let i = 0; i < numberOfCards; i++) {
-//   const cardClone = cardTemplate.content.cloneNode(true);
-//   y.appendChild(cardClone);
-// }
+ 
 const element = document.querySelector(".dummySection");
 const dummyProductContainer = document.getElementById("dummyProductContainer");
 const productTemplate = document.querySelector(".product");
@@ -61,56 +53,7 @@ for (let i = 0; i < numberOfCards; i++) {
   dummyProductContainer.appendChild(productClone);
 }
 
-// addToWishList = (productId) => {
-//   console.log("in func");
-//   fetch(
-//     `http://localhost:3000/add-to-wishlist/${productId}`,
-
-//     {
-//       method: "PUT",
-//       credentials: "include",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//     .then((response) => {
-//       if (response.ok) {
-//         console.log("Product added to wish successfully.");
-//       } else {
-//         console.error("Failed to add product to wish.");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// };
-
-// addToCart = (productId) => {
-//   console.log("in func");
-//   fetch(
-//     `http://localhost:3000/add-to-cart-only/${productId}`,
-
-//     {
-//       method: "PUT",
-//       credentials: "include",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   )
-//     .then((response) => {
-//       if (response.ok) {
-//         console.log("Product added to cart-only successfully.");
-//       } else {
-//         console.error("Failed to add product to cart-only.");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// };
-
+ 
 
  
 function addToCart(productId) {
@@ -230,15 +173,8 @@ function displaySearchResults(results) {
 
   results.forEach((result) => {
    
-    // console.log(productId);
-    // const resultItem = document.createElement("div");
-    // resultItem.classList.add("result-item");
-    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    // const titleLink = document.createElement("a");
-    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
-    // resultItem.appendChild(titleLink);
-    // titleLink.textContent = result.title;
-    // searchResultsPopup.appendChild(resultItem);
+     
+    
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 

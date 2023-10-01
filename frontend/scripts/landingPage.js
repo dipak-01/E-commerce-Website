@@ -1,5 +1,3 @@
-
-
 const imageUrls = [
   "../Images/models/model1 (1).webp",
   "../Images/models/model1 (2).webp",
@@ -91,43 +89,6 @@ scrollToTopBtn.addEventListener("click", function () {
   });
 });
 
-// const container = document.getElementById("product-container");
-// // where "container" is the id of the container
-// container.addEventListener("wheel", function (e) {
-//   if (e.deltaY > 0) {
-//     container.scrollLeft += 100;
-//     e.preventDefault();
-//     // prevenDefault() will help avoid worrisome
-//     // inclusion of vertical scroll
-//   } else {
-//     container.scrollLeft -= 100;
-//     e.preventDefault();
-//   }
-// });
-
-// creating cards
-// <!-- Your HTML container where you want to display the product cards -->
-// <div id="productContainer"></div>
-
-// Function to create a product card HTML structure
-// function createProductCard(product) {
-//   return `
-//     <div class="product">
-//       <img src="${product.imgSrc1}" alt="${product.altText}" />
-//       <img id="change" src="${product.imgSrc2}" alt="${product.altText}" />
-//       <div class="descr">
-//         <span>DUNK</span>
-//         <h4>${product.productName}</h4>
-//         <h5>${product.price}</h5>
-//       </div>
-//       <div class="cart">
-//         <a href="#" title="Add to Wishlist"><i class="bx bx-heart wishlist"></i></a>
-//         <a href="#" title="Add to cart"><i class="bx bxs-cart-add cart1"></i></a>
-//       </div>
-//     </div>`;
-// }
-//  <a class="object-id" >${product._id} </a>
-// Get the container element
 const productCardGenerator1 = (x) => {
   function createProductCard(product) {
     return `
@@ -213,14 +174,6 @@ productCardGenerator1(x);
 let y = document.getElementById("productContainer2");
 productCardGenerator2(y);
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   var colorLink = document.getElementById("colorLink");
-
-//   colorLink.addEventListener("click", function () {
-//     colorLink.classList.toggle("red-color");
-//   });
-// });
-
 let element = document.querySelector(".dummySection");
 let element1 = document.querySelector(".dummySection1");
 const dummyProductContainer2 = document.getElementById(
@@ -240,70 +193,6 @@ for (let i = 0; i < numberOfCards; i++) {
   dummyProductContainer2.appendChild(productClone2);
 }
 
-// search bar
-// const searchInput = document.getElementById("search-input");
-// const searchIcon = document.getElementById("search-icon");
-// const searchResults = document.querySelector(".search-results");
-
-// // Function to fetch search results
-// async function fetchSearchResults(query) {
-//   try {
-//     // Replace with your API endpoint for fetching search results
-//     const response = await fetch(`http://localhost:3000/search?q=${query}`);
-//     const data = await response.json();
-
-//     // Display search results
-//     displaySearchResults(data);
-//   } catch (error) {
-//     console.error("Error fetching search results:", error);
-//   }
-// }
-
-// // Function to display search results
-// function displaySearchResults(results) {
-//   // Clear previous search results
-//   searchResults.innerHTML = "";
-
-//   // Iterate through the results and create HTML elements to display them
-//   results.forEach((result) => {
-//     const resultItem = document.createElement("div");
-//     resultItem.classList.add("result-item");
-//     resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-//     searchResults.appendChild(resultItem);
-//   });
-
-//   // Show the search results container
-//   searchResults.style.display = "block";
-// }
-
-// // Event listener for input changes
-// searchInput.addEventListener("input", () => {
-//   const query = searchInput.value.trim();
-
-//   // Hide the search results if the query is empty
-//   if (query === "") {
-//     searchResults.style.display = "none";
-//     return;
-//   }
-
-//   // Fetch search results when the user types
-//   fetchSearchResults(query);
-// });
-
-// // Event listener to close the search results when clicking outside
-// document.addEventListener("click", (event) => {
-//   if (!searchResults.contains(event.target) && event.target !== searchInput) {
-//     searchResults.style.display = "none";
-//   }
-// });
-
-// // Event listener to handle search when clicking the search icon
-// searchIcon.addEventListener("click", () => {
-//   const query = searchInput.value.trim();
-//   event.preventDefault();
-//   // Fetch search results when the search icon is clicked
-//   fetchSearchResults(query);
-// });
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
 const searchResultsPopup = document.getElementById("search-results-popup");
@@ -327,15 +216,6 @@ function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
   results.forEach((result) => {
-    // console.log(productId);
-    // const resultItem = document.createElement("div");
-    // resultItem.classList.add("result-item");
-    // resultItem.textContent = result.title; // Replace with the appropriate property from your API response
-    // const titleLink = document.createElement("a");
-    // titleLink.href = "product.html?id=${results._id}"; // Replace with the appropriate URL from your API response
-    // resultItem.appendChild(titleLink);
-    // titleLink.textContent = result.title;
-    // searchResultsPopup.appendChild(resultItem);
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
@@ -423,22 +303,6 @@ function colorCart(productId) {
 // Define a set to keep track of product IDs in the wishlist
 const wishlist = new Set();
 
-// Function to change the color of the wishlist icon based on the current state
-// function toggleWishlist(productId) {
-//   if (wishlist.has(productId)) {
-//     // If the product is already in the wishlist, remove it and change the color back to the original
-//     wishlist.delete(productId);
-//     removeWl(productId);
-//     const wishlistIcon = document.querySelector(`.wishlist-${productId}`);
-//     wishlistIcon.style.color = "initial"; // Change to the original color or remove the style
-//   } else {
-//     // If the product is not in the wishlist, add it and change the color to red
-//     wishlist.add(productId);
-
-//     const wishlistIcon = document.querySelector(`.wishlist-${productId}`);
-//     wishlistIcon.style.color = "red";
-//   }
-// }
 function toggleWishlist(productId) {
   if (wishlist.has(productId)) {
     // If the product is already in the wishlist, remove it and change the color back to the original
@@ -535,32 +399,3 @@ async function WishlistArray() {
     console.error(err);
   }
 }
-
-// function checkUserLoggedIn() {
-//   console.log("inside checkuserlogin");
-//   const userIdCookie = getCookiee("userId");
-//   console.log(userIdCookie);
-//   if (userIdCookie) {
-//     // User is logged in
-//     return true;
-//   } else {
-//     // User is not logged in
-//     return false;
-//   }
-// }
-
-// function getCookiee(cookieName) {
-//   return document.cookie.userId;
-// }
-// function getCookie(cookieName) {
-//   const cookies = document.cookie.split("; ");
-//   for (let i = 0; i < cookies.length; i++) {
-//     const cookie = cookies[i].split("=");
-//     if (cookie[0] === cookieName) {
-//       return decodeURIComponent(cookie[1]);
-//     }
-//   }
-//   return null;
-// }
-
-// Get the value of the "userID" cookie
