@@ -50,9 +50,11 @@ const addReview = async (req, res) => {
     if (!userId) {
       return res.status(404).send("Please Login...");
     }
-    const reviewexist = product.review.find((item) =>
-      item.userId.equals(userId)
-    );
+    const reviewexist = product.review.find((item) => {
+      if (typeof item.userId !== "undefined") {
+        item.userId.equals(userId);
+      }
+    });
 
     if (reviewexist) {
       reviewexist.rating = rating;
