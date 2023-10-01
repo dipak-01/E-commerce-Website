@@ -50,9 +50,18 @@ const addReview = async (req, res) => {
     if (!userId) {
       return res.status(404).send("Please Login...");
     }
-    const reviewexist = product.review.find((item) =>
-      item.userId.equals(userId)
-    );
+    let reviewexist = null;
+    for (const item of product.review) {
+      if (typeof item.userId !== 'undefined') {
+        // item.userId is defined, and its type is not 'undefined'
+        // You can perform comparisons or operations on item.userId here
+        if (item.userId.equals(userId)) {
+          reviewexist = item;
+          break; // Exit the loop once a matching item is found
+        }
+      }
+    }
+    
 
     if (reviewexist) {
       reviewexist.rating = rating;
