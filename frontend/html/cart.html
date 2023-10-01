@@ -404,8 +404,19 @@
                     image: "https://dummyimage.com/600x400/000/fff",
                     order_id: res.order_id,
                     handler: function (response) {
-                      alert("Payment Succeeded");
-                      window.location.href = "landing.html";
+                      fetch("http://localhost:3000/clearCart", {
+                        method: "PUT",
+                        credentials: "include",
+                        headers: {
+                          "Content-Type": "application/json", // Set the content type to JSON
+                        },
+                      }).then((response) => {
+                        if (response.ok) {
+                          console.log("Received data");
+                          alert("Payment Succeeded");
+                          window.location.href = "landingPage.html";
+                        }
+                      });
                     },
                     prefill: {
                       contact: res.contact,
