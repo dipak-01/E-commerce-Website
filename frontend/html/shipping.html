@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UpStyle | Cart | Summary</title>
+    <link
+      rel="icon"
+      href="../Images/loader/pngwing.com(1).png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="../styles/shipping.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+    </style>
+  </head>
+  <body class="scrollable">
+    <section>
+      <!-- <div class="header-poster">
+        <img src="Images/header-border-top.png" alt="" />
+      </div> -->
+      <header class="header">
+        <header class="header">
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
+          <div style="display: none" class="profile">
+            <a href="profile.html"><img src="" alt="" /></a>
+          </div>
+          <div class="search-results">
+            <!-- Search results will be displayed here -->
+          </div>
+          <input type="checkbox" id="check" />
+          <label for="check" class="icons">
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <i class="bx bx-x" id="close-icon"></i>
+          </label>
+
+          <nav class="navbar">
+            <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
+            <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
+            <a href="exploreAll.html" class="nav-item" style="--i: 3"
+              >Explore all</a
+            >
+            <a href="contactUs.html" class="nav-item" style="--i: 4"
+              >Contact us</a
+            >
+            <a href="login.html" class="nav-item log" style="--i: 5"
+              ><i class="bx bxs-user navbar-icon"> </i
+            ></a>
+            <a href="cart.html" class="nav-item" style="--i: 6"
+              ><i class="bx bx-shopping-bag navbar-icon"></i
+            ></a>
+          </nav>
+          <!-- </div> -->
+        </header>
+      </header>
+    </section>
+    <!-- CART -->
+
+    <div class="cart">
+      <div class="left">
+        <div class="my-cart"><strong> Order Details </strong></div>
+        <div class="offers order-details">
+          <p>Order Date: <span class="date"></span></p>
+          <p>Order No: <span class="orderNo"></span></p>
+          <p>Order Total: <span class="orderTotal"></span>₹</p>
+        </div>
+
+        <div class="items">
+          <div class="items-count">
+            <strong> ITEM(S) ORDERED </strong>
+          </div>
+        </div>
+
+        <!-- PRODUCTS -->
+
+        <section id="products-dum">
+          <div class="products">
+            <div class="product-img">
+              <img
+                class="pro-image"
+                src="../Images/no image/16074852-small-removebg-preview.png"
+                alt=""
+              />
+            </div>
+            <div class="product-details">
+              <div>
+                <h1>Your Cart is <span>Empty!</span></h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="products-dummy">
+          <div class="products skeleton">
+            <div class="product-img">
+              <img class="pro-image" src=" " alt="" />
+            </div>
+            <div class="product-details">
+              <div class="pdt-details-top"><p></p></div>
+              <div class="pdt-details-top"><p></p></div>
+            </div>
+          </div>
+        </section>
+        <section id="products-dummy1">
+          <div class="products skeleton">
+            <div class="product-img">
+              <img class="pro-image" src=" " alt="" />
+            </div>
+            <div class="product-details">
+              <div class="pdt-details-top"><p></p></div>
+              <div class="pdt-details-top"><p></p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="products"></section>
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="right">
+        <div class="Shipping-address">
+          <div class="shipping-title"><strong>SHIPPING ADDRESS</strong></div>
+        </div>
+        <div class="shipping-detail offers">
+          <div class="customer-name">
+            Name:
+            <span class="firstName"></span>
+            <span class="lastName"></span>
+          </div>
+          <div class="customer-name">Phone No:<span class="phone"></span></div>
+          <div class="customer-address">
+            Address: <span class="addr1"></span>
+          </div>
+        </div>
+
+        <div class="breakdown" id="breakdown">
+          <div class="breakdown-tag"><strong> ORDER SUMMARY </strong></div>
+          <div class="mrp price-details">
+            <div>Total MRP</div>
+            <span>₹ <span id="totalMrpValue">...</span></span>
+          </div>
+          <div class="discount price-details">
+            <div>Discount on MRP</div>
+            <span>₹ <span id="discountPrice">...</span></span>
+          </div>
+          <div class="delivery-charges price-details">
+            <div>Convenience Fee</div>
+            <span>₹<span id="convenienceFee">...</span></span>
+          </div>
+          <!-- <form action="#"> -->
+          <div class="amount">
+            <div>Grand Total</div>
+            <span>₹ <span id="totalamt">...</span></span>
+          </div>
+
+          <!-- </form> -->
+        </div>
+        <div class="payment-success">
+          <i class="uil uil-check-circle"></i
+          ><strong>Payment Successful</strong>
+        </div>
+        <a class="home" href="landingPage.html">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <section>
+      <footer class="footer" id="footer">
+        <div class="container1">
+          <div class="big_links">
+            <a class="li" href="comingSoon.html">Find a Store</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="error404.html">Send us Feedback</a>
+            <a class="li" href="comingSoon.html">Student Offer</a>
+          </div>
+          <div class="support_links">
+            <h4 class="support_li">Support</h4>
+            <ul>
+              <li><a class="support" href="contactUs.html">Contact us</a></li>
+              <li>
+                <a class="support" href="comingSoon.html">Promotion and Sale</a>
+              </li>
+              <li><a class="support" href="comingSoon.html">Track Order</a></li>
+              <li>
+                <a class="support" href="privacyPolicy.html">Privacy Policy</a>
+              </li>
+              <li>
+                <a class="support" href="terms.html">Terms and Condition</a>
+              </li>
+            </ul>
+          </div>
+          <div class="about_us">
+            <h4 class="about_u">About</h4>
+            <ul>
+              <li><a class="about" href="landingPage.html">Website </a></li>
+              <li><a class="about" href="comingSoon.html">Read-me </a></li>
+              <li>
+                <a
+                  class="about"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  >Git-hub Repo</a
+                >
+              </li>
+              <li><a class="about" href="about.html">Creators </a></li>
+            </ul>
+          </div>
+          <div class="quick_links">
+            <h4 class="quick">Quick Links</h4>
+
+            <ul class="quick">
+              <li>
+                <a
+                  class="quick_li"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  ><i class="bx bxl-github ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-instagram ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#">
+                  <i class="bx bxl-facebook ibtn"></i
+                ></a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-codepen ibtn"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="last_txt">
+          <p class="demo">
+            © UpStyle India Ltd, 2023. All Rights Reserved. Imprint and Legal
+            Data
+          </p>
+        </div>
+      </footer>
+    </section>
+    <script
+      src="https://kit.fontawesome.com/d538e6589c.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
+    <script src="../scripts/status.js"></script>
+    <script src="../scripts/shipping.js"></script>
+  </body>
+</html>

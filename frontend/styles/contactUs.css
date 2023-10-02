@@ -1,0 +1,610 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.scrollable {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+span {
+  color: rgb(50, 87, 255);
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/844a2e12-df15-4697-b172-3e05db4d3413) */
+  font-family: "Fira Sans", sans-serif;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-color: #f5f5f5;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.4rem 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.header::before {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(70px);
+  z-index: -1;
+}
+
+.header::after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: -100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.8s;
+}
+
+.header:hover::after {
+  left: 100%;
+}
+
+.logo {
+  font-size: 1.7rem;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 900;
+  margin-right: 2px;
+  /* border: 1px solid black; */
+  padding: 6px;
+
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif, "Arial Narrow", Arial, sans-serif, Geneva,
+    Tahoma, sans-serif;
+}
+.logo-image {
+  position: absolute;
+  height: 50px;
+  width: 140px;
+}
+.nav-item {
+  position: relative;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.13px;
+  text-decoration: none;
+  margin-left: 2.5rem;
+  transition: all 0.5s ease;
+}
+
+.nav-item:hover {
+  color: rgb(255, 0, 115);
+}
+
+.icons {
+  position: absolute;
+  left: 2%;
+  font-size: 2rem;
+  color: #000000;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+nav {
+  display: flex;
+}
+@media (max-width: 1310px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+
+  .icons #close-icon {
+    display: none;
+  }
+
+  #check:checked ~ .icons #close-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(70px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar {
+    height: 19.3rem;
+  }
+
+  .nav-item {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
+  .search-details {
+    display: flex;
+    width: 600px;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    width: 120%;
+  }
+}
+
+@media (max-width: 850px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+
+  .icons #close-icon {
+    display: none;
+  }
+
+  #check:checked ~ .icons #close-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(70px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar {
+    height: 19.3rem;
+  }
+
+  .nav-item {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
+  .search-bar {
+    display: block;
+    margin-top: 10px; /* Adjust margin as needed */
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-bar i {
+    margin-left: 0; /* Remove left margin for the search icon */
+  }
+  .search-results-popup {
+    width: 100%;
+  }
+}
+.search-bar i {
+  margin-left: 0; /* Remove left margin for the search icon */
+}
+
+.search-bar {
+  /* Allow the search bar to take up available space */
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem; /* Adjust margin as needed */
+  background-color: #ffffff;
+  border: 1px solid #111010;
+  border-radius: 5px;
+  padding: 5px 10px;
+  /* max-width: 500px; */
+  color: black;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  color: #000000;
+}
+
+.search-bar i {
+  font-size: 1.2rem;
+  margin-left: 10px;
+  color: #000;
+  cursor: pointer;
+}
+.search-details {
+  position: relative;
+  display: grid;
+  margin-right: 3px;
+}
+
+/* Search results popup styles */
+.search-results-popup {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 40;
+  background-color: #f5f5f5;
+  text-align: left;
+  border-radius: 0 0px 10px 0;
+  border: 1px solid #7c7c7c;
+  height: 500px;
+  top: 100%;
+  border-top: none;
+  width: 80%;
+}
+.result-item {
+  padding: 10px;
+  color: black;
+}
+.result-item span {
+  color: black;
+}
+.insidesearch {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 24px;
+}
+.search-results-popup::-webkit-scrollbar {
+  width: 0.1rem; /* Set the width to a very thin value */
+}
+
+/* Optionally, you can style the scrollbar track and thumb */
+.search-results-popup::-webkit-scrollbar-track {
+  background: transparent; /* Make the scrollbar track transparent */
+}
+
+.search-results-popup::-webkit-scrollbar-thumb {
+  background: transparent; /* Make the scrollbar thumb transparent */
+}
+@media (max-width: 520px) {
+  .search-details {
+    position: static;
+    display: grid;
+    margin-right: 3px;
+  }
+  .search-results-popup {
+    top: 100%;
+    left: 0;
+    text-align: justify;
+    border-radius: 0 0px 10px 10px;
+
+    width: 100%;
+  }
+  .result-item {
+    padding-left: 20px;
+    color: black;
+  }
+}
+.profile {
+  display: none;
+}
+.profile {
+  position: fixed;
+  background-color: #f45b69;
+  border: 1px solid #000;
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 99;
+  right: 16px;
+  cursor: pointer;
+}
+.profile img {
+  width: 100%;
+  /* height: auto; */
+  /* object-fit: cover; */
+  overflow: hidden;
+  /* z-index: -4; */
+}
+.profile:hover {
+  scale: 1.1;
+  transition: 0.2s ease-in-out;
+}
+/* .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+#CartCount {
+  font-size: 12px;
+  background: transparent;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+} */
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-size: larger;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  padding: 12px 12px;
+  border-radius: 25px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 2px 1px 0 0 rgb(45, 44, 44);
+}
+
+#scrollToTopBtn:hover {
+  background-color: rgb(238, 238, 238);
+  transform: translate(1px, 1px);
+}
+#scrollToTopBtn:active {
+  box-shadow: 1px 0.5px 0 0 rgb(180, 179, 179);
+  padding: 13px 13px;
+}
+
+
+/* -----------Footer------------- */
+.container1 {
+  background-color: rgb(17, 16, 16);
+  height: auto;
+  width: 100%;
+
+  bottom: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.footer {
+  background-color: rgb(17, 16, 16);
+}
+.li,
+.support,
+.about,
+.quick {
+  font-size: small;
+  color: rgb(229, 229, 229);
+  text-decoration: none;
+  transition: all 0.35 ease;
+}
+.li:hover,
+.support:hover,
+.about:hover,
+.ibtn:hover {
+  transform: translateX(-2px);
+  color: orangered;
+}
+
+.li,
+.about_u,
+.quick,
+.support_li {
+  color: white;
+  padding-left: 8px;
+}
+.about_u,
+.quick,
+.support_li {
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+
+.big_links {
+  display: grid;
+  flex-wrap: wrap;
+}
+.quick_li {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+.ibtn {
+  color: rgb(255, 255, 255);
+}
+
+.quick {
+  display: flex;
+  justify-content: flex-start;
+  right: 0;
+  padding-left: 8px;
+}
+ul {
+  list-style: none;
+}
+.last_txt {
+  display: flex;
+  justify-content: center;
+}
+.demo {
+  color: rgb(173, 173, 173);
+  padding-bottom: 20px;
+  font-size: small;
+}
+li {
+  padding: 8px;
+}
+@media (max-width: 768px) {
+  .container1 {
+    display: grid;
+  }
+  .about_u,
+  .quick,
+  .support_li,
+  .li {
+    padding-top: 20px;
+  }
+  .last_txt {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.contact_f {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 20px;
+}
+.card {
+  display: block;
+  width: auto;
+  height: auto;
+  border: 3px solid black;
+  border-radius: 6px;
+  padding: 50px;
+  margin: 7% 20%;
+  overflow: hidden;
+}
+
+.form__group {
+  display: block;
+  border-color: none;
+  padding: 15px;
+}
+input {
+  display: block;
+  border: none;
+}
+textarea {
+  display: block;
+  border: none;
+}
+:placeholder-shown {
+  font-family: "Fira Sans", sans-serif;
+  /* font-size: 18px; */
+}
+.contact_us {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send_btn button {
+  background-color: rgb(33, 33, 33);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.send_btn {
+  padding: 16px;
+}
+.textarea {
+  width: 100%;
+  height: 150px;
+}
+
+@media (max-width: 786px) {
+  .card {
+    padding: 20px;
+    left: 50%;
+    margin: 3.5% 10%;
+  }
+  .contact_us {
+    display: grid;
+  }
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+@media (max-width: 917px) {
+  input {
+    width: scale();
+  }
+}
+.form__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  padding: 15px;
+  transition: 0.2s ease all;
+  opacity: 0.5;
+}
+.form__field {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 3px solid rgb(79, 77, 77);
+}
+ 

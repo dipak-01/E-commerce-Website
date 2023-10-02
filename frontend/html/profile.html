@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/profile.css" />
+    <link rel="icon" href="../Images/loader/pngwing.com(1).png" type="image/x-icon">
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upstyle | Home</title>
+  </head>
+  <body class="scrollable">
+    <section>
+      <!-- <div class="header-poster">
+        <img src="Images/header-border-top.png" alt="" />
+      </div> -->
+      <header class="header">
+        <header class="header">
+          <a href="index.html" class="logo">UpStyle</a>
+          <div class="search-details" id="search-details">
+            <div class="search-bar" id="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search your Style"
+              />
+              <i class="bx bx-search" id="search-icon"></i>
+            </div>
+            <div class="insidesearch">
+              <div
+                class="search-results-popup"
+                id="search-results-popup"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
+
+          <div style="display: none;" class="profilee">
+            <a href="profile.html"
+              ><img src="" alt=""
+            /></a>
+          </div>
+          <!-- <div class="search-results">
+            Search results will be displayed here  
+          </div> -->
+          <input type="checkbox" id="check" />
+          <label for="check" class="icons">
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <i class="bx bx-x" id="close-icon"></i>
+          </label>
+
+          <nav class="navbar">
+            <a href="landingPage.html" class="nav-item" style="--i: 0">Home</a>
+            <a href="about.html" class="nav-item" style="--i: 1">About</a>
+            <a href="gallery.html" class="nav-item" style="--i: 2">Gallery</a>
+            <a href="exploreAll.html" class="nav-item" style="--i: 3"
+              >Explore all</a
+            >
+            <a href="contactUs.html" class="nav-item" style="--i: 4"
+              >Contact us</a
+            >
+            <a href="login.html" class="nav-item log" style="--i: 5"
+              ><i class="bx bxs-user navbar-icon"> </i
+            ></a>
+            <a href="cart.html" class="nav-item" style="--i: 6"
+              ><i class="bx bx-shopping-bag navbar-icon"></i
+            ></a>
+          </nav>
+          <!-- </div> -->
+        </header>
+      </header>
+    </section>
+    <button id="scrollToTopBtn" title="Go to top">
+      <i class="bx bx-up-arrow"></i>
+    </button>
+  
+
+    <!-- PROFILE SECTION -->
+ 
+    <div class="profile-container">
+      <div class="top-redirect">
+        <ul>
+          <li>Home</li>
+          <li>/</li>
+          <li>Home/Account</li>
+        </ul>
+      </div>
+      <div class="profile-page">
+        <div class="profile left">
+          <div class="avatar">
+            <img class="avatar" src="" alt="avatar" />
+            <h2 class="firstName">...</h2>
+            <p class="lastName">...</p>
+            <p class="email">...</p>
+          </div>
+          <div class="other-details">
+            <ul>
+              <li>
+                <a href="#">Accounts <span></span></a>
+              </li>
+              <li>
+                <a href="#" id="editProfile">Edit Profile</a>
+              </li>
+              <li>
+                <button class="logout" id="logout"><a class="logout2">Logout</a></button>
+              </li>
+              <li>
+                <button class="logout" id="deleteAcc"><a class="logout2">Delete Account</a></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="profile-details right">
+          <h2>ACCOUNT</h2>
+          <div class="user-details">
+            <form class="user-info" action="">
+              <div class="inline">
+                <div class="form-grp Fname">
+                  <label for="">First Name</label>
+                  <!-- Input field for First Name -->
+                  <input
+                    class="firstName"
+                    id="firstNameInput"
+                    type="text"
+                    name="fname"
+                  />
+                </div>
+                <div class="form-grp Lname">
+                  <label for="">Last Name</label>
+                  <!-- Input field for Last Name -->
+                  <input
+                    class="lastName"
+                    id="lastNameInput"
+                    type="text"
+                    name="lname"
+                  />
+                </div>
+              </div>
+              <div class="form-grp address">
+                <label for="">Address 1</label>
+                <textarea id="addr1" name="address" id="" rows="5"></textarea>
+              </div>
+              <div class="form-grp address">
+                <label for="">Address 2</label>
+                <textarea id="addr2" name="address" id="" rows="5"></textarea>
+              </div>
+              <div class="inline">
+                <div class="form-grp email">
+                  <label for="">Email : </label>
+                   <p name="email" id="emailInput"></p>
+                </div>
+              </div>
+              <div class="form-grp Contact">
+                <label for="">Contact </label>
+                 <p name="phone" id="phoneInput"></p>
+              </div>
+              <div class="form-grp password" style="display: none">
+                 <label for="">Password</label>
+                 <input id="passwordInput" type="password" name="password" />
+              </div>
+              <div class="update">
+                <button id="updateProfile" style="display: none">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="pro-contain">
+        <br><br>
+        <h2>Your Wishlist</h2>
+
+      </div>
+      <br><br><br>
+      <div id="emptyWish"><h3>Oops your Wishlist is Empty</h3></div>
+      <section class="productsFeature" id="featureSection">
+        <div class="productContainer" id="productContainer1"></div>
+      </section>
+    </div>
+  
+    <section>
+      <footer class="footer" id="footer">
+        <div class="container1">
+          <div class="big_links">
+            <a class="li" href="comingSoon.html">Find a Store</a>
+            <a class="li" href="error404.html">Become a Member</a>
+            <a class="li" href="contactUs.html#target">Send us Feedback</a>
+            <a class="li" href="comingSoon.html">Student Offer</a>
+          </div>
+          <div class="support_links">
+            <h4 class="support_li">Support</h4>
+            <ul>
+              <li><a class="support" href="contactUs.html">Contact us</a></li>
+              <li>
+                <a class="support" href="comingSoon.html">Promotion and Sale</a>
+              </li>
+              <li><a class="support" href="comingSoon.html">Track Order</a></li>
+              <li>
+                <a class="support" href="privacyPolicy.html">Privacy Policy</a>
+              </li>
+              <li>
+                <a class="support" href="terms.html">Terms and Condition</a>
+              </li>
+            </ul>
+          </div>
+          <div class="about_us">
+            <h4 class="about_u">About</h4>
+            <ul>
+              <li><a class="about" href="landingPage.html">Website </a></li>
+              <li><a class="about" href="comingSoon.html">Read-me </a></li>
+              <li>
+                <a
+                  class="about"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  >Git-hub Repo</a
+                >
+              </li>
+              <li><a class="about" href="about.html">Creators </a></li>
+            </ul>
+          </div>
+          <div class="quick_links">
+            <h4 class="quick">Quick Links</h4>
+
+            <ul class="quick">
+              <li>
+                <a
+                  class="quick_li"
+                  href="https://github.com/dipak-01/E-commerce-Website"
+                  ><i class="bx bxl-github ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-instagram ibtn"></i>
+                </a>
+              </li>
+              <li>
+                <a class="quick_li" href="#">
+                  <i class="bx bxl-facebook ibtn"></i
+                ></a>
+              </li>
+              <li>
+                <a class="quick_li" href="#"
+                  ><i class="bx bxl-codepen ibtn"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="last_txt">
+          <p class="demo">
+            © UpStyle India Ltd, 2023. All Rights Reserved. Imprint and Legal
+            Data
+          </p>
+        </div>
+      </footer>
+    </section>
+    <script src="../scripts/status.js"></script>
+    <script src="../scripts/profile.js"></script>
+  </body>
+</html>
