@@ -1,5 +1,7 @@
 let totalMrp = 0;
 
+// product card generator using fetch and dynamically inserting data in the container
+
 const productCardGenerator = (x) => {
   const element = document.getElementById("products-dummy");
   const element1 = document.getElementById("products-dummy1");
@@ -8,11 +10,12 @@ const productCardGenerator = (x) => {
   const carting = document.querySelector(".cart .right");
   const element4 = document.getElementById("pay");
 
+// Fetching the cart from backend where users products are stored
+
   fetch(`http://localhost:3000/cart`, { method: "get", credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      if (data.length == 0) {
+       if (data.length == 0) {
         element.style.display = "none";
         element1.style.display = "none";
         element2.style.display = "block";
@@ -23,11 +26,9 @@ const productCardGenerator = (x) => {
         element4.style.display = "block";
         for (let i = 0; i < data.length; i++) {
           let objId = data[i].itemId;
-          console.log(objId);
           fetch(`http://localhost:3000/product/${objId}`)
             .then((res2) => res2.json())
             .then((data2) => {
-              console.log(data2);
               totalMrp += data2.price * data[i].quantity;
               let productCard = createProductCard(data2, data[i], objId);
               x.insertAdjacentHTML("beforeend", productCard);
@@ -40,11 +41,9 @@ const productCardGenerator = (x) => {
     });
 };
 
-console.log("2");
+// Function returning productcards with the given backend data
 
 function createProductCard(data2, data, objId) {
-  console.log("3");
-
   return `
   <div class="products"  data-objid="${objId}">
     <div class="product-img">
@@ -79,6 +78,9 @@ function createProductCard(data2, data, objId) {
 
 let x = document.getElementById("products");
 productCardGenerator(x);
+
+// Event listner to handle the clicks on the products when clickes on the products
+
 x.addEventListener("click", function (event) {
   if (
     !event.target.closest(".inputs-button") &&
@@ -87,7 +89,7 @@ x.addEventListener("click", function (event) {
     let target = event.target.closest(".products");
     if (target) {
       let objId = target.getAttribute("data-objid");
-      console.log("Clicked on product card with objId:", objId);
+
       if (objId) {
         window.location.href = `product.html?id=${objId}`;
       }
@@ -95,9 +97,9 @@ x.addEventListener("click", function (event) {
   }
 });
 
+// Function to delete products from cart when clicked on the cross using fetch with delete method
+
 function deleteProduct(objId) {
-  console.log("inside func");
-  console.log(`http://localhost:3000/remove/${objId}`);
   fetch(`http://localhost:3000/remove/${objId}`, {
     method: "DELETE",
     credentials: "include",
@@ -107,10 +109,8 @@ function deleteProduct(objId) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Product removed successfully.");
         location.reload();
       } else {
-        console.error("Failed to remove product to cart.");
       }
     })
     .catch((error) => {
@@ -122,6 +122,7 @@ const searchIcon = document.getElementById("search-icon");
 const searchResultsPopup = document.getElementById("search-results-popup");
 
 // Function to fetch search results
+
 async function fetchSearchResults(query) {
   try {
     const response = await fetch(`http://localhost:3000/search?query=${query}`);
@@ -134,6 +135,7 @@ async function fetchSearchResults(query) {
 }
 
 // Function to display search results in the popup
+
 function displaySearchResults(results) {
   searchResultsPopup.innerHTML = ""; // Clear previous results
 
@@ -154,15 +156,16 @@ function displaySearchResults(results) {
     searchResultsPopup.appendChild(resultItem);
   });
 
-  // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
 searchResultsPopup.style.display = "none";
+
 // Event listener for input changes
+
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
 
-  // Hide the search results popup if the query is empty
+  // Hide the search results popup if query is empty
   if (query === "") {
     searchResultsPopup.style.display = "none";
     return;
@@ -173,6 +176,7 @@ searchInput.addEventListener("input", () => {
 });
 
 // Event listener to close the search results when clicking outside
+
 document.addEventListener("click", (event) => {
   if (
     !searchResultsPopup.contains(event.target) &&
@@ -193,14 +197,14 @@ searchIcon.addEventListener("click", (event) => {
 const discountPrice = 2000;
 const convenienceFee = 100;
 
+// Function to update and display the total amount
 
 function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
-  // Display the updated total MRP value in the HTML element
   const totalMrpValueElement = document.getElementById("totalMrpValue");
   const discountElement = document.getElementById("discountPrice");
   const feeElement = document.getElementById("convenienceFee");
   const totalAmt = document.getElementById("totalamt");
-  totalMrpValueElement.textContent = totalMrp ;
+  totalMrpValueElement.textContent = totalMrp;
   discountElement.textContent = discountPrice;
   feeElement.textContent = convenienceFee;
   totalAmt.textContent = totalMrp.toFixed(2) - discountPrice - convenienceFee;
@@ -208,5 +212,4 @@ function updateTotalMrpDisplay(totalMrp, discountPrice, convenienceFee) {
   var inputField = document.getElementById("myInput");
 
   inputField.value = totalMrp - discountPrice - convenienceFee;
-  console.log(inputField);
 }

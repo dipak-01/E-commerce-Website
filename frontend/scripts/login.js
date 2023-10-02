@@ -1,4 +1,3 @@
-console.log("work");
 const formOpenBtn = document.querySelector("#form-open"),
   home = document.querySelector(".home"),
   formContainer = document.querySelector(".form_container"),
@@ -7,8 +6,12 @@ const formOpenBtn = document.querySelector("#form-open"),
   loginBtn = document.querySelector("#login"),
   pwShowHide = document.querySelectorAll(".pw_hide");
 
+// Function to open and close form
+
 formOpenBtn.addEventListener("click", () => home.classList.add("show"));
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
+
+// Function to show and hide password with the eye icon
 
 pwShowHide.forEach((icon) => {
   icon.addEventListener("click", () => {
@@ -23,6 +26,8 @@ pwShowHide.forEach((icon) => {
   });
 });
 
+// Event listner to show the login page and signup page when clicked
+
 signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formContainer.classList.add("active");
@@ -31,41 +36,38 @@ loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formContainer.classList.remove("active");
 });
-console.log("work");
+
+// Eventlistner toto submit the form which is filled while login
 
 document.getElementById("myForm").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the form from submitting via browser default behavior
+  event.preventDefault();
 
-  // Get the input field values
   const inputField1Value = document.getElementById("inputusremail").value;
   const inputField2Value = document.getElementById("inputusrpassword").value;
 
-  // Create a data object to send to the backend
+  //  Data object to send to the backend
   const data = {
     usremail: inputField1Value,
     usrpassword: inputField2Value,
   };
 
-  // Send the data to the backend using the fetch API
+  // Data  is sent to the backend using the fetch
   fetch("http://localhost:3000/user-login", {
     method: "POST",
     credentials: "include",
     headers: {
-      "Content-Type": "application/json", // Set the content type to JSON
+      "Content-Type": "application/json", // Setting the content type to JSON
     },
-    body: JSON.stringify(data), // Convert the data object to JSON
+    body: JSON.stringify(data), // Converting the data object to JSON
   })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json(); // Parse the response JSON if needed
+      return response.json();
     })
     .then((data) => {
-      // Handle the response from the backend (if any)
-      console.log("Received data");
-      console.log(data);
-      window.location.href = "landingPage.html"
+      window.location.href = "landingPage.html";
     })
     .catch((error) => {
       // Handle errors
@@ -73,17 +75,17 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     });
 });
 
+// Eventlistner to send signup form data to backend
+
 document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent the default form submission
-  
-  // Get the input field values
+  e.preventDefault();
   const inputFirstNameValue = document.getElementById("inputFirstName").value;
   const inputLastNameValue = document.getElementById("inputLastName").value;
   const inputEmailValue = document.getElementById("inputEmail").value;
   const inputPhoneValue = document.getElementById("inputPhone").value;
   const inputPasswordValue = document.getElementById("inputPassword").value;
 
-  // Create a data object to send to the backend
+  // Data object to send to the backend
   const data = {
     firstName: inputFirstNameValue,
     lastName: inputLastNameValue,
@@ -92,25 +94,23 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     password: inputPasswordValue,
   };
 
-  // Send the data to the backend using the fetch API
+  // Sending the data to the backend using the fetch API
   fetch("http://localhost:3000/user-signup", {
     method: "POST",
     credentials: "include",
     headers: {
-      "Content-Type": "application/json", // Set the content type to JSON
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), // Convert the data object to JSON
+    body: JSON.stringify(data), // Converting the data object to JSON
   })
     .then((response) => {
-      if(response.ok){
-        console.log("Received data");
-        console.log(data);
-        window.location.href = "login.html"; 
+      if (response.ok) {
+        window.location.href = "login.html";
       }
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json(); // Parse the response JSON if needed
+      return response.json();
     })
     .catch((error) => {
       // Handle errors

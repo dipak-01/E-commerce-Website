@@ -332,14 +332,13 @@
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          if (data.status) {
+           if (data.status) {
             profile.style.display = "block";
             let avatarUrl = data.avatarUrl;
             let imgElement = document.querySelector(".profile img");
             imgElement.src = avatarUrl;
             log.style.display = "none";
-            z;
+          
           } else {
             profile.style.display = "none";
             log.style.display = "block";
@@ -405,9 +404,7 @@
                         },
                       }).then((response) => {
                         if (response.ok) {
-                          console.log( response);
-                          console.log("Received data");
-                           
+                            
                           window.location.href = "shipping.html";
                         }
                       });
