@@ -1,8 +1,10 @@
+// Imported Required Framework And Module and created Express Router Instance
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userControllers");
 
-router.get("/user-status",userController.status);
+// All User Routes
+router.get("/user-status", userController.status);
 router.post("/user-signup", userController.signup);
 router.post("/user-login", userController.login);
 router.post("/user-logout", userController.logout);
@@ -16,9 +18,10 @@ router.get("/wishlist", userController.getWishList);
 router.delete("/removefromwishlist/:productId", userController.removeFromWishList);
 router.get("/viewprofile", userController.viewprofile);
 router.get("/viewprofile/:userId", userController.view);
-router.put('/user-update', userController.update)
-router.delete("/delete-account",userController.deleteUser);
-router.put("/clearCart",userController.clearCart);
-router.get("/orderPlaced",userController.orderPlaced);
+router.put("/user-update", userController.update);
+router.delete("/delete-account", userController.deleteUser);
+router.put("/clearCart", userController.clearCart);
+router.get("/orderPlaced", userController.orderPlaced);
 
+// Exporting Router
 module.exports = router;

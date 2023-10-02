@@ -1,6 +1,8 @@
+// Mongoose library Imported for MongoDB interaction
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Defining Product Schema using Mongoose
 const productSchema = new Schema(
   {
     title: {
@@ -66,5 +68,8 @@ const productSchema = new Schema(
   }
 );
 
+// Creating Mongoose model using the Product Schema
 const Product = mongoose.model("Product", productSchema);
+
+// Exporting Product Model
 module.exports = Product;

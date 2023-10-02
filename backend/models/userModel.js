@@ -1,6 +1,8 @@
+// Mongoose library Imported for MongoDB interaction
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Defining User Schema using Mongoose
 const userSchema = new Schema(
   {
     avatarUrl: {
@@ -83,5 +85,8 @@ const userSchema = new Schema(
   }
 );
 
+// Creating Mongoose model using the User Schema
 const User = mongoose.model("User", userSchema);
+
+// Exporting User Model
 module.exports = User;
