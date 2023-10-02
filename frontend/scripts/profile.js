@@ -1,3 +1,5 @@
+// Function to make products cards for users wishlist
+
 const productCardGenerator1 = (pro) => {
   function createProductCard(product) {
     return `
@@ -17,25 +19,21 @@ const productCardGenerator1 = (pro) => {
         </a>
       </div>`;
   }
+
+  // Fetching the users wishlist product to display
   fetch("http://localhost:3000/wishlist", { credentials: "include" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (data.length == 0) {
         document.getElementById("emptyWish").style.display = "block";
       }
       for (let i = 0; i < data.length; i++) {
         let objId = data[i].itemId;
-        console.log(objId);
         fetch(`http://localhost:3000/product/${objId}`)
           .then((res2) => res2.json())
           .then((data2) => {
-            console.log(data2);
-
             let productCard = createProductCard(data2);
             pro.insertAdjacentHTML("beforeend", productCard);
-            // element.style.display = "none";
-            // element1.style.display = "none";
           });
       }
     })
@@ -46,9 +44,10 @@ const productCardGenerator1 = (pro) => {
 
 let pro = document.getElementById("productContainer1");
 productCardGenerator1(pro);
+
+// Function to remove the wishlist function using fetch with delete
+
 function removeWl(productId) {
-  console.log("inside func");
-  console.log(`http://localhost:3000/remove/${productId}`);
   fetch(`http://localhost:3000/removefromwishlist/${productId}`, {
     method: "DELETE",
     credentials: "include",
@@ -58,7 +57,6 @@ function removeWl(productId) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Product removed successfully.");
         location.reload();
       } else {
         console.error("Failed to remove product to cart.");
@@ -68,8 +66,10 @@ function removeWl(productId) {
       console.error("Error:", error);
     });
 }
+
+// Function to add the products in the cart from the wishlist
+
 function addToCart(productId) {
-  console.log("in func");
   fetch(`http://localhost:3000/add-to-cart-only/${productId}`, {
     method: "PUT",
     credentials: "include",
@@ -79,7 +79,6 @@ function addToCart(productId) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Product added to cart-only successfully.");
         colorCart(productId); // Change color after successful addition to cart
       } else {
         console.error("Failed to add product to cart-only.");
@@ -89,11 +88,15 @@ function addToCart(productId) {
       console.error("Error:", error);
     });
 }
+
+// Function to color the cart
+
 function colorCart(productId) {
-  console.log("inside color cart");
   const cartIcon = document.querySelector(`.carting-${productId}`);
   cartIcon.style.color = "blue";
 }
+// Fetching the users profile
+
 function fetchUserProfile() {
   fetch("http://localhost:3000/viewprofile", { credentials: "include" })
     .then((res) => {
@@ -103,7 +106,6 @@ function fetchUserProfile() {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
       // Display fetched user profile data
       document.querySelector(".avatar img").src = data.avatarUrl;
       document.querySelector(".firstName").textContent = data.firstName;
@@ -127,7 +129,6 @@ window.addEventListener("load", fetchUserProfile);
 
 // Function to show the editable profile form
 function showEditProfileForm() {
-  // Hide the display-only elements
   document.querySelector(".avatar").style.display = "none";
   document.querySelector("#editProfile").style.display = "none";
 
@@ -137,6 +138,7 @@ function showEditProfileForm() {
 }
 
 // Function to handle form submission (update profile)
+
 document
   .querySelector("#updateProfile")
   .addEventListener("click", function (e) {
@@ -154,6 +156,7 @@ document
     document.querySelector(".lastName").textContent = lastName;
 
     // Hide the form and display the updated data
+
     document.querySelector(".user-info").style.display = "none";
     document.querySelector(".avatar").style.display = "block";
     document.querySelector("#updateProfile").style.display = "none";
@@ -176,7 +179,6 @@ document
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Profile updated successfully.");
           window.location.href = "profile.html";
         } else {
           console.error("Failed to update profile data.");
@@ -188,14 +190,15 @@ document
   });
 
 // Add click event listener to the "Edit Profile" button
+
 document
   .querySelector("#editProfile")
   .addEventListener("click", showEditProfileForm);
 
 // Fetch and display user profile data when the page loads
+
 window.addEventListener("load", fetchUserProfile);
 
-// Rest of the code...
 document.querySelector("#editProfile").addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -212,9 +215,10 @@ document.querySelector("#editProfile").addEventListener("click", function (e) {
   }
 });
 
+// Function to logout it will delete the cookie
 document.getElementById("logout").addEventListener("click", function (e) {
   e.preventDefault();
-  console.log("in logout");
+
   fetch("http://localhost:3000/user-logout", {
     method: "POST",
     credentials: "include",
@@ -224,7 +228,6 @@ document.getElementById("logout").addEventListener("click", function (e) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("user logout successfully.");
         window.location.href = "landingPage.html";
       } else {
         console.error("Failed to logout.");
@@ -234,9 +237,11 @@ document.getElementById("logout").addEventListener("click", function (e) {
       console.error("Error:", error);
     });
 });
+
+// Function to delete the users account
+
 document.getElementById("deleteAcc").addEventListener("click", function (e) {
   e.preventDefault();
-  // console.log("in logout");
   fetch("http://localhost:3000/delete-account", {
     method: "DELETE",
     credentials: "include",
@@ -246,7 +251,6 @@ document.getElementById("deleteAcc").addEventListener("click", function (e) {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("user deleted successfully.");
         window.location.href = "landingPage.html";
       } else {
         console.error("Failed to delete.");
@@ -256,18 +260,18 @@ document.getElementById("deleteAcc").addEventListener("click", function (e) {
       console.error("Error:", error);
     });
 });
+
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
 const searchResultsPopup = document.getElementById("search-results-popup");
 
 // Function to fetch search results
+
 async function fetchSearchResults(query) {
   try {
-    // Replace with your API endpoint for fetching search results
     const response = await fetch(`http://localhost:3000/search?query=${query}`);
     const data = await response.json();
 
-    // Display search results
     displaySearchResults(data);
   } catch (error) {
     console.error("Error fetching search results:", error);
@@ -275,49 +279,52 @@ async function fetchSearchResults(query) {
 }
 
 // Function to display search results in the popup
+
 function displaySearchResults(results) {
-  searchResultsPopup.innerHTML = ""; // Clear previous results
+  searchResultsPopup.innerHTML = "";
 
   results.forEach((result) => {
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
-    // Create an anchor tag for the result item
+    //  Anchor tag for the result item
     const resultLink = document.createElement("a");
-    resultLink.href = `product.html?id=${result._id}`; // Replace with the appropriate URL from your API response
+    resultLink.href = `product.html?id=${result._id}`;
 
-    // Create a span for the title and set its text content
+    // Span for the title and set its text content
     const titleSpan = document.createElement("span");
-    titleSpan.textContent = result.title; // Replace with the appropriate property from your API response
+    titleSpan.textContent = result.title;
 
     // Append the title span to the anchor tag
+
     resultLink.appendChild(titleSpan);
 
     // Append the anchor tag to the result item
+
     resultItem.appendChild(resultLink);
 
     searchResultsPopup.appendChild(resultItem);
   });
 
-  // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
 searchResultsPopup.style.display = "none";
+
 // Event listener for input changes
+
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
 
-  // Hide the search results popup if the query is empty
   if (query === "") {
     searchResultsPopup.style.display = "none";
     return;
   }
 
-  // Fetch search results when the user types
   fetchSearchResults(query);
 });
 
 // Event listener to close the search results when clicking outside
+
 document.addEventListener("click", (event) => {
   if (
     !searchResultsPopup.contains(event.target) &&
@@ -328,10 +335,10 @@ document.addEventListener("click", (event) => {
 });
 
 // Event listener to handle search when clicking the search icon
+
 searchIcon.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent the default behavior of the click event
+  event.preventDefault();
   const query = searchInput.value.trim();
 
-  // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });

@@ -3,22 +3,23 @@ const productId = urlParams.get("id");
 const skeletonSection = document.querySelector("#dummy");
 px = document.getElementById("outerContainer");
 
+
+// Fetching the product reviews for the product
+
 fetch(`http://localhost:3000/product-review/${productId}`, {
   method: "get",
   credentials: "include",
 })
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
-
+ 
     for (let i = 0; i < data.length; i++) {
       let userId = data[i].userId;
       let rating = data[i].rating;
       let reviewmsg = data[i].reviewmsg;
       let createdAt = data[i].createdAt;
-      console.log(userId);
-      console.log(createdAt);
 
+      // fetching the detail of the person who reviewed the products
       fetch(`http://localhost:3000/viewprofile/${userId}`)
         .then((res2) => res2.json())
         .then((data2) => {
@@ -26,8 +27,6 @@ fetch(`http://localhost:3000/product-review/${productId}`, {
           let lastName = data2.lastName;
           let avatarUrl = data2.avatarUrl;
 
-          console.log(data2);
-          console.log(lastName);
           let productCard = createReview(
             firstName,
             lastName,
@@ -40,6 +39,10 @@ fetch(`http://localhost:3000/product-review/${productId}`, {
         });
     }
   });
+
+
+// Function to create product card for the review
+
 function createReview(
   firstName,
   lastName,
@@ -48,8 +51,7 @@ function createReview(
   reviewmsg,
   createdAt
 ) {
-  console.log("ccc");
-
+ 
   return `
   <div class="reviewContainer">
   <div class="top">
@@ -73,32 +75,26 @@ function createReview(
   </div>
 </div>`;
 }
-// const dataSection = document.querySelector("#prodetails");
-console.log("prductId");
+ 
 
-console.log("Product ID:", productId);
+// Function to create product card for products
+
 let x = document.getElementById("prodetails");
 
-console.log("1");
 const productCardGenerator = (x) => {
   fetch(`http://localhost:3000/product/${productId}`)
     .then((res) => res.json())
     .then((data) => {
       const productCard = createProductCard(data);
-      // console.log(productCard);
       x.insertAdjacentHTML("beforeend", productCard);
 
       skeletonSection.style.display = "none";
-
-      console.log("2");
     })
     .catch((err) => {
       console.log(err);
     });
 
   function createProductCard(product) {
-    console.log("3");
-
     return ` 
     <div class="left single-pro-image">
             <div class="shoe shoe1">
@@ -218,21 +214,21 @@ const productCardGenerator = (x) => {
 };
 productCardGenerator(x);
 
+// Function to add products in the cart
+
+
 function addToCart() {
-  // Get the product ID, size, and quantity here
-  const productID = document.querySelector('input[name="productId"]').value;
+
+   const productID = document.querySelector('input[name="productId"]').value;
   const size = document.querySelector('select[name="size"]').value;
   const quantity = document.querySelector('input[name="quantity"]').value;
-  console.log("Product ID:", productID);
-  console.log("Size:", size);
-  console.log("Quantity:", quantity);
-  // Create an object to hold the data
-  const data = {
+
+   const data = {
     size: size,
     quantity: quantity,
   };
 
-  // Send the data to the backend using a POST
+  // Sending the data to the backend using a POST
   fetch(`http://localhost:3000/add-to-cart/${productId}`, {
     method: "PUT",
     credentials: "include",
@@ -243,8 +239,6 @@ function addToCart() {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Product added to cart successfully.");
-        console.log(data);
       } else {
         console.error("Failed to add product to cart.");
       }
@@ -254,20 +248,16 @@ function addToCart() {
     });
 }
 function buyNow() {
-  // Get the product ID, size, and quantity here
-  const productID = document.querySelector('input[name="productId"]').value;
+   const productID = document.querySelector('input[name="productId"]').value;
   const size = document.querySelector('select[name="size"]').value;
   const quantity = document.querySelector('input[name="quantity"]').value;
-  console.log("Product ID:", productID);
-  console.log("Size:", size);
-  console.log("Quantity:", quantity);
-  // Create an object to hold the data
-  const data = {
+
+   const data = {
     size: size,
     quantity: quantity,
   };
 
-  // Send the data to the backend using a POST
+  // Sending the data to the backend using a POST
   fetch(`http://localhost:3000/add-to-cart/${productId}`, {
     method: "PUT",
     credentials: "include",
@@ -278,8 +268,6 @@ function buyNow() {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Product added to cart successfully.");
-        console.log(data);
         window.location.href = "cart.html";
       } else {
         console.error("Failed to add product to cart.");
@@ -289,8 +277,10 @@ function buyNow() {
       console.error("Error:", error);
     });
 }
+
+// Function to add the product in the  wishlist 
+
 addToWishList = (productId) => {
-  console.log("in func");
   const myElement = document.querySelector(".uil-heart-alt");
 
   myElement.addEventListener("click", function () {
@@ -309,7 +299,6 @@ addToWishList = (productId) => {
   )
     .then((response) => {
       if (response.ok) {
-        console.log("Product added to wish successfully.");
       } else {
         console.error("Failed to add product to wish.");
       }
@@ -318,6 +307,9 @@ addToWishList = (productId) => {
       console.error("Error:", error);
     });
 };
+
+
+// Function for productcards for recommendation
 
 const productCardGenerator1 = (pro) => {
   function createProductCard(product) {
@@ -341,7 +333,7 @@ const productCardGenerator1 = (pro) => {
   fetch("http://localhost:3000/explore-all")
     .then((res) => res.json())
     .then((data) => {
-      // Generate product cards and append them to the container
+       // Using math.random for random recommendations
       let a = Math.floor(Math.random() * (30 - 1 + 1)) + 1;
       for (let i = a; i < a + 5; i++) {
         let productCard = createProductCard(data[i]);
@@ -355,9 +347,12 @@ const productCardGenerator1 = (pro) => {
 let pro = document.getElementById("productContainer1");
 productCardGenerator1(pro);
 
+
+// Function top chech if the pincode entered is as an 6 digit number only
+
 function checkPincode() {
   const enteredPincode = document.querySelector(".pincode-code").value;
-  const validPincodePattern = /^\d{6}$/; // A simple pattern to check for 6-digit PIN code
+  const validPincodePattern = /^\d{6}$/;  
   const availabilityDiv = document.querySelector(".availability");
   availabilityDiv.textContent = "";
 
@@ -372,18 +367,19 @@ function checkPincode() {
     availabilityDiv.textContent = "Please enter a valid 6-digit PIN code.";
   }
 }
+
+
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
 const searchResultsPopup = document.getElementById("search-results-popup");
 
 // Function to fetch search results
+
 async function fetchSearchResults(query) {
   try {
-    // Replace with your API endpoint for fetching search results
     const response = await fetch(`http://localhost:3000/search?query=${query}`);
     const data = await response.json();
 
-    // Display search results
     displaySearchResults(data);
   } catch (error) {
     console.error("Error fetching search results:", error);
@@ -391,50 +387,52 @@ async function fetchSearchResults(query) {
 }
 
 // Function to display search results in the popup
+
 function displaySearchResults(results) {
-  searchResultsPopup.innerHTML = ""; // Clear previous results
+  searchResultsPopup.innerHTML = "";
 
   results.forEach((result) => {
- 
     const resultItem = document.createElement("div");
     resultItem.classList.add("result-item");
 
-    // Create an anchor tag for the result item
+    //  Anchor tag for the result item
     const resultLink = document.createElement("a");
-    resultLink.href = `product.html?id=${result._id}`; // Replace with the appropriate URL from your API response
+    resultLink.href = `product.html?id=${result._id}`;
 
-    // Create a span for the title and set its text content
+    // Span for the title and set its text content
     const titleSpan = document.createElement("span");
-    titleSpan.textContent = result.title; // Replace with the appropriate property from your API response
+    titleSpan.textContent = result.title;
 
     // Append the title span to the anchor tag
+
     resultLink.appendChild(titleSpan);
 
     // Append the anchor tag to the result item
+
     resultItem.appendChild(resultLink);
 
     searchResultsPopup.appendChild(resultItem);
   });
 
-  // Show the search results popup
   searchResultsPopup.style.display = "block";
 }
 searchResultsPopup.style.display = "none";
+
 // Event listener for input changes
+
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.trim();
 
-  // Hide the search results popup if the query is empty
   if (query === "") {
     searchResultsPopup.style.display = "none";
     return;
   }
 
-  // Fetch search results when the user types
   fetchSearchResults(query);
 });
 
 // Event listener to close the search results when clicking outside
+
 document.addEventListener("click", (event) => {
   if (
     !searchResultsPopup.contains(event.target) &&
@@ -445,13 +443,16 @@ document.addEventListener("click", (event) => {
 });
 
 // Event listener to handle search when clicking the search icon
+
 searchIcon.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent the default behavior of the click event
+  event.preventDefault();
   const query = searchInput.value.trim();
 
-  // Fetch search results when the search icon is clicked
   fetchSearchResults(query);
 });
+
+
+// Function to submit review and to send it to backend
 
 function submitReview() {
   const rating = document.querySelector('input[name="rate"]:checked').value;
@@ -464,8 +465,7 @@ function submitReview() {
   };
 
   const jsonData = JSON.stringify(reviewData);
-  console.log(jsonData);
-
+ 
   fetch(`http://localhost:3000/product-review/${productId}`, {
     credentials: "include",
     method: "PUT", // Use POST or the appropriate method for your backend

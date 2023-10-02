@@ -1,5 +1,4 @@
 let log = document.querySelector(".log");
- 
 
 let profile = document.querySelector(".profile");
 fetch("http://localhost:3000/user-status", {
@@ -8,7 +7,6 @@ fetch("http://localhost:3000/user-status", {
 })
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
     if (data.status) {
       profile.style.display = "block";
       let avatarUrl = data.avatarUrl;
