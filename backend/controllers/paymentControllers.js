@@ -10,20 +10,14 @@ const instance = new Razorpay({
   key_id: RPAYIDK,
   key_secret: RPAYSK,
 });
-
 const createOrder = async (req, res) => {
   try {
     if (req.cookies.userId) {
       const userId = req.cookies.userId;
-      console.log(userId);
-      console.log(req.body);
       const user = await User.findById(userId);
       const name = user.firstName + "" + user.lastName;
-      console.log(name);
       const phone = user.phone;
-      console.log(phone);
       const email = user.email;
-      console.log(email);
       const amount = req.body.amount * 100;
       const options = {
         amount: amount,

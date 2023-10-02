@@ -16,7 +16,6 @@ router.get("/wishlist", userController.getWishList);
 router.delete("/removefromwishlist/:productId", userController.removeFromWishList);
 router.get("/viewprofile", userController.viewprofile);
 router.get("/viewprofile/:userId", userController.view);
-
 router.put('/user-update', userController.update)
 router.delete("/delete-account",userController.deleteUser);
 router.put("/clearCart",userController.clearCart);
