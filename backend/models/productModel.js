@@ -1,35 +1,33 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const productSchema = new mongoose.Schema(
+const productSchema = new Schema(
   {
     title: {
       type: String,
       unique: true,
       required: true,
     },
-    imgName:{
+    imgName: {
       type: String,
       unique: true,
     },
     description: {
       type: String,
       unique: true,
-      required: true,      
+      required: true,
     },
     size: {
       type: String,
       default: "6, 7, 8, 9, 10, 11, 12",
-      // required: true,
     },
     colour: {
       type: String,
-      required:true,
+      required: true,
     },
     inStock: {
       type: Boolean,
-      default : true
-      // required: true,
+      default: true,
     },
     imageUrl1: {
       type: String,
@@ -41,11 +39,11 @@ const productSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    price: { 
+    price: {
       type: Number,
       required: true,
     },
-    review:[
+    review: [
       {
         userId: {
           type: mongoose.Schema.Types.ObjectId,
@@ -61,12 +59,12 @@ const productSchema = new mongoose.Schema(
           default: Date.now,
         },
       },
-    ]
-  }, 
+    ],
+  },
   {
-    timestamps: true
+    timestamps: true,
   }
-  );
-const Product = mongoose.model('Product',productSchema)
-module.exports = Product;
+);
 
+const Product = mongoose.model("Product", productSchema);
+module.exports = Product;
