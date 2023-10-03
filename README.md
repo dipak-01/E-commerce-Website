@@ -34,12 +34,12 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 ## Features
 
 
-# - Frontend Features:
+### - Frontend Features:
 
 
 1. Browse Sneaker Catalog:
 
-   - Display sneakers with images and descriptions and implement filters (brand, size, price, color).
+   - Display sneakers with images and descriptions and implement filters (size, price).
     
 2. Product Details Page:
    
@@ -65,7 +65,8 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 
    - Provide a smooth, step-by-step checkout, offering Razorpay payment mode for secure payment gateway for transactions.
 
-# - Backend Features:
+
+### - Backend Features:
 
 
 1. Product Management:
@@ -86,9 +87,22 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 6. Database Management:
    - Maintain a database for product, user, and order data and optimize database performance.
 
-7. Analytics and Reporting:
-   - Collect and analyze user data for insights.
 
+
+ ### - Some Other Features:
+
+
+1. Skeleton Loader:
+
+   - A skeleton loader is a visual placeholder that appears while content is loading, providing users with a sense of progress and reducing perceived loading times.
+
+2. Dynamic Cart Making:
+   
+   - creation auto-updates the user's shopping cart as they shop, enabling real-time tracking of selected items and quantities for a seamless online shopping experience.
+
+4. Status Check of User Logged In/Out:
+   
+   -  ensures access to personalized content when logged in, prompting login when needed, enhancing both security and user experience.
 
 
 ## Installation
