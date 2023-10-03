@@ -31,24 +31,64 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 Explore our awesome UpStyle project with a stunning user interface: [Check it out here](https://sahil7741.github.io/UpStyle/frontend/html/index.html)!
 
 
-# Features Implemented
-## Frontend
-----Frontend Features---
-## Backend
-----Backend Features----
-
-
-
-
 ## Features
 
 
-- Browse through the extensive range of sneakers available on the website.
-- Click on any item to view detailed information and add it to your cart.
-- Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
-- Create an account effortlessly to access personal profile features, allowing you to easily update your profile.
-- Proceed to checkout and complete your purchase with ease.
-- Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
+# - Frontend Features:
+
+
+1. Browse Sneaker Catalog:
+
+   - Display sneakers with images and descriptions and implement filters (brand, size, price, color).
+    
+2. Product Details Page:
+   
+   - Show detailed info, specs, reviews also include an "Add to Cart" button.
+
+3. Wishlist Functionality:
+  
+   - Let users create and manage wishlists.
+
+4. User Account Creation:
+  
+   - Simple registration (username, email, password).
+
+5. User Profile Features:
+  
+   - Allow profile updates (name, address, payment).
+
+6. Shopping Cart:
+
+   - Display selected items, quantities, prices also enables item modification and removal.
+
+7. Checkout Process:
+
+   - Provide a smooth, step-by-step checkout, offering Razorpay payment mode for secure payment gateway for transactions.
+
+# - Backend Features:
+
+
+1. Product Management:
+   - Admin interface for CRUD operations on products, categorization, and attribute configuration
+
+2. User Management:
+   - User account management (registration, login, password reset).
+
+3. Wishlist Management:
+   - Storage and retrieval of user wishlists, database operations for adding/removing wishlist items.
+
+4. Order Processing:
+   - Manage customer orders and shipping info.
+
+5. Payment Processing:
+   - Integration with secure payment gateways, validation and verification of payment data.
+
+6. Database Management:
+   - Maintain a database for product, user, and order data and optimize database performance.
+
+7. Analytics and Reporting:
+   - Collect and analyze user data for insights.
+
 
 
 ## Installation
