@@ -38,7 +38,7 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 - Browse through the extensive range of sneakers available on the website.
 - Click on any item to view detailed information and add it to your cart.
 - Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
-- Create an account with ease to enjoy personalized recommendations, order history tracking, and a seamless checkout process.
+- Create an account with ease to enjoy personal profile features letting you update your profile, order history tracking, and a seamless checkout process.
 - Proceed to checkout and complete your purchase with ease.
 - Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
 
@@ -91,7 +91,7 @@ Email: upstyle7741@gmail.com
 - **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment variables
 
 ## Team Members
-1. Dipak Kurkute 2022IMT-037
+1. Dipak Kurkute 2022IMT-037 
 2. Sahil Jaiswal 2022IMT-099
 3. Gaurav Pawar 2022IMT-083
 
