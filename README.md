@@ -6,28 +6,41 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 
 ![Screenshot 2023-09-30 212656](https://github.com/GauravP23/SampleReadMe/assets/142415456/e535b312-1c57-42ea-9e69-e4ad5791490c)
 
-![Screenshot 2023-09-30 212758](https://github.com/dipak-01/E-commerce-Website/assets/142415456/dda1a334-5986-4d70-a660-a72a08eec52f)
+ 
 
 ![Screenshot 2023-09-30 212715](https://github.com/dipak-01/E-commerce-Website/assets/142415456/70059b64-bfd7-4fde-ab68-58d362419c61)
 
-![Screenshot 2023-09-30 213044](https://github.com/dipak-01/E-commerce-Website/assets/142415456/69cc35b1-5dad-4436-8562-35febbed6f75)
+ 
 
 
 <details>
-  <summary>Click to see images</summary>
+  <summary>CLICK HERE TO SEE MORE SCREENSHOTS</summary>
 
-  ![Image 1](https://github.com/GauravP23/SampleReadMe/assets/142415456/e535b312-1c57-42ea-9e69-e4ad5791490c)
+
+  ![Image 1](https://github.com/dipak-01/E-commerce-Website/assets/142415456/69cc35b1-5dad-4436-8562-35febbed6f75)
   ![Image 2](https://github.com/dipak-01/E-commerce-Website/assets/142415456/dda1a334-5986-4d70-a660-a72a08eec52f)
   ![Image 3](https://github.com/dipak-01/E-commerce-Website/assets/142415456/70059b64-bfd7-4fde-ab68-58d362419c61)
+  ![Image 4](https://github.com/dipak-01/E-commerce-Website/assets/120103598/de55c001-4f0d-47da-bded-d06c871797d2)
+  ![Image 5](https://github.com/dipak-01/E-commerce-Website/assets/120103598/6c7cefe0-3380-4eb9-886b-56a9e1a252d6)
 </details>
+
+ 
+
+## Hosted URL
+
+Explore our awesome UpStyle project with a stunning user interface: [Check it out here](https://sahil7741.github.io/UpStyle/frontend/html/index.html)!
+
+
+
 ## Features
 
 
-- Discover sneakers for every style, whether you prefer timeless classics, high-performance athletic footwear, or 
- cutting-edge fashion statements.
-- Be the first to own the latest sneaker releases and limited-edition collaborations, staying one step ahead in the sneaker game.
-- Join a vibrant community of fellow enthusiasts to share your collection, connect with like-minded individuals, and stay up-to-date on sneaker trends.
-- Shop confidently with our top-notch security measures, including advanced encryption, ensuring your data's protection and secure payment options for peace of mind.
+- Browse through the extensive range of sneakers available on the website.
+- Click on any item to view detailed information and add it to your cart.
+- Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
+- Create an account with ease to enjoy personalized recommendations, order history tracking, and a seamless checkout process.
+- Proceed to checkout and complete your purchase with ease.
+- Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
 
 
 ## Installation
@@ -37,15 +50,6 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 3. Run the application: `npm start`
 4. Open `index.html` using LiveServer (VS Code Extension).
 
-
-## How to Use
-
-- Browse through the extensive range of sneakers available on the website.
-- Click on any item to view detailed information and add it to your cart.
-- Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
-- Create an account with ease to enjoy personalized recommendations, order history tracking, and a seamless checkout process.
-- Proceed to checkout and complete your purchase with ease.
-- Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
 
 ## Contribution
 
@@ -86,7 +90,14 @@ Email: upstyle7741@gmail.com
 - **[MongoDB](https://www.mongodb.com)** - For storing and managing unstructured or semi-structured data, often in a flexible, schema-less format.
 - **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment variables
 
+## Team Members
+1. Dipak Kurkute 2022IMT-037
+2. Sahil Jaiswal 2022IMT-099
+3. Gaurav Pawar 2022IMT-083
 
+## Mentors
+1. Yuraj Singh
+2. Yana Gupta
 ---
 
 🙏 Thank you for joining us on exciting journey into the world of sneakers! 🙏
