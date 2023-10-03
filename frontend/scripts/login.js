@@ -62,12 +62,14 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
+        const errorMessageElement = document.getElementById("error-message");
+        errorMessageElement.textContent = "Invalid username and password !";
+      } else window.location.href = "landingPage.html";
+
+      // return response.json();
     })
     .then((data) => {
-      window.location.href = "landingPage.html";
+      console.log(data);
     })
     .catch((error) => {
       // Handle errors
@@ -95,6 +97,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   };
 
   // Sending the data to the backend using the fetch API
+
   fetch("http://localhost:3000/user-signup", {
     method: "POST",
     credentials: "include",

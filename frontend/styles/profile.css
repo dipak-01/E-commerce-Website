@@ -132,7 +132,7 @@ body {
   display: none;
 }
 nav  {display:flex}
-@media (max-width: 1310px) {
+@media (max-width: 1390px) {
   .icons {
     display: inline-flex;
   }
@@ -783,8 +783,8 @@ p {
  
 #featureSection {
   text-align: center;
-  padding:0 20px;
-  margin:0 20px;
+  /* padding:0 20px; */
+  /* margin:0 20px; */
   padding-bottom: 40px;
   padding-left: 0;
   margin-left: 0;

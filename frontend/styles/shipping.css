@@ -137,7 +137,7 @@ span {
 nav {
   display: flex;
 }
-@media (max-width: 1310px) {
+@media (max-width: 1390px) {
   .icons {
     display: inline-flex;
   }

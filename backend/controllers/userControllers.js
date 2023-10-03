@@ -81,7 +81,11 @@ const login = async (req, res) => {
 
     // Searching User in Database using Email
     const user = await User.findOne({ email: usremail });
-
+    
+    if (user === null) {
+      res.status(401).json({ message: "Invalid Username or Password" });
+      return
+    };
     // Checking if Password are Same
     const passwordmatch = user.password == usrpassword;
 
@@ -99,7 +103,7 @@ const login = async (req, res) => {
         res.status(200).json({ message: "Successfully Logged In" });
       }
     } else {
-      res.status(401).json({ message: "Invalid Username or Password!!!" });
+      res.status(401).json({ message: "Invalid Username or Password" });
     }
   } catch (err) {
     // In Case of Error in Handling Request
