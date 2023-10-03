@@ -3,15 +3,23 @@
 Welcome to UpStyle, your premier destination for the latest and greatest in sneaker fashion. UpStyle is not just a sneaker store; it's a lifestyle brand that brings together enthusiasts, collectors, and trendsetters from all walks of life. We're more than just shoes; we're a cultural hub where fashion meets art, design meets comfort, and individuality reigns supreme. Step into UpStyle, where every sneaker tells a unique story, and every step you take is a stride toward self-expression.
 
 
-<div style="display:flex; justify-content:center;">
-  <img src="https://github.com/GauravP23/SampleReadMe/assets/142415456/e535b312-1c57-42ea-9e69-e4ad5791490c" width="250" height="auto" style="margin-right:10px;">
-  <img src="https://github.com/dipak-01/E-commerce-Website/assets/142415456/dda1a334-5986-4d70-a660-a72a08eec52f" width="250" height="auto" style="margin-right:10px;">
-  <img src="https://github.com/dipak-01/E-commerce-Website/assets/142415456/70059b64-bfd7-4fde-ab68-58d362419c61" width="250" height="auto" style="margin-right:10px;">
-  <img src="https://github.com/dipak-01/E-commerce-Website/assets/142415456/69cc35b1-5dad-4436-8562-35febbed6f75" width="250" height="auto">
-</div>
+
+![Screenshot 2023-09-30 212656](https://github.com/GauravP23/SampleReadMe/assets/142415456/e535b312-1c57-42ea-9e69-e4ad5791490c)
+
+![Screenshot 2023-09-30 212758](https://github.com/dipak-01/E-commerce-Website/assets/142415456/dda1a334-5986-4d70-a660-a72a08eec52f)
+
+![Screenshot 2023-09-30 212715](https://github.com/dipak-01/E-commerce-Website/assets/142415456/70059b64-bfd7-4fde-ab68-58d362419c61)
+
+![Screenshot 2023-09-30 213044](https://github.com/dipak-01/E-commerce-Website/assets/142415456/69cc35b1-5dad-4436-8562-35febbed6f75)
 
 
+<details>
+  <summary>Click to see images</summary>
 
+  ![Image 1](https://github.com/GauravP23/SampleReadMe/assets/142415456/e535b312-1c57-42ea-9e69-e4ad5791490c)
+  ![Image 2](https://github.com/dipak-01/E-commerce-Website/assets/142415456/dda1a334-5986-4d70-a660-a72a08eec52f)
+  ![Image 3](https://github.com/dipak-01/E-commerce-Website/assets/142415456/70059b64-bfd7-4fde-ab68-58d362419c61)
+</details>
 ## Features
 
 
@@ -27,7 +35,7 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 1. Clone the repository: `git clone https://github.com/dipak-01/E-commerce-Website.git`
 2. Install dependencies: `npm install`
 3. Run the application: `npm start`
-4. Open `index.html` using LiveServer VS Code Extension.
+4. Open `index.html` using LiveServer (VS Code Extension).
 
 
 ## How to Use
@@ -76,7 +84,7 @@ Email: upstyle7741@gmail.com
 - **[NodeJS](https://nodejs.org/en/docs/)** - For the server
 - **[ExpressJS](https://expressjs.com/)** - For handling the incoming requests from the clients
 - **[MongoDB](https://www.mongodb.com)** - For storing and managing unstructured or semi-structured data, often in a flexible, schema-less format.
-- **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment varibles
+- **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment variables
 
 
 ---
