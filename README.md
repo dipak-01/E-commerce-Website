@@ -96,7 +96,7 @@ Email: upstyle7741@gmail.com
 3. Gaurav Pawar 2022IMT-083
 
 ## Mentors
-1. Yuraj Singh
+1. Yuraj Kumar
 2. Yana Gupta
 ---
 
