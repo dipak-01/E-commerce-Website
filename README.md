@@ -39,7 +39,7 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 
 1. Browse Sneaker Catalog:
 
-   - Display sneakers with images and descriptions and implement filters (size, price).
+   - Display sneakers with images and descriptions with price.
     
 2. Product Details Page:
    
@@ -55,11 +55,11 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 
 5. User Profile Features:
   
-   - Allow profile updates (name, address, payment).
+   - Allow profile updates (name, address, password).
 
 6. Shopping Cart:
 
-   - Display selected items, quantities, prices also enables item modification and removal.
+   - Display selected items, quantities, prices also enables item modification such as removal of products.
 
 7. Checkout Process:
 
@@ -73,7 +73,7 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
    - Admin interface for CRUD operations on products, categorization, and attribute configuration
 
 2. User Management:
-   - User account management (registration, login, password reset).
+   - User account management (registration, login).
 
 3. Wishlist Management:
    - Storage and retrieval of user wishlists, database operations for adding/removing wishlist items.
@@ -98,7 +98,7 @@ Explore our awesome UpStyle project with a stunning user interface: [Check it ou
 
 2. Dynamic Cart Making:
    
-   - creation auto-updates the user's shopping cart as they shop, enabling real-time tracking of selected items and quantities for a seamless online shopping experience.
+   - Creation auto-updates and removal from the user's shopping cart as they shop, enabling real-time tracking of selected items and quantities for a seamless online shopping experience.
 
 4. Status Check of User Logged In/Out:
    
@@ -150,7 +150,7 @@ Email: upstyle7741@gmail.com
 - **[NodeJS](https://nodejs.org/en/docs/)** - For the server
 - **[ExpressJS](https://expressjs.com/)** - For handling the incoming requests from the clients
 - **[MongoDB](https://www.mongodb.com)** - For storing and managing unstructured or semi-structured data, often in a flexible, schema-less format.
-- **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment variables
+ 
 
 ## Team Members
 1. [Dipak Kurkute 2022IMT-037](https://github.com/dipak-01) 
