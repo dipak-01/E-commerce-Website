@@ -31,16 +31,78 @@ Welcome to UpStyle, your premier destination for the latest and greatest in snea
 Explore our awesome UpStyle project with a stunning user interface: [Check it out here](https://sahil7741.github.io/UpStyle/frontend/html/index.html)!
 
 
-
 ## Features
 
 
-- Browse through the extensive range of sneakers available on the website.
-- Click on any item to view detailed information and add it to your cart.
-- Build a personalized wishlist of your favorite sneakers, allowing you to save and revisit them later.
-- Create an account with ease to enjoy personalized recommendations, order history tracking, and a seamless checkout process.
-- Proceed to checkout and complete your purchase with ease.
-- Discover the unmatched comfort and style that our sneakers provide, enhancing your everyday experiences with every step.
+### - Frontend Features:
+
+
+1. Browse Sneaker Catalog:
+
+   - Display sneakers with images and descriptions and implement filters (size, price).
+    
+2. Product Details Page:
+   
+   - Show detailed info, specs, reviews also include an "Add to Cart" button.
+
+3. Wishlist Functionality:
+  
+   - Let users create and manage wishlists.
+
+4. User Account Creation:
+  
+   - Simple registration (username, email, password).
+
+5. User Profile Features:
+  
+   - Allow profile updates (name, address, payment).
+
+6. Shopping Cart:
+
+   - Display selected items, quantities, prices also enables item modification and removal.
+
+7. Checkout Process:
+
+   - Provide a smooth, step-by-step checkout, offering Razorpay payment mode for secure payment gateway for transactions.
+
+
+### - Backend Features:
+
+
+1. Product Management:
+   - Admin interface for CRUD operations on products, categorization, and attribute configuration
+
+2. User Management:
+   - User account management (registration, login, password reset).
+
+3. Wishlist Management:
+   - Storage and retrieval of user wishlists, database operations for adding/removing wishlist items.
+
+4. Order Processing:
+   - Manage customer orders and shipping info.
+
+5. Payment Processing:
+   - Integration with secure payment gateways, validation and verification of payment data.
+
+6. Database Management:
+   - Maintain a database for product, user, and order data and optimize database performance.
+
+
+
+ ### - Some Other Features:
+
+
+1. Skeleton Loader:
+
+   - A skeleton loader is a visual placeholder that appears while content is loading, providing users with a sense of progress and reducing perceived loading times.
+
+2. Dynamic Cart Making:
+   
+   - creation auto-updates the user's shopping cart as they shop, enabling real-time tracking of selected items and quantities for a seamless online shopping experience.
+
+4. Status Check of User Logged In/Out:
+   
+   -  ensures access to personalized content when logged in, prompting login when needed, enhancing both security and user experience.
 
 
 ## Installation
@@ -91,13 +153,13 @@ Email: upstyle7741@gmail.com
 - **[dotenv](https://www.npmjs.com/package/dotenv)** - For storing the environment variables
 
 ## Team Members
-1. Dipak Kurkute 2022IMT-037
-2. Sahil Jaiswal 2022IMT-099
-3. Gaurav Pawar 2022IMT-083
+1. [Dipak Kurkute 2022IMT-037](https://github.com/dipak-01) 
+2. [Sahil Jaiswal 2022IMT-099](https://github.com/Sahil7741)
+3. [Gaurav Pawar 2022IMT-083](https://github.com/GauravP23)
 
 ## Mentors
-1. Yuvraj Kumar
-2. Yana Gupta
+1. [Yuvraj Kumar](https://github.com/Spedrick)
+2. [Yana Gupta](https://github.com/Yana-Gupta)
 ---
 
 🙏 Thank you for joining us on exciting journey into the world of sneakers! 🙏
